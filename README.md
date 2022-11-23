@@ -4,14 +4,8 @@ Every program needs a README.md
 
 This is written in markdown. Read about markdown here: [markdowncheatsheet](https://www.markdownguide.org/cheat-sheet/)
 
-### Your name:
->Kelly Hagg
->Colin Doig
+### Contributors: names, student numbers, and GitHub IDs:
+>Kelly Hagg, A01324804, kellyhagg
+> 
+>Colin Doig, ,cdoig4
 
-### Your student number:
->A01324804
->
-
-### Your GitHub account ID:
->kellyhagg
->cdoig4
