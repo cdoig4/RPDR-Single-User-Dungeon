@@ -11,7 +11,7 @@ def make_board(rows, columns):
     :param columns:
     :return:
     """
-
+    pass
 
 
 def make_character(character_name):
@@ -20,13 +20,15 @@ def make_character(character_name):
     :param character_name:
     :return:
     """
-
+    pass
 
 def get_user_choice():
     """
 
     :return:
     """
+    pass
+
 
 def validate_move(board, character, direction):
     """
@@ -36,6 +38,7 @@ def validate_move(board, character, direction):
     :param direction:
     :return:
     """
+    pass
 
 
 def move_character(character):
@@ -44,6 +47,7 @@ def move_character(character):
     :param character:
     :return:
     """
+    pass
 
 
 def describe_current_location(board, character):
@@ -53,6 +57,7 @@ def describe_current_location(board, character):
     :param character:
     :return:
     """
+    pass
 
 
 def check_for_challenges():
@@ -60,7 +65,7 @@ def check_for_challenges():
 
     :return:
     """
-
+    pass
 
 
 def game(): # called from main
@@ -81,8 +86,9 @@ def game(): # called from main
             execute_challenge_protocol(character)
         if character_has_leveled():
             execute_glow_up_protocol()
-        achieved_goal = check_if_goal_attained(board, character)
+            achieved_goal = check_if_goal_attained(board, character)
         else:
+            print("You have to achieve your goal!")
 
 
 def main():
