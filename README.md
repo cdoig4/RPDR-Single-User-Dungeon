@@ -7,5 +7,5 @@ This is written in markdown. Read about markdown here: [markdowncheatsheet](http
 ### Contributors: names, student numbers, and GitHub IDs:
 >Kelly Hagg, A01324804, kellyhagg
 > 
->Colin Doig, ,cdoig4
+>Colin Doig, A01334230 ,cdoig4
 
