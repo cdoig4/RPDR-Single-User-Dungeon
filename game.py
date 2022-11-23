@@ -11,8 +11,12 @@ def make_board(rows, columns):
     :param columns:
     :return:
     """
+    board = {}
+    for rows in rows:
+        for column in columns:
+            board[(row, column)] = ['Welcome to RPDR', None]
 
-
+    board [(0, 0)] = queen # make a dict for each queen
 
 def make_character(character_name):
     """
