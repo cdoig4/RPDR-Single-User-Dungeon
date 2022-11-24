@@ -16,7 +16,18 @@ def make_board(rows, columns):
         for column in columns:
             board[(row, column)] = ['Welcome to RPDR', None]
 
-    board [(0, 0)] = queen # make a dict for each queen
+    if character.get('met_rupaul') == True:
+        #load dressing_room
+        pass
+    elif character.get('completed_lip_sync') == True:
+        # load judges panel
+        pass
+    elif character.get('level') == 2:
+        # load stage
+        pass
+    else:
+        # load werkroom
+        pass
     pass
 
 
