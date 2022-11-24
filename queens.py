@@ -1,17 +1,7 @@
 """
 Populate the  Charisma, Uniqueness, Nerve & Talent for each queen type and enemy queen.
 """
-
-
-
-look_queen = {"Charisma": 12, "Uniqueness": 14, "Nerve": 10, "Talent": 10}
-comedy_queen = {"Charisma": 15, "Uniqueness": 14, "Nerve": 10, "Talent": 10}
-performance_queen = {"Charisma": 17, "Uniqueness": 12, "Nerve": 10, "Talent": 10}
-
-
-
-
-queen_aja = {"Name": "Aja", "Charisma": 25, "Uniqueness": 30, "Nerve": 35, "Talent": 35}
+queen_aja_labeija = {"Name": "Aja", "Charisma": 25, "Uniqueness": 30, "Nerve": 35, "Talent": 35}
 queen_jinkx_monsoon = {"Name": "Jinkx", "Charisma": 60, "Uniqueness": 60, "Nerve": 55, "Talent": 70}
 queen_shea_coulee = {"Name": "Shea", "Charisma": 63, "Uniqueness": 61, "Nerve": 70, "Talent": 70}
 queen_serena_cha_cha = {"Name": "Serena ChaCha", "Charisma": 13, "Uniqueness": 15, "Nerve": 21, "Talent": 12}
