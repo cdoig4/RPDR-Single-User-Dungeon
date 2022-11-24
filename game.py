@@ -4,6 +4,8 @@ Kelly Hagg A01324804
 """
 from character_setup_and_intro import make_character
 
+import boards
+
 def make_board(character):
     """
 
@@ -12,18 +14,14 @@ def make_board(character):
     :return:
     """
     if character.get('met_rupaul') == True:
-        #load dressing_room
-        pass
+        board = read_board('dressing_room')
     elif character.get('completed_lip_sync') == True:
-        # load judges panel
-        pass
+        board = read_board('judges_panel')
     elif character.get('level') == 2:
-        # load stage
-        pass
+        board = read_board('stage')
     else:
-        # load werkroom
-        pass
-    pass
+        board = read_board('werkroom')
+    return board
 
 
 def get_user_choice():
