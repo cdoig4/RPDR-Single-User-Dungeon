@@ -23,12 +23,16 @@ def index_board(board):
     :param board:
     :return:
     """
-    count = 0
-    for character in board:
-        if character == '!':
-            count += 1
+    rows = [row for row in board if row == '$']
+    columns = [column for column in board if column == '#']
 
-    return count
+    coordinates = {}
+
+    for row in range(len(rows)):
+        for column in range(len(columns)):
+            coordinates[(row, column)] = [None]
+
+    return coordinates
 
 
 
