@@ -26,15 +26,22 @@ def index_board(board):
     rows = [row for row in board if row == '$']
     columns = [column for column in board if column == '#']
 
-    coordinates = {}
+    coordinates = []
+    is_occupiable = []
 
     for row in range(len(rows)):
         for column in range(len(columns)):
-            coordinates[(row, column)] = [None]
+            coordinates += [(row, column)]
 
-    return coordinates
+    for character in board:
+        if character == '!':
+            is_occupiable += [True]
+        if character == 'x':
+            is_occupiable += [False]
 
+    described_coordinates = dict(zip(coordinates, is_occupiable))
 
+    return described_coordinates
 
 
 def main(board):
