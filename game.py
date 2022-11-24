@@ -85,11 +85,9 @@ def check_for_challenges():
     pass
 
 
-def game(): # called from main
-    rows = 10
-    columns = 10
+def game():
     board = make_board(rows, columns)
-    character = make_character("Player name")
+    character = make_character('Player name')
     achieved_goal = False
     while not achieved_goal:
         describe_current_location(board, character)
@@ -105,7 +103,7 @@ def game(): # called from main
             execute_glow_up_protocol()
             achieved_goal = check_if_goal_attained(board, character)
         else:
-            print("You have to achieve your goal!")
+            print('You have to achieve your goal!')
 
 
 def main():
