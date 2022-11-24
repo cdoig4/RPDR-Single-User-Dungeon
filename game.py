@@ -2,7 +2,7 @@
 Colin Doig A01334230
 Kelly Hagg A01324804
 """
-
+from character_creation import make_character
 
 import boards
 
@@ -23,14 +23,6 @@ def make_board(character):
         board = read_board('werkroom')
     return board
 
-
-def make_character(character_name):
-    """
-
-    :param character_name:
-    :return:
-    """
-    pass
 
 def get_user_choice():
     """
@@ -79,7 +71,7 @@ def check_for_challenges():
 
 
 def game():
-    character = make_character('Player name')
+    character = make_character(input("What is the name of your Drag Persona?"))
     achieved_goal = False
     while not achieved_goal:
         board = make_board(character)
