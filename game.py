@@ -11,11 +11,6 @@ def make_board(rows, columns):
     :param columns:
     :return:
     """
-    board = {}
-    for rows in rows:
-        for column in columns:
-            board[(row, column)] = ['Welcome to RPDR', None]
-
     if character.get('met_rupaul') == True:
         #load dressing_room
         pass
