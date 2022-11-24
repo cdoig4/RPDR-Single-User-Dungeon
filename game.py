@@ -71,7 +71,7 @@ def check_for_challenges():
 
 
 def game():
-    character = character_setup_and_intro.make_character(input("What is the name of your Drag Persona?"))
+    character = character_setup_and_intro.make_character(input("What is the name of your Drag Persona?\n"))
     character_setup_and_intro.deliver_introduction(character)
     achieved_goal = False
     while not achieved_goal:
