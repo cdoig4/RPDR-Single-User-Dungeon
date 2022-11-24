@@ -11,15 +11,15 @@ def generate_directional_tools():
         pairs.append(pair)
     return pairs
 
-def generate_game_input(answers: list):
+def generate_challenge_input(answers: list):
     """
     """
-    answers = ['a1', 'a2', 'a3', 'a4']
+    pairs = []
 
     for number, answer in enumerate(answers, 1):
-
-        print(number, answer)
-
+        pair = (number, answer)
+        pairs.append(pair)
+    return pairs
 
 def main():
     """
