@@ -4,7 +4,7 @@ Kelly Hagg A01324804
 """
 
 
-def make_board(rows, columns):
+def make_board(character):
     """
 
     :param rows:
@@ -81,10 +81,10 @@ def check_for_challenges():
 
 
 def game():
-    board = make_board(rows, columns)
     character = make_character('Player name')
     achieved_goal = False
     while not achieved_goal:
+        board = make_board(character)
         describe_current_location(board, character)
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
