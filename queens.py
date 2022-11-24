@@ -2,9 +2,11 @@
 Populate the  Charisma, Uniqueness, Nerve & Talent for each queen type and enemy queen.
 """
 
-look_queen = {"Charisma": 2, "Uniqueness": 4, "Nerve": 7, "Talent": 5}
-comedy_queen = {"Charisma": 5, "Uniqueness": 4, "Nerve": 2, "Talent": 7}
-performance_queen = {"Charisma": 7, "Uniqueness": 2, "Nerve": 5, "Talent": 4}
+
+
+look_queen = {"Charisma": 12, "Uniqueness": 14, "Nerve": 10, "Talent": 10}
+comedy_queen = {"Charisma": 15, "Uniqueness": 14, "Nerve": 10, "Talent": 10}
+performance_queen = {"Charisma": 17, "Uniqueness": 12, "Nerve": 10, "Talent": 10}
 
 
 
