@@ -13,9 +13,9 @@ def make_board(character):
     :param columns:
     :return:
     """
-    if character.get('met_rupaul') == True:
+    if character.get('met_rupaul'):
         board = read_board('dressing_room')
-    elif character.get('completed_lip_sync') == True:
+    elif character.get('completed_lip_sync'):
         board = read_board('judges_panel')
     elif character.get('level') == 2:
         board = read_board('stage')
