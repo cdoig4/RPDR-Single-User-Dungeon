@@ -2,7 +2,7 @@
 Colin Doig A01334230
 Kelly Hagg A01324804
 """
-from character_creation import make_character
+from character_setup_and_intro import make_character
 
 def make_board(character):
     """
