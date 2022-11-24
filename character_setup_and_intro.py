@@ -12,7 +12,7 @@ ALTERNATIVE_QUEEN = {'Charisma': 12, 'Uniqueness': 17, 'Nerve': 10, 'Talent': 10
 CHARACTER_CLASSES = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alternative Queen']
 
 
-def make_character(character_name):
+def make_character(character_name: str) -> dict:
     """
     Create character of desired name and class.
 
