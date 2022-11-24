@@ -52,7 +52,7 @@ def deliver_introduction(character_dictionary: dict) -> None:
           f"of Rupaul's Drag Race!\nThis season will operate a little differently...\nTo obtain the title of "
           f"'Greatest Queen of All Time', you must first win the right to lipsync on the Main Stage by proving "
           f"your mettle against some fellow queens in the Werk Room.\nIf you win the Lip Sync for your Legacy, you "
-          f"will be invited to RuPaul's dressing room where you will LIP SYNC FOR YOUR LIFE Wagainst Mother herself.\n"
+          f"will be invited to RuPaul's dressing room where you will LIP SYNC FOR YOUR LIFE against Mother herself.\n"
           f"Good luck, and DON'T fuck it up.")
 
 
