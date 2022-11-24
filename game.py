@@ -6,21 +6,21 @@ import character_setup_and_intro
 
 import boards
 
+
 def make_board(character):
     """
 
-    :param rows:
-    :param columns:
+    :param character:
     :return:
     """
     if character.get('met_rupaul'):
-        board = read_board('dressing_room')
+        board = boards.read_board('dressing_room')
     elif character.get('completed_lip_sync'):
-        board = read_board('judges_panel')
+        board = boards.read_board('judges_panel')
     elif character.get('level') == 2:
-        board = read_board('stage')
+        board = boards.read_board('stage')
     else:
-        board = read_board('werkroom')
+        board = boards.read_board('werkroom')
     return board
 
 
