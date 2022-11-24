@@ -10,9 +10,13 @@ CHARACTER_CLASSES = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alterna
 
 def make_character(character_name):
     """
+    Create character of desired name and class.
 
-    :param character_name:
-    :return:
+    :param character_name: must be a string containing only alphabetic characters or spaces
+    :precondition: character_name must be a string
+    :postcondition: asks the user for input to determine class stats
+    :postcondition: creates character dictionary containing name and stats of desired class
+    :return: a dictionary representing the user's character
     """
     print("What type of queen are you?")
     for pair in list(enumerate(CHARACTER_CLASSES)):
@@ -27,5 +31,6 @@ def make_character(character_name):
         character = {key: value for key, value in PERFORMANCE_QUEEN.items()}
     else:
         character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
+
     character['Name'] = character_name
     return character
