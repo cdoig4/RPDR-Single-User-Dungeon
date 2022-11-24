@@ -34,3 +34,12 @@ def make_character(character_name):
 
     character['Name'] = character_name
     return character
+
+
+def main():
+    """Drive the program."""
+    make_character(input('What is the name of your Drag Persona?'))
+
+
+if __name__ == '__main__':
+    main()
