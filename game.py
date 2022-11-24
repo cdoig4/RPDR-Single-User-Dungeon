@@ -81,7 +81,8 @@ def check_for_challenges():
 
 
 def game():
-    character = make_character('Player name')
+    player_name = input("What is the name of your Drag Persona?")
+    character = make_character(player_name)
     achieved_goal = False
     while not achieved_goal:
         board = make_board(character)
