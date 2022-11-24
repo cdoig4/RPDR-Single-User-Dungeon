@@ -2,7 +2,7 @@
 Colin Doig A01334230
 Kelly Hagg A01324804
 """
-from character_setup_and_intro import make_character
+import character_setup_and_intro
 
 import boards
 
@@ -71,7 +71,8 @@ def check_for_challenges():
 
 
 def game():
-    character = make_character(input("What is the name of your Drag Persona?"))
+    character = character_setup_and_intro.make_character(input("What is the name of your Drag Persona?\n"))
+    character_setup_and_intro.deliver_introduction(character)
     achieved_goal = False
     while not achieved_goal:
         board = make_board(character)

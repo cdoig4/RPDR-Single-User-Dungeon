@@ -12,7 +12,7 @@ ALTERNATIVE_QUEEN = {'Charisma': 12, 'Uniqueness': 17, 'Nerve': 10, 'Talent': 10
 CHARACTER_CLASSES = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alternative Queen']
 
 
-def make_character(character_name):
+def make_character(character_name: str) -> dict:
     """
     Create character of desired name and class.
 
@@ -40,9 +40,26 @@ def make_character(character_name):
     return character
 
 
+def deliver_introduction(character_dictionary: dict) -> None:
+    """
+    Deliver introduction to user.
+
+    :param character_dictionary: must be a dictionary representing the user's character with the key 'Name' present
+    :precondition: character_dictionary must be a dictionary
+    :postcondition: prints the game introduction
+    """
+    print(f"Condragulations {character_dictionary['Name']}, you have been selected to compete on the new season "
+          f"of Rupaul's Drag Race!\nThis season will operate a little differently...\nTo obtain the title of "
+          f"'Greatest Queen of All Time', you must first win the right to lipsync on the Main Stage by proving "
+          f"your mettle against some fellow queens in the Werk Room.\nIf you win the Lip Sync for your Legacy, you "
+          f"will be invited to RuPaul's dressing room where you will LIP SYNC FOR YOUR LIFE against Mother herself.\n"
+          f"Good luck, and DON'T fuck it up.")
+
+
 def main():
     """Drive the program."""
-    make_character(input('What is the name of your Drag Persona?'))
+    new_character = make_character(input('What is the name of your Drag Persona?\n'))
+    deliver_introduction(new_character)
 
 
 if __name__ == '__main__':
