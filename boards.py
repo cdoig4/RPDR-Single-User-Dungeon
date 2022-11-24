@@ -43,6 +43,17 @@ def index_board(board):
 
     return described_coordinates
 
+def display_board(board):
+    """
+
+    :param board:
+    :return:
+    """
+    cleared_board = board.replace('#', ' ')
+    cleared_board = cleared_board.replace('$', ' ')
+    cleared_board = cleared_board.replace('x', ' ')
+    cleared_board = cleared_board.replace('!', ' ')
+    return cleared_board
 
 def main(board):
     """
@@ -51,6 +62,7 @@ def main(board):
     board = read_board(board)
     print(board)
     print(index_board(board))
+    print(display_board(board))
 
 if __name__ == '__main__':
     main('stage')
