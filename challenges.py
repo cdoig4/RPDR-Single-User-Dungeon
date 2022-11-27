@@ -8,9 +8,9 @@ CHER_LIP_SYNC_CHALLENGE = ['Believe by Cher', ('No matter how hard I try, you ke
                                                'Regardless of what I do, I can never get to you'),
                            ('Do you believe in sun after rain?', 'Do you believe that you know the words?',
                             'Do you believe in life after love?'),
-                           ( "I know that I'll get through this, because I found a really cool frog",
-                             "Well I know that I'll get through this, Cause I know that I am strong",
-                             "Well I know that I'll get through this, Cause I know that I'm not wrong")]
+                           ("I know that I'll get through this, because I found a really cool frog",
+                            "Well I know that I'll get through this, Cause I know that I am strong",
+                            "Well I know that I'll get through this, Cause I know that I'm not wrong")]
 # MADONNA_LIP_SYNC_CHALLENGE = ['Vogue by Madonna',
 #                               ('When all else fails and you long to be Something better than you are today',),
 #                               ('Come on, vogue. Let your body move to the music', ),
@@ -82,6 +82,7 @@ def second_lyrics(lyric_tuple: tuple) -> bool:
                   f"figure out where you are in the song now.")
             return False
 
+
 def final_lyrics(lyric_tuple: tuple) -> bool:
     """
 
@@ -89,8 +90,8 @@ def final_lyrics(lyric_tuple: tuple) -> bool:
     :return:
     """
     print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
-          f"Which do you lip sync?
-    for pair in list(enumerate(lyric_tuple))):
+          f"Which do you lip sync?")
+    for pair in list(enumerate(lyric_tuple)):
         print(f"{pair[0]}: {pair[1]}")
     if input() == 1:
         print("You end the performance with a bang! The judges cheer and clap and you know you've done well.")
@@ -99,7 +100,6 @@ def final_lyrics(lyric_tuple: tuple) -> bool:
         print(f"You end on a sour note, while you gave it everything you had you're worried the minor mistakes"
               f"you made have seriously affected your chances.")
         return False
-
 
 
 def perform_lip_sync(event_list: list) -> bool:
@@ -118,9 +118,9 @@ def perform_lip_sync(event_list: list) -> bool:
 
     if correct_first_lyrics and correct_second_lyrics or correct_final_lyrics:
         return True
-    if correct_second_lyrics and correct_first_lyrics or correct_final_lyrics:
+    elif correct_second_lyrics and correct_first_lyrics or correct_final_lyrics:
         return True
-    if correct_final_lyrics and correct_first_lyrics or correct_second_lyrics:
+    elif correct_final_lyrics and correct_first_lyrics or correct_second_lyrics:
         return True
     else:
         return False
@@ -154,15 +154,25 @@ def runway_event(position, character_dictionary):
                   f"remaining.")
 
 
+def werkroom_events():
+    """
+
+    :return:
+    """
+
+
 def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
     """
 
+
+    :param movement:
+    :param position:
     :param character_dictionary:
     """
     if character_dictionary.get('level') == 3:
         judge_events(movement, character_dictionary)
     elif character_dictionary.get('level') == 2:
-        runway_events(position, character_dictionary)
+        runway_event(position, character_dictionary)
     else:
         werkroom_events()
 
