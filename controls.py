@@ -11,22 +11,26 @@ def generate_directional_tools():
         pairs.append(pair)
     return pairs
 
-def generate_challenge_input(answers: list):
+def generate_challenge_input(answers: list) -> list:
     """
     """
     pairs = []
 
-    for number, answer in enumerate([answers], 1):
+    for number, answer in enumerate(answers, 1):
         pair = (number, answer)
         pairs.append(pair)
     return pairs
+
+# def format_output():
+
+
 
 def main():
     """
     Drive the program
     """
     print(generate_directional_tools())
-    print(generate_challenge_input("answer 1, answer 2, answer 3, answer 4"))
+    print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
 
 if __name__ == '__main__':
     main()
