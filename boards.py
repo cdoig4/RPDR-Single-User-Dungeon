@@ -12,7 +12,6 @@ def read_board(board):
             file_object.read()
     except FileNotFoundError:
         print("File not found.")
-        sys.exit(1)
 
     with open(f'./maps/{board}.txt') as file_object:
         return file_object.read()
