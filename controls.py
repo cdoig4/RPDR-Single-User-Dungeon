@@ -28,7 +28,6 @@ def get_input_from_user(answers: list) -> str:
     :return:
     """
     game_input = generate_challenge_input(answers)
-    print(game_input)
     acceptable_answers = []
 
     for pair in game_input:
