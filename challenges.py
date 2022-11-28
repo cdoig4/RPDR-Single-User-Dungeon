@@ -2,15 +2,20 @@
 Challenges for the user to help them increase their level!
 """
 import random
+import controls
 
-CHER_LIP_SYNC_CHALLENGE = ['Believe by Cher', ('No matter how hard I try, you keep pushing me aside',
-                                               'No matter how much effort I put in, you never let me win',
-                                               'Regardless of what I do, I can never get to you'),
-                           ('Do you believe in sun after rain?', 'Do you believe that you know the words?',
-                            'Do you believe in life after love?'),
-                           ("I know that I'll get through this, because I found a really cool frog",
-                            "Well I know that I'll get through this, Cause I know that I am strong",
-                            "Well I know that I'll get through this, Cause I know that I'm not wrong")]
+CHER_LIP_SYNC_CHALLENGE = {'Correct Answer': ['No matter how hard I try, you keep pushing me aside',
+                                              'Do you believe in life after love',
+                                              "Well I know that I'll get through this, Cause I know that I am strong"],
+                           'Initial Lyrics': ['No matter how hard I try, you keep pushing me aside',
+                                              'No matter how much effort I put in, you never let me win',
+                                              'Regardless of what I do, I can never get to you'],
+                           'Chorus Lyrics': ['Do you believe in sun after rain?',
+                                             'Do you believe that you know the words?',
+                                             'Do you believe in life after love?'],
+                           'Final Lyrics': ["I know that I'll get through this, because I found a really cool frog",
+                                            "Well I know that I'll get through this, Cause I know that I am strong",
+                                            "Well I know that I'll get through this, Cause I know that I'm not wrong"]}
 # MADONNA_LIP_SYNC_CHALLENGE = ['Vogue by Madonna',
 #                               ('When all else fails and you long to be Something better than you are today',),
 #                               ('Come on, vogue. Let your body move to the music', ),
@@ -19,7 +24,7 @@ CHER_LIP_SYNC_CHALLENGE = ['Believe by Cher', ('No matter how hard I try, you ke
 #                                        ("You're stuck in my head, stuck in my heart, stuck in my body- body",),
 #                                        ('When the lights go out, Run away with me! Run away with me!',),
 #                                        ('Over the weekend, we could turn the world to gold',)]
-# RUNWAY_EVENTS = [CHER_LIP_SYNC_CHALLENGE, MADONNA_LIP_SYNC_CHALLENGE, CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE]
+LIP_SYNCS = ['Believe by Cher', 'Vogue by Madonna', 'Run Away With Me by Carly Rae Jepsen']
 
 
 def judge_events(movement, character_dictionary):
@@ -47,53 +52,50 @@ def judge_events(movement, character_dictionary):
         return character_dictionary
 
 
-def first_lyrics(lyric_tuple: tuple) -> bool:
+def first_lyrics(lyric_list: list) -> bool:
     """
 
-    :param lyric_tuple:
+    :param lyric_list:
     :return:
     """
     print(f'The music starts and you need to remember the first line of the song, which do you lip sync?')
-    for pair in list(enumerate(lyric_tuple)):
-        print(f'{pair[0]}: {pair[1]}')
-        if input() == 0:
-            print("You flawlessly mouth along to the first words of the song, giving you a boost in confidence.")
-            return True
-        else:
-            print(f"You fumble the first few words and your opponent performs an effortless reveal, leaving you"
-                  f"shaken")
-            return False
+    answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
+    if answer in CHER_LIP_SYNC_CHALLENGE['Correct Answer']:
+        print("You flawlessly mouth along to the first words of the song, giving you a boost in confidence.")
+        return True
+    else:
+        print(f"You fumble the first few words and your opponent performs an effortless reveal, leaving you"
+              f" shaken.")
+        return False
 
 
-def second_lyrics(lyric_tuple: tuple) -> bool:
+def second_lyrics(lyric_list: list) -> bool:
     """
 
-    :param lyric_tuple:
+    :param lyric_list:
     :return:
     """
     print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
-    for pair in list(enumerate(lyric_tuple)):
-        print(f'{pair[0]}: {pair[1]}')
-        if input() == 2:
-            print("You start the chorus perfectly, giving it the energy required to sell it to the judges.")
-            return True
-        else:
-            print(f"You trip on a loose stage screw and it throws you off, and it takes you a few seconds to"
-                  f"figure out where you are in the song now.")
-            return False
+    answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
+    if answer in CHER_LIP_SYNC_CHALLENGE['Correct Answer']:
+        print("You start the chorus perfectly, giving it the energy required to sell it to the judges.")
+        return True
+    else:
+        print(f"You trip on a loose stage screw and it throws you off. It takes you a few seconds to"
+              f" figure out where you are in the song.")
+        return False
 
 
-def final_lyrics(lyric_tuple: tuple) -> bool:
+def final_lyrics(lyric_list: list) -> bool:
     """
 
-    :param lyric_tuple:
+    :param lyric_list:
     :return:
     """
     print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
           f"Which do you lip sync?")
-    for pair in list(enumerate(lyric_tuple)):
-        print(f"{pair[0]}: {pair[1]}")
-    if input() == 1:
+    answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
+    if answer in CHER_LIP_SYNC_CHALLENGE['Correct Answer']:
         print("You end the performance with a bang! The judges cheer and clap and you know you've done well.")
         return True
     else:
@@ -102,28 +104,32 @@ def final_lyrics(lyric_tuple: tuple) -> bool:
         return False
 
 
-def perform_lip_sync(event_list: list) -> bool:
+def perform_lip_sync(event_string: str) -> bool:
     """
 
-    :param event_list:
+    :param event_string:
     :return:
     """
     # event_check = random.randint(0, 2)
     print(f'RuPauls voice echoes:\n"Two queens stand before me. For tonight Ive asked you to prepare a lip sync '
-          f'performance of {event_list[0]}. Ladies...\n the time has come....'
-          f'\n for you to lip sync\nFOR\nYOUR\nLEGACY.')
-    correct_first_lyrics = first_lyrics(event_list[1])
-    correct_second_lyrics = second_lyrics(event_list[2])
-    correct_final_lyrics = final_lyrics(event_list[3])
+          f'performance of {event_string}. Ladies...\nthe time has come....'
+          f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.')
+    correct_first_lyrics = first_lyrics(CHER_LIP_SYNC_CHALLENGE['Initial Lyrics'])
+    correct_second_lyrics = second_lyrics(CHER_LIP_SYNC_CHALLENGE['Chorus Lyrics'])
+    correct_final_lyrics = final_lyrics(CHER_LIP_SYNC_CHALLENGE['Final Lyrics'])
 
-    if correct_first_lyrics and correct_second_lyrics or correct_final_lyrics:
+    if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         return True
-    elif correct_second_lyrics and correct_first_lyrics or correct_final_lyrics:
+    elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
         return True
-    elif correct_final_lyrics and correct_first_lyrics or correct_second_lyrics:
+    elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
         return True
     else:
         return False
+
+
+test_character = {'Name': 'Kleenexia Boxx', "Charisma": 14, "Uniqueness": 15, "Nerve": 10, "Talent": 10,
+                  'met_rupaul': False, "completed_lipsync": False, "level": 1}
 
 
 def runway_event(position, character_dictionary):
@@ -134,7 +140,7 @@ def runway_event(position, character_dictionary):
     :return:
     """
     if position == (0, 0):
-        event_results = perform_lip_sync(CHER_LIP_SYNC_CHALLENGE)
+        event_results = perform_lip_sync(LIP_SYNCS[0])
         if event_results:
             character_dictionary['level'] += 1
             character_dictionary['Charisma'] += random.randint(20, 30)
@@ -154,28 +160,32 @@ def runway_event(position, character_dictionary):
                   f"remaining.")
 
 
+runway_event((0, 0), test_character)
+
+
 def werkroom_events():
     """
 
     :return:
     """
+    pass
 
 
-def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
-    """
-
-
-    :param movement:
-    :param position:
-    :param character_dictionary:
-    """
-    if character_dictionary.get('level') == 3:
-        judge_events(movement, character_dictionary)
-    elif character_dictionary.get('level') == 2:
-        runway_event(position, character_dictionary)
-    else:
-        werkroom_events()
-
-
-if __name__ == '__main__':
-    main()
+# def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
+#     """
+#
+#
+#     :param movement:
+#     :param position:
+#     :param character_dictionary:
+#     """
+#     if character_dictionary.get('level') == 3:
+#         judge_events(movement, character_dictionary)
+#     elif character_dictionary.get('level') == 2:
+#         runway_event(position, character_dictionary)
+#     else:
+#         werkroom_events()
+#
+#
+# if __name__ == '__main__':
+#     main()
