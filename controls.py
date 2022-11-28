@@ -1,13 +1,34 @@
 import itertools
+from boards import read_board
+from boards import index_board
 
-def generate_directional_tools():
+
+def generate_directional_tools(current_coordinate, board_coordinates):
+    """
+
+    :param current_coordinate:
+    :param board_coordinates:
+    :return:
+    """
+    board_limits = [key for key in board_coordinates]
+    board_limits.sort(reverse=True)
+    limit_coordinate = board_limits.pop(0)
+
+    row = current_coordinate[0]
+    column = current_coordinate[1]
 
     pairs = []
 
-    input_letters = ['W', 'S', 'A', 'D']
-    directions = ['Up', 'Down', 'Left', 'Right']
-
-    pairs = zip(input_letters, directions)
+    if board_coordinates[current_coordinate] == 'door':
+        pairs.append(('E', 'Use door'))
+    if row != 0 and board_coordinates[row - 1, column] != False:
+        pairs.append(('W', 'Up'))
+    if row != limit_coordinate[0] and board_coordinates[row + 1, column] != False:
+        pairs.append(('S', 'Down'))
+    if column != 0 and board_coordinates[row, column - 1] != False:
+        pairs.append(('A', 'Left'))
+    if column != limit_coordinate[1] and board_coordinates[row, column + 1] != False:
+        pairs.append(('D', 'Right'))
 
     return pairs
 
@@ -46,8 +67,9 @@ def main():
     """
     Drive the program
     """
-    # print(generate_directional_tools())
-    print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
+    board = read_board('stage')
+    print(generate_directional_tools((0, 5), index_board(board)))
+    # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
 
 if __name__ == '__main__':
