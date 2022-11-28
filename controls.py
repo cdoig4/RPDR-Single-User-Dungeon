@@ -33,7 +33,7 @@ def get_input_from_user(game_input: list) -> str:
         acceptable_answers += pair[0]
         print(f'{pair[0]}: {pair[1]}')
 
-    answer = int(input())
+    answer = input()
     if answer not in acceptable_answers:
         print("That is not an acceptable answer! Please try again:")
         return get_input_from_user(game_input)
