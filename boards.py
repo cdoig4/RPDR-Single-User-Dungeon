@@ -37,6 +37,10 @@ def index_board(board):
             location_type += [True]
         if character == 'x':
             location_type += [False]
+        if character == 'e':
+            location_type += ['entry']
+        if character == 'E':
+            location_type += ['exit']
 
     described_coordinates = dict(zip(coordinates, location_type))
 
