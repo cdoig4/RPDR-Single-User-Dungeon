@@ -30,7 +30,7 @@ def get_input_from_user(game_input: list) -> str:
     acceptable_answers = []
 
     for pair in game_input:
-        acceptable_answers += pair[0]
+        acceptable_answers += pair
         print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
