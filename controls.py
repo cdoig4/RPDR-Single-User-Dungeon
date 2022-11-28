@@ -1,12 +1,12 @@
 import itertools
 from boards import read_board
 from boards import index_board
+from boards import display_board
 
-
-def generate_directional_tools(current_coordinate, board_coordinates):
+def generate_directional_tools(current_coordinates, board_coordinates):
     """
 
-    :param current_coordinate:
+    :param current_coordinates:
     :param board_coordinates:
     :return:
     """
@@ -14,14 +14,14 @@ def generate_directional_tools(current_coordinate, board_coordinates):
     board_limits.sort(reverse=True)
     limit_coordinate = board_limits.pop(0)
 
-    row = current_coordinate[0]
-    column = current_coordinate[1]
+    row = current_coordinates[0]
+    column = current_coordinates[1]
 
     pairs = []
 
-    if board_coordinates[current_coordinate] == 'entry':
+    if board_coordinates[current_coordinates] == 'entry':
         pairs.append(('E', 'Enter'))
-    if board_coordinates[current_coordinate] == 'exit':
+    if board_coordinates[current_coordinates] == 'exit':
         pairs.append(('E', 'Exit'))
     if row != 0 and board_coordinates[row - 1, column] != False:
         pairs.append(('W', 'Up'))
@@ -58,12 +58,15 @@ def get_input_from_user(game_input: list) -> str:
 
     answer = input()
     if answer not in acceptable_answers:
-        print("That is not an acceptable answer! Please try again:")
+        print('That is not an acceptable answer! Please try again:')
+    if answer == 'Exit':
+        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_input_from_user(game_input)
 
     answer_index = acceptable_answers.index(answer)
 
     return game_input[answer_index][1]
+
 
 def main():
     """
