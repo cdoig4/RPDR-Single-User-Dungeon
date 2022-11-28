@@ -7,8 +7,8 @@ def generate_directional_tools():
     input_letters = ['W', 'S', 'A', 'D']
     directions = ['Up', 'Down', 'Left', 'Right']
 
-    for pair in zip(input_letters, directions):
-        pairs.append(pair)
+    pairs = zip(input_letters, directions)
+
     return pairs
 
 def generate_challenge_input(answers: list) -> list:
