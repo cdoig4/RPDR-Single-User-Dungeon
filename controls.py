@@ -19,8 +19,10 @@ def generate_directional_tools(current_coordinate, board_coordinates):
 
     pairs = []
 
-    if board_coordinates[current_coordinate] == 'door':
-        pairs.append(('E', 'Use door'))
+    if board_coordinates[current_coordinate] == 'entry':
+        pairs.append(('E', 'Enter'))
+    if board_coordinates[current_coordinate] == 'exit':
+        pairs.append(('E', 'Exit'))
     if row != 0 and board_coordinates[row - 1, column] != False:
         pairs.append(('W', 'Up'))
     if row != limit_coordinate[0] and board_coordinates[row + 1, column] != False:
