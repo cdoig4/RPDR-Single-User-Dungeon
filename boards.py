@@ -13,7 +13,7 @@ def read_board(board):
     except FileNotFoundError:
         print("File not found.")
 
-    with open(f'./maps/{board}.txt') as file_object:
+    with open(f'./boards/{board}.txt') as file_object:
         return file_object.read()
 
 def index_board(board):
