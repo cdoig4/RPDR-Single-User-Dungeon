@@ -21,17 +21,16 @@ def generate_challenge_input(answers: list) -> list:
         pairs.append(pair)
     return pairs
 
-def get_input_from_user(answers: list) -> str:
+def get_input_from_user(game_input: list) -> str:
     """
 
     :param game_input:
     :return:
     """
-    game_input = generate_challenge_input(answers)
     acceptable_answers = []
 
     for pair in game_input:
-        acceptable_answers += pair
+        acceptable_answers += pair[0]
         print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
@@ -47,7 +46,9 @@ def main():
     """
     Drive the program
     """
-    get_input_from_user(['answer 1', 'answer 2', 'answer 3', 'answer 4'])
+    # print(generate_directional_tools())
+    print(get_input_from_user(generate_directional_tools()))
+    # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
 
 if __name__ == '__main__':
     main()
