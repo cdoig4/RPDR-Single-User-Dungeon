@@ -8,7 +8,7 @@ def read_board(board):
     :return:
     """
     try:
-        with open(f'./maps/{board}.txt') as file_object:
+        with open(f'./boards/{board}.txt') as file_object:
             file_object.read()
     except FileNotFoundError:
         print("File not found.")
