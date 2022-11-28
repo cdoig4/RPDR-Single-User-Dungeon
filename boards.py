@@ -46,7 +46,7 @@ def index_board(board):
 
     return described_coordinates
 
-def clear_board(board, current_coordinates):
+def clear_board(board):
     """
 
     :param board:
