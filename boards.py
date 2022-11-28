@@ -46,13 +46,41 @@ def index_board(board):
 
     return described_coordinates
 
+def place_character_in_board(board, current_coordinates):
+    """
+
+    :param board:
+    :param current_coordinates:
+    :return:
+    """
+    rows = [row for row in board if row == '$']
+    columns = [column for column in board if column == '#']
+
+    row = current_coordinates[0]
+    column = current_coordinates[1]
+
+    marked_board = board.replace('!', 'x')
+    marked_board = marked_board.replace('E', 'x')
+    marked_board = marked_board.replace('e', 'x')
+
+    location = row * len(columns) + column
+
+    for _ in range(location):
+        next_marker = marked_board.find('x')
+        marked_board = marked_board[0: next_marker] + ' ' + marked_board[next_marker + 1:]
+
+    location_marker = marked_board.find('x')
+    marked_board = marked_board[0: location_marker] + '&' + marked_board[location_marker + 1:]
+    marked_board = marked_board.replace('x', ' ')
+
+    return marked_board
+
 def clear_board(board):
     """
 
     :param board:
     :return:
     """
-
 
     cleared_board = board.replace('#', ' ')
     cleared_board = cleared_board.replace('$', ' ')
@@ -62,14 +90,27 @@ def clear_board(board):
     cleared_board = cleared_board.replace('e', ' ')
     return cleared_board
 
-def main(board):
+def display_board(board, current_coordinates):
+    """
+
+    :param board:
+    :param current_coordinates:
+    :return:
+    """
+    opened_board = read_board(board)
+    marked_board = place_character_in_board(opened_board, current_coordinates)
+
+    return clear_board(marked_board)
+
+
+def main():
     """
     Drive the program.
     """
-    board = read_board(board)
-    print(board)
-    print(index_board(board))
-    print(clear_board(board, (0, 5)))
+    # print(board)
+    # print(index_board(board))
+    # print(clear_board(board))
+    print(display_board('stage', (4, 6)))
 
 if __name__ == '__main__':
-    main('stage')
+    main()
