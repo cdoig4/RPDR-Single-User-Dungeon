@@ -4,8 +4,9 @@ Challenges for the user to help them increase their level!
 import random
 import controls
 
-CHER_LIP_SYNC_CHALLENGE = {'Correct Answer': ['No matter how hard I try, you keep pushing me aside',
-                                              'Do you believe in life after love',
+CHER_LIP_SYNC_CHALLENGE = {'Song Title': 'Believe by Cher',
+                           'Correct Answer': ['No matter how hard I try, you keep pushing me aside',
+                                              'Do you believe in life after love?',
                                               "Well I know that I'll get through this, Cause I know that I am strong"],
                            'Initial Lyrics': ['No matter how hard I try, you keep pushing me aside',
                                               'No matter how much effort I put in, you never let me win',
@@ -16,15 +17,39 @@ CHER_LIP_SYNC_CHALLENGE = {'Correct Answer': ['No matter how hard I try, you kee
                            'Final Lyrics': ["I know that I'll get through this, because I found a really cool frog",
                                             "Well I know that I'll get through this, Cause I know that I am strong",
                                             "Well I know that I'll get through this, Cause I know that I'm not wrong"]}
-# MADONNA_LIP_SYNC_CHALLENGE = ['Vogue by Madonna',
-#                               ('When all else fails and you long to be Something better than you are today',),
-#                               ('Come on, vogue. Let your body move to the music', ),
-#                               ("Magical, life's a ball So get up on the dance floor",)]
-# CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE = ['Runaway With Me by Carly Rae Jepsen',
-#                                        ("You're stuck in my head, stuck in my heart, stuck in my body- body",),
-#                                        ('When the lights go out, Run away with me! Run away with me!',),
-#                                        ('Over the weekend, we could turn the world to gold',)]
-LIP_SYNCS = ['Believe by Cher', 'Vogue by Madonna', 'Run Away With Me by Carly Rae Jepsen']
+MADONNA_LIP_SYNC_CHALLENGE = {'Song Title': 'Vogue by Madonna',
+                              'Correct Answer':
+                                  ['When all else fails and you long to be Something better than you are today',
+                                   'Come on, vogue. Let your body move to the music',
+                                   "Magical, life's a ball So get up on the dance floor"],
+                              'Initial Lyrics':
+                                  ['When all else fails and you long to be Somewhere other than you are right now',
+                                   'When all else fails and you take a stand To make tomorrow a brighter day',
+                                   'When all else fails and you long to be Something better than you are today'],
+                              'Chorus Lyrics': ['Come on, vogue. Let your body move to the music',
+                                                'Come on, vogue. Let yourself get into the groovin',
+                                                "Hey let's vogue. Nod your head to the beat"],
+                              'Final Lyrics': ["Beautiful, life's magical So let the music take you home",
+                                               "Magic, in the ballroom So get onto the cat walk",
+                                               "Magical, life's a ball So get up on the dance floor", ]}
+CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE = {'Song Title': 'Runaway With Me by Carly Rae Jepsen',
+                                       'Correct Answer':
+                                           ["You're stuck in my head, stuck in my heart, stuck in my body- body",
+                                            'When the lights go out, Run away with me! Run away with me!',
+                                            'Over the weekend, we could turn the world to gold'],
+                                       'Initial Lyrics':
+                                           ["You're stuck on my shoe, stuck on my sole, please get off me- off me",
+                                            "You're stuck in my head, stuck in my heart, stuck in my body- body",
+                                            f"You're stuck in my head, stuck in my heart, "
+                                            f"we're both at the party- party"],
+                                       'Chorus Lyrics': [f'When the power goes out, Come and look for me! '
+                                                         f'Come and look for me!',
+                                                         'When the lights go out, Run away with me! Run away with me!',
+                                                         'When the lights go out, We have to leave! We have to leave!'],
+                                       'Final Lyrics': ["What's that smell, I think it might be mold.",
+                                                        'Over the weekend, we could turn the world to gold',
+                                                        'Over the summer, we could make the world turn gold']}
+LIP_SYNCS = [CHER_LIP_SYNC_CHALLENGE, MADONNA_LIP_SYNC_CHALLENGE, CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE]
 
 
 def judge_events(movement, character_dictionary):
@@ -52,15 +77,16 @@ def judge_events(movement, character_dictionary):
         return character_dictionary
 
 
-def first_lyrics(lyric_list: list) -> bool:
+def first_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
 
+    :param lip_sync_dictionary:
     :param lyric_list:
     :return:
     """
     print(f'The music starts and you need to remember the first line of the song, which do you lip sync?')
     answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
-    if answer in CHER_LIP_SYNC_CHALLENGE['Correct Answer']:
+    if answer in lip_sync_dictionary['Correct Answer']:
         print("You flawlessly mouth along to the first words of the song, giving you a boost in confidence.")
         return True
     else:
@@ -69,15 +95,16 @@ def first_lyrics(lyric_list: list) -> bool:
         return False
 
 
-def second_lyrics(lyric_list: list) -> bool:
+def second_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
 
+    :param lip_sync_dictionary:
     :param lyric_list:
     :return:
     """
     print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
     answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
-    if answer in CHER_LIP_SYNC_CHALLENGE['Correct Answer']:
+    if answer in lip_sync_dictionary['Correct Answer']:
         print("You start the chorus perfectly, giving it the energy required to sell it to the judges.")
         return True
     else:
@@ -86,16 +113,17 @@ def second_lyrics(lyric_list: list) -> bool:
         return False
 
 
-def final_lyrics(lyric_list: list) -> bool:
+def final_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
 
+    :param lip_sync_dictionary:
     :param lyric_list:
     :return:
     """
     print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
           f"Which do you lip sync?")
     answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
-    if answer in CHER_LIP_SYNC_CHALLENGE['Correct Answer']:
+    if answer in lip_sync_dictionary['Correct Answer']:
         print("You end the performance with a bang! The judges cheer and clap and you know you've done well.")
         return True
     else:
@@ -104,19 +132,19 @@ def final_lyrics(lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync(event_string: str) -> bool:
+def perform_lip_sync(event_list: list) -> bool:
     """
 
-    :param event_string:
+    :param event_list:
     :return:
     """
-    # event_check = random.randint(0, 2)
+    event_selection = event_list[random.randint(0, 2)]
     print(f'RuPauls voice echoes:\n"Two queens stand before me. For tonight Ive asked you to prepare a lip sync '
-          f'performance of {event_string}. Ladies...\nthe time has come....'
+          f'performance of {event_selection["Song Title"]}. Ladies...\nthe time has come....'
           f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.')
-    correct_first_lyrics = first_lyrics(CHER_LIP_SYNC_CHALLENGE['Initial Lyrics'])
-    correct_second_lyrics = second_lyrics(CHER_LIP_SYNC_CHALLENGE['Chorus Lyrics'])
-    correct_final_lyrics = final_lyrics(CHER_LIP_SYNC_CHALLENGE['Final Lyrics'])
+    correct_first_lyrics = first_lyrics(event_selection, event_selection['Initial Lyrics'])
+    correct_second_lyrics = second_lyrics(event_selection, event_selection['Chorus Lyrics'])
+    correct_final_lyrics = final_lyrics(event_selection, event_selection['Final Lyrics'])
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         return True
@@ -128,10 +156,6 @@ def perform_lip_sync(event_string: str) -> bool:
         return False
 
 
-test_character = {'Name': 'Kleenexia Boxx', "Charisma": 14, "Uniqueness": 15, "Nerve": 10, "Talent": 10,
-                  'met_rupaul': False, "completed_lipsync": False, "level": 1}
-
-
 def runway_event(position, character_dictionary):
     """
 
@@ -140,7 +164,7 @@ def runway_event(position, character_dictionary):
     :return:
     """
     if position == (0, 0):
-        event_results = perform_lip_sync(LIP_SYNCS[0])
+        event_results = perform_lip_sync(LIP_SYNCS)
         if event_results:
             character_dictionary['level'] += 1
             character_dictionary['Charisma'] += random.randint(20, 30)
@@ -158,9 +182,6 @@ def runway_event(position, character_dictionary):
                   f"try again.'\n"
                   f"You hear your inner saboteur cackling.\nYou have {character_dictionary['Nerve']} Nerve "
                   f"remaining.")
-
-
-runway_event((0, 0), test_character)
 
 
 def werkroom_events():
