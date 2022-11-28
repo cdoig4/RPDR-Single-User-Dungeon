@@ -1,7 +1,7 @@
 import itertools
 from boards import read_board
 from boards import index_board
-from boards import display_board
+from boards import clear_board
 
 def generate_directional_tools(current_coordinates, board_coordinates):
     """
@@ -67,13 +67,15 @@ def get_input_from_user(game_input: list) -> str:
 
     return game_input[answer_index][1]
 
+def move_character():
+    pass
 
 def main():
     """
     Drive the program
     """
     board = read_board('stage')
-    print(generate_directional_tools((0, 5), index_board(board)))
+    # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
 
