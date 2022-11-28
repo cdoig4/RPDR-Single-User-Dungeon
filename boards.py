@@ -26,7 +26,7 @@ def index_board(board):
     columns = [column for column in board if column == '#']
 
     coordinates = []
-    is_occupiable = []
+    location_type = []
 
     for row in range(len(rows)):
         for column in range(len(columns)):
@@ -34,11 +34,11 @@ def index_board(board):
 
     for character in board:
         if character == '!':
-            is_occupiable += [True]
+            location_type += [True]
         if character == 'x':
-            is_occupiable += [False]
+            location_type += [False]
 
-    described_coordinates = dict(zip(coordinates, is_occupiable))
+    described_coordinates = dict(zip(coordinates, location_type))
 
     return described_coordinates
 
