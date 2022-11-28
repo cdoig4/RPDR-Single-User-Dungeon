@@ -46,7 +46,7 @@ def index_board(board):
 
     return described_coordinates
 
-def display_board(board):
+def display_board(board, current_coordinates):
     """
 
     :param board:
@@ -56,6 +56,8 @@ def display_board(board):
     cleared_board = cleared_board.replace('$', ' ')
     cleared_board = cleared_board.replace('x', ' ')
     cleared_board = cleared_board.replace('!', ' ')
+    cleared_board = cleared_board.replace('E', ' ')
+    cleared_board = cleared_board.replace('e', ' ')
     return cleared_board
 
 def main(board):
