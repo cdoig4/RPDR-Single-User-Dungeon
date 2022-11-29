@@ -37,7 +37,7 @@ def make_character(character_name: str) -> dict:
         character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
 
     character['Name'] = character_name
-    character.update({'location': None})
+    character.update({'coordinates': None})
     return character
 
 
