@@ -11,5 +11,4 @@ queen_katya_zamalodchikova = {"Name": "Katya", "Charisma": 43, "Uniqueness": 46,
 queen_kennedy_davenport = {"Name": "Kennedy", "Charisma": 34, "Uniqueness": 32, "Nerve": 36, "Talent": 30}
 queen_shangela_laquifa_wadley = {"Name": "Shangela", "Charisma": 57, "Uniqueness": 45, "Nerve": 39, "Talent": 56}
 queen_lashauwn_beyond = {"Name": "LaShauwn", "Charisma": 12, "Uniqueness": 16, "Nerve": 12, "Talent": 14}
-
 queen_bitch_rupaul = {"Name": "RuPaul", "Charisma": 80, "Uniqueness": 75, "Nerve": 80, "Talent": 80}
