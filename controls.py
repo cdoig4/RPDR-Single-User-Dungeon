@@ -65,12 +65,15 @@ def get_input_from_user(game_input: list) -> str:
         return get_input_from_user(game_input)
 
     answer_index = acceptable_answers.index(answer)
+    answer_string = game_input[answer_index][1]
 
-    return game_input[answer_index][1]
+    return answer_string.lower()
 
-def move_character(current_coordinates, board_coordinates):
+def move_character(current_coordinates, board_coordinates, board_name):
     inputs = generate_directional_tools(current_coordinates, board_coordinates)
-    get_input_from_user(inputs)
+    direction_to_move = get_input_from_user(inputs)
+    print(direction_to_move)
+    # if direction_to_move ==
 
     pass
 
@@ -82,7 +85,7 @@ def main():
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
-    move_character((0, 5), index_board(board))
+    move_character((0, 5), index_board(board), 'stage')
 
 if __name__ == '__main__':
     main()
