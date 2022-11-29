@@ -1,5 +1,23 @@
 import sys
 
+def get_starting_coordinates(character):
+    """
+
+    :param character:
+    :return:
+    """
+    board_name = character.get('location')
+
+    if board_name == 'werkroom':
+        starting_coordinates = (0, 4)
+    elif board_name == 'stage':
+        get_starting_coordinates(0, 5)
+    elif board_name == 'judges_panel':
+        get_starting_coordinates(1, 6)
+    elif board_name == 'dressing_room':
+        get_starting_coordinates(1, 5)
+
+    return starting_coordinates
 
 def read_board(board_name):
     """
