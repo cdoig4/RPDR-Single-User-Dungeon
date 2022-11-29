@@ -1,27 +1,29 @@
 import sys
 
 
-def read_board(board):
+def read_board(board_name):
     """
 
-    :param board:
+    :param board_name:
     :return:
     """
     try:
-        with open(f'./boards/{board}.txt') as file_object:
+        with open(f'./boards/{board_name}.txt') as file_object:
             file_object.read()
     except FileNotFoundError:
         print("File not found.")
 
-    with open(f'./boards/{board}.txt') as file_object:
+    with open(f'./boards/{board_name}.txt') as file_object:
         return file_object.read()
 
-def index_board(board):
+def index_board(board_name):
     """
 
-    :param board:
+    :param board_name:
     :return:
     """
+    board = read_board(board_name)
+
     rows = [row for row in board if row == '$']
     columns = [column for column in board if column == '#']
 
@@ -108,9 +110,9 @@ def main():
     Drive the program.
     """
     # print(board)
-    # print(index_board(board))
+    print(index_board('stage'))
     # print(clear_board(board))
-    print(display_board('stage', (4, 6)))
+    # print(display_board('stage', (4, 6)))
 
 if __name__ == '__main__':
     main()
