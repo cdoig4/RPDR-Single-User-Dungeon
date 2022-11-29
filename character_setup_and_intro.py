@@ -37,6 +37,7 @@ def make_character(character_name: str) -> dict:
         character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
 
     character['Name'] = character_name
+    character.update({'coordinates': None})
     return character
 
 
@@ -60,6 +61,7 @@ def main():
     """Drive the program."""
     new_character = make_character(input('What is the name of your Drag Persona?\n'))
     deliver_introduction(new_character)
+    print(new_character)
 
 
 if __name__ == '__main__':

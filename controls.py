@@ -3,13 +3,15 @@ from boards import read_board
 from boards import index_board
 from boards import clear_board
 
-def generate_directional_tools(current_coordinates, board_coordinates):
+def generate_directional_tools(current_coordinates, board_name):
     """
 
     :param current_coordinates:
     :param board_coordinates:
     :return:
     """
+    board_coordinates = index_board(board_name)
+
     board_limits = [key for key in board_coordinates]
     board_limits.sort(reverse=True)
     limit_coordinate = board_limits.pop(0)
@@ -65,24 +67,43 @@ def get_input_from_user(game_input: list) -> str:
         return get_input_from_user(game_input)
 
     answer_index = acceptable_answers.index(answer)
+    answer_string = game_input[answer_index][1]
 
-    return game_input[answer_index][1]
+    return answer_string.lower()
 
-def move_character(current_coordinates, board_coordinates):
-    inputs = generate_directional_tools(current_coordinates, board_coordinates)
-    get_input_from_user(inputs)
+def move_character(current_coordinates, board_name):
+    """
 
-    pass
+    :param current_coordinates:
+    :param board_coordinates:
+    :param board_name:
+    :return:
+    """
+    inputs = generate_directional_tools(current_coordinates, board_name)
+    direction_to_move = get_input_from_user(inputs)
+
+    if direction_to_move == 'exit':
+        direction_to_move = board_name
+    elif direction_to_move == 'up':
+        direction_to_move = (current_coordinates[0] - 1, current_coordinates[1])
+    elif direction_to_move == 'down':
+        direction_to_move = (current_coordinates[0] + 1, current_coordinates[1])
+    elif direction_to_move == 'left':
+        direction_to_move = (current_coordinates[0], current_coordinates[1] - 1)
+    elif direction_to_move == 'right':
+        direction_to_move = (current_coordinates[0], current_coordinates[1] + 1)
+
+    return direction_to_move
 
 def main():
     """
     Drive the program
     """
-    board = read_board('stage')
+    # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
-    move_character((0, 5), index_board(board))
+    print(move_character((1, 1), 'dressing_room'))
 
 if __name__ == '__main__':
     main()
