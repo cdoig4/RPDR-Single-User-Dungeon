@@ -57,17 +57,21 @@ def get_input_from_user(game_input: list) -> str:
         print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
+    if answer == 'E':
+        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
+        return get_input_from_user(game_input)
     if answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
-    if answer == 'Exit':
-        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_input_from_user(game_input)
 
     answer_index = acceptable_answers.index(answer)
 
     return game_input[answer_index][1]
 
-def move_character():
+def move_character(current_coordinates, board_coordinates):
+    inputs = generate_directional_tools(current_coordinates, board_coordinates)
+    get_input_from_user(inputs)
+
     pass
 
 def main():
@@ -78,6 +82,7 @@ def main():
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
+    move_character((0, 5), index_board(board))
 
 if __name__ == '__main__':
     main()
