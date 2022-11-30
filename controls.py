@@ -1,7 +1,11 @@
-import itertools
-from boards import read_board
+"""
+Colin Doig A01334230
+Kelly Hagg A01324804
+"""
+
+
 from boards import index_board
-from boards import clear_board
+
 
 def generate_challenge_input(answers: list) -> list:
     """
@@ -13,11 +17,12 @@ def generate_challenge_input(answers: list) -> list:
         pairs.append(pair)
     return pairs
 
+
 def generate_directional_tools(current_coordinates, board_name):
     """
 
     :param current_coordinates:
-    :param board_coordinates:
+    :param board_name:
     :return:
     """
     board_coordinates = index_board(board_name)
@@ -35,16 +40,17 @@ def generate_directional_tools(current_coordinates, board_name):
         pairs.append(('E', 'Enter'))
     if board_coordinates[current_coordinates] == 'exit':
         pairs.append(('Q', 'Exit'))
-    if row != 0 and board_coordinates[row - 1, column] != False:
+    if row != 0 and board_coordinates[row - 1, column] is not False:
         pairs.append(('W', 'Up'))
-    if row != limit_coordinate[0] and board_coordinates[row + 1, column] != False:
+    if row != limit_coordinate[0] and board_coordinates[row + 1, column] is not False:
         pairs.append(('S', 'Down'))
-    if column != 0 and board_coordinates[row, column - 1] != False:
+    if column != 0 and board_coordinates[row, column - 1] is not False:
         pairs.append(('A', 'Left'))
-    if column != limit_coordinate[1] and board_coordinates[row, column + 1] != False:
+    if column != limit_coordinate[1] and board_coordinates[row, column + 1] is not False:
         pairs.append(('D', 'Right'))
 
     return pairs
+
 
 def get_input_from_user(game_input: list) -> str:
     """
@@ -73,12 +79,11 @@ def get_input_from_user(game_input: list) -> str:
 
     return answer_string.lower()
 
+
 def move_character(character):
     """
 
-    :param current_coordinates:
-    :param board_coordinates:
-    :param board_name:
+    :param character:
     :return:
     """
     current_coordinates = character.get('coordinates')
@@ -86,7 +91,6 @@ def move_character(character):
 
     inputs = generate_directional_tools(current_coordinates, board_name)
     move_to_coordinates = get_input_from_user(inputs)
-
 
     if move_to_coordinates == 'enter':
         move_to_coordinates = current_coordinates
@@ -102,6 +106,7 @@ def move_character(character):
 
     return character.update({'coordinates': move_to_coordinates})
 
+
 def main():
     """
     Drive the program
@@ -115,6 +120,7 @@ def main():
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
     move_character(character)
     move_character(character)
+
 
 if __name__ == '__main__':
     main()
