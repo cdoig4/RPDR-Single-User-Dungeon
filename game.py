@@ -15,7 +15,7 @@ def game():
     achieved_goal = False
 
     while not achieved_goal:
-        if character.get('location') == None:
+        if character.get('location') is None:
             boards.set_board(character)
         boards.display_board(character)
         controls.move_character(character)
@@ -27,6 +27,7 @@ def game():
         #     achieved_goal = check_if_goal_attained(board, character)
         # else:
         #     print('You have to achieve your goal!')
+
 
 def main():
     """
