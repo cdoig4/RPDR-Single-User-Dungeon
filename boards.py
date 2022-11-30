@@ -11,12 +11,12 @@ def read_board(board_name: str) -> str:
     :return:
     """
     try:
-        with open(f'./boards/{board_name}.txt') as file_object:
+        with open(f'./txt_files/{board_name}.txt') as file_object:
             file_object.read()
     except FileNotFoundError:
         print("File not found.")
 
-    with open(f'./boards/{board_name}.txt') as file_object:
+    with open(f'./txt_files/{board_name}.txt') as file_object:
         return file_object.read()
 
 
