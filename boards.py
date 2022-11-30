@@ -1,13 +1,11 @@
 import sys
 
-def get_starting_coordinates(character):
+def get_starting_coordinates(board_name):
     """
 
     :param character:
     :return:
     """
-    board_name = character.get('location')
-
     if board_name == 'werkroom':
         starting_coordinates = (0, 4)
     elif board_name == 'stage':
