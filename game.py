@@ -6,6 +6,7 @@ Kelly Hagg A01324804
 
 import boards
 import controls
+import challenges
 import character_setup_and_intro
 
 
@@ -19,9 +20,7 @@ def game():
             boards.set_board(character)
         boards.display_board(character)
         controls.move_character(character)
-        # there_is_a_challenge = check_for_challenges()
-        # if there_is_a_challenge:
-        #     execute_challenge_protocol(character)
+        challenges.run_challenge(character)
         # if character_has_leveled():
         #     execute_glow_up_protocol()
         #     achieved_goal = check_if_goal_attained(board, character)

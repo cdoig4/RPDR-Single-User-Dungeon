@@ -218,6 +218,25 @@ def werkroom_events(movement, character_dictionary):
         return character_dictionary
 
 
+def run_challenges(character):
+    location = character.get('location')
+    coordinates = character.get('coordinates')
+
+    if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
+        fight(character)
+    if location == 'judges_panel' and coordinates != (1, 6) and coordinates != ()
+        perform_lip_sync(character)
+
+    return
+
+def main():
+
+
+if __name__ == '__main__':
+    main()
+
+
+
 # def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
 #     """
 #
