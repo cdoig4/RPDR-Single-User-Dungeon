@@ -7,6 +7,21 @@ Kelly Hagg A01324804
 from boards import index_board
 
 
+def show_score(character: dict) -> None:
+    """
+
+    :param character:
+    :return:
+    """
+    charisma = character.get('Charisma')
+    uniqueness = character.get('Uniqueness')
+    nerve = character.get('Nerve')
+    talent = character.get('Talent')
+
+    return print(f'Stats: [Charisma: {charisma}, Uniqueness: {uniqueness}, '
+                 f'Nerve: {nerve}, Talent: {talent}]')
+
+
 def generate_challenge_input(answers: list) -> list:
     """
     """
@@ -48,17 +63,18 @@ def generate_directional_tools(current_coordinates, board_name):
         pairs.append(('A', 'Left'))
     if column != limit_coordinate[1] and board_coordinates[row, column + 1] is not False:
         pairs.append(('D', 'Right'))
+    pairs.append(('0', 'Stats'))
 
     return pairs
 
 
-def get_input_from_user(game_input: list) -> str:
+def get_input_from_user(game_input: list, character: dict) -> str:
     """
 
     :param game_input:
     :return:
     """
-    acceptable_answers = []
+    acceptable_answers = ['0']
 
     print('Controls------------------------------------------------------------------------')
 
@@ -67,12 +83,15 @@ def get_input_from_user(game_input: list) -> str:
         print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
+    
+    if answer == '0':
+        show_score(character)
     if answer == 'Q':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
-        return get_input_from_user(game_input)
+        return get_input_from_user(game_input, character)
     if answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
-        return get_input_from_user(game_input)
+        return get_input_from_user(game_input, character)
 
     answer_index = acceptable_answers.index(answer)
     answer_string = game_input[answer_index][1]
@@ -89,8 +108,8 @@ def move_character(character):
     current_coordinates = character.get('coordinates')
     board_name = character.get('location')
 
-    inputs = generate_directional_tools(current_coordinates, board_name)
-    move_to_coordinates = get_input_from_user(inputs)
+    game_input = generate_directional_tools(current_coordinates, board_name)
+    move_to_coordinates = get_input_from_user(game_input, character)
 
     if move_to_coordinates == 'enter':
         move_to_coordinates = current_coordinates
@@ -113,7 +132,7 @@ def main():
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
-                 'coordinates': (6, 4), 'location': 'werk_room'}
+                 'coordinates': (3, 3), 'location': 'werk_room'}
     # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
