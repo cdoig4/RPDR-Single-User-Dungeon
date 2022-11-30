@@ -56,11 +56,10 @@ POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND d
                    'The last time you got fucked was by genetics')
 
 
-def judge_events(movement, character_dictionary):
+def judge_events(character_dictionary):
     """
     Provide possible random events for each character movement.
 
-    :param movement: a Boolean value representing whether the character has moved
     :param character_dictionary: a dictionary representing the player character
     :precondition: movement must be a Boolean and character_dictionary must be a dictionary with the keys 'Charisma',
     'Uniqueness', and 'Nerve' present and each must have a positive integer for their value
@@ -68,19 +67,16 @@ def judge_events(movement, character_dictionary):
     :return: character_dictionary that has either not been altered or has had a single value altered based which event
     occured
     """
-    if movement:
-        event_check = random.randint(1, 20)
-        if event_check == 1:
-            print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it, Party City?"')
-            character_dictionary['Charisma'] -= 5
-        elif event_check == 7:
-            print(f'Ross shouts:\n"Your pussy is on fire! Go get your crown, girl!"')
-            character_dictionary['Uniqueness'] += 4
-        elif event_check == 14:
-            print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so fabulous!"')
-            character_dictionary['Nerve'] += 6
-        else:
-            return character_dictionary
+    event_check = random.randint(1, 20)
+    if event_check == 1:
+        print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it, Party City?"')
+        character_dictionary['Charisma'] -= 5
+    elif event_check == 7:
+        print(f'Ross shouts:\n"Your pussy is on fire! Go get your crown, girl!"')
+        character_dictionary['Uniqueness'] += 4
+    elif event_check == 14:
+        print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so fabulous!"')
+        character_dictionary['Nerve'] += 6
     else:
         return character_dictionary
 
@@ -138,34 +134,32 @@ def perform_lip_sync(event_list: tuple) -> bool:
         return False
 
 
-def runway_event(position, character_dictionary):
+def runway_event(character_dictionary):
     """
 
-    :param position:
     :param character_dictionary:
     :return:
     """
-    if position == (0, 0):
-        event_results = perform_lip_sync(LIP_SYNCS)
-        if event_results:
-            character_dictionary['level'] += 1
-            character_dictionary['Charisma'] += random.randint(20, 30)
-            character_dictionary['Uniqueness'] += random.randint(20, 30)
-            character_dictionary['Nerve'] += random.randint(20, 30)
-            print(f"RuPaul's voice echoes: 'ConDRAGulations {character_dictionary['Name']}, you're a winner baby!'\n"
-                  f"You feel your inner saboteur melting away.\nYou are now level {character_dictionary['level']}\n"
-                  f"Your Charisma increases to {character_dictionary['Charisma']}!\nYour Uniqueness increases to"
-                  f" {character_dictionary['Uniqueness']}!\nYour Nerve increases to {character_dictionary['Nerve']}"
-                  f"\nYou are ushered towards the Judge's Panel.")
-            return character_dictionary
-        else:
-            character_dictionary['Nerve'] -= random.randint(5, 10)
-            print(f"RuPaul's voice echoes: 'I'm sorry, {character_dictionary['Name']}, but you are safe. But I'm"
-                  f"willing to give you another try. Practice up and assume the position when you're ready to "
-                  f"try again.'\n"
-                  f"You hear your inner saboteur cackling.\nYou have {character_dictionary['Nerve']} Nerve "
-                  f"remaining.")
-            return character_dictionary
+    event_results = perform_lip_sync(LIP_SYNCS)
+    if event_results:
+        character_dictionary['level'] += 1
+        character_dictionary['Charisma'] += random.randint(20, 30)
+        character_dictionary['Uniqueness'] += random.randint(20, 30)
+        character_dictionary['Nerve'] += random.randint(20, 30)
+        print(f"RuPaul's voice echoes: 'ConDRAGulations {character_dictionary['Name']}, you're a winner baby!'\n"
+              f"You feel your inner saboteur melting away.\nYou are now level {character_dictionary['level']}\n"
+              f"Your Charisma increases to {character_dictionary['Charisma']}!\nYour Uniqueness increases to"
+              f" {character_dictionary['Uniqueness']}!\nYour Nerve increases to {character_dictionary['Nerve']}"
+              f"\nYou are ushered towards the Judge's Panel.")
+        return character_dictionary
+    else:
+        character_dictionary['Nerve'] -= random.randint(5, 10)
+        print(f"RuPaul's voice echoes: 'I'm sorry, {character_dictionary['Name']}, but you are safe. But I'm"
+              f"willing to give you another try. Practice up and assume the position when you're ready to "
+              f"try again.'\n"
+              f"You hear your inner saboteur cackling.\nYou have {character_dictionary['Nerve']} Nerve "
+              f"remaining.")
+        return character_dictionary
 
 
 def fight(player_character_dictionary, enemy_character_dictionary):
@@ -204,12 +198,12 @@ def fight(player_character_dictionary, enemy_character_dictionary):
             print(f"{enemy_character_dictionary['Name']} has clearly never been to the library in her life.")
 
 
-def werkroom_events(movement, character_dictionary):
+def werkroom_events(character_dictionary):
     """
 
     :return:
     """
-    if movement and random.randint(1, 10) <= 3:
+    if random.randint(1, 10) <= 3:
         enemy_queen = random.choice(queens.potential_queen_challengers)
         print(f"{enemy_queen['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
               f"library opens.")
