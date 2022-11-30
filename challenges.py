@@ -197,14 +197,11 @@ def fight(player_character_dictionary, enemy_character_dictionary):
 
         if random.randint(1, 20) > 4:
             damage_to_player = random.randint(1, 7) + math.ceil(enemy_character_dictionary['Charisma'] / 5)
-            player_character_dictionary['Nerve'] -=
+            player_character_dictionary['Nerve'] -= damage_to_player
             print(f"{enemy_character_dictionary['Name']} says {random.choice(POTENTIAL_READS)}.\n"
                   f"Your Nerve is reduced by {damage_to_player}.")
         else:
             print(f"{enemy_character_dictionary['Name']} has clearly never been to the library in her life.")
-
-
-
 
 
 def werkroom_events(movement, character_dictionary):
