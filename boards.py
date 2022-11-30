@@ -1,22 +1,5 @@
 import sys
 
-def get_starting_coordinates(board_name):
-    """
-
-    :param character:
-    :return:
-    """
-    if board_name == 'werkroom':
-        starting_coordinates = (0, 4)
-    elif board_name == 'stage':
-        get_starting_coordinates(0, 5)
-    elif board_name == 'judges_panel':
-        get_starting_coordinates(1, 6)
-    elif board_name == 'dressing_room':
-        get_starting_coordinates(1, 5)
-
-    return starting_coordinates
-
 def read_board(board_name):
     """
 
@@ -108,27 +91,36 @@ def clear_board(board):
     cleared_board = cleared_board.replace('e', ' ')
     return cleared_board
 
-def display_board(board, current_coordinates):
+def display_board(character):
     """
 
-    :param board:
+    :param board_name:
     :param current_coordinates:
     :return:
     """
-    opened_board = read_board(board)
+    board_name = character.get('location')
+    display_name = board_name.title().replace('_', ' ')
+
+    print(f'Location: {display_name}')
+    current_coordinates = character.get('coordinates')
+
+    opened_board = read_board(board_name)
     marked_board = place_character_in_board(opened_board, current_coordinates)
 
-    return clear_board(marked_board)
+    return print(clear_board(marked_board))
 
 
 def main():
     """
     Drive the program.
     """
+    character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
+                 'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
+                 'coordinates': (0, 4), 'location': 'werkroom'}
     # print(board)
-    print(index_board('stage'))
+    # print(index_board('stage'))
     # print(clear_board(board))
-    # print(display_board('stage', (4, 6)))
+    display_board(character)
 
 if __name__ == '__main__':
     main()
