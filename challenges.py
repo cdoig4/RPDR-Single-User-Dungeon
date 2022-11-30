@@ -32,7 +32,7 @@ MADONNA_LIP_SYNC_CHALLENGE = {'Song Title': 'Vogue by Madonna',
                               'Final Lyrics': ["Beautiful, life's magical So let the music take you home",
                                                "Magic, in the ballroom So get onto the cat walk",
                                                "Magical, life's a ball So get up on the dance floor", ]}
-CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE = {'Song Title': 'Runaway With Me by Carly Rae Jepsen',
+CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE = {'Song Title': 'Run Away With Me by Carly Rae Jepsen',
                                        'Correct Answer':
                                            ["You're stuck in my head, stuck in my heart, stuck in my body- body",
                                             'When the lights go out, Run away with me! Run away with me!',
@@ -49,16 +49,20 @@ CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE = {'Song Title': 'Runaway With Me by Carly R
                                        'Final Lyrics': ["What's that smell, I think it might be mold.",
                                                         'Over the weekend, we could turn the world to gold',
                                                         'Over the summer, we could make the world turn gold']}
-LIP_SYNCS = [CHER_LIP_SYNC_CHALLENGE, MADONNA_LIP_SYNC_CHALLENGE, CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE]
+LIP_SYNCS = (CHER_LIP_SYNC_CHALLENGE, MADONNA_LIP_SYNC_CHALLENGE, CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE)
 
 
 def judge_events(movement, character_dictionary):
     """
+    Provide possible random events for each character movement.
 
-
-    :param movement:
-    :param character_dictionary:
-    :return:
+    :param movement: a Boolean value representing whether the character has moved
+    :param character_dictionary: a dictionary representing the player character
+    :precondition: movement must be a Boolean and character_dictionary must be a dictionary with the keys 'Charisma',
+    'Uniqueness', and 'Nerve' present and each must have a positive integer for their value
+    :postcondition: determine whether a random judge event happens or not
+    :return: character_dictionary that has either not been altered or has had a single value altered based which event
+    occured
     """
     if movement:
         event_check = random.randint(1, 20)
@@ -77,74 +81,48 @@ def judge_events(movement, character_dictionary):
         return character_dictionary
 
 
-def first_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
+def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
+    Provide first set of lyrics to user.
 
-    :param lip_sync_dictionary:
-    :param lyric_list:
-    :return:
+    :param lip_sync_dictionary: a dictionary representing the lip sync song with the key 'Correct Answer' present whose
+    value is a list of the correct lyrics
+    :param lyric_list: a list containing multiple strings representing possible lyric selections
+    :precondition: lip_sync_dictionary must be a dictionary and lyric_list must be a list
+    :postcondition: determine whether the user's selection is present in the 'Correct Answer' key's value list
+    :return: True if user's selection was correct else False
     """
-    print(f'The music starts and you need to remember the first line of the song, which do you lip sync?')
     answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
     if answer in lip_sync_dictionary['Correct Answer']:
-        print("You flawlessly mouth along to the first words of the song, giving you a boost in confidence.")
+        print("You flawlessly mouth along to the words of the song, giving you a boost in confidence.")
         return True
     else:
-        print(f"You fumble the first few words and your opponent performs an effortless reveal, leaving you"
-              f" shaken.")
+        print(f"You fumble a few words and inwardly curse yourself, but a short instrumental gives you the chance to"
+              f" gather yourself.")
         return False
 
 
-def second_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
+def perform_lip_sync(event_list: tuple) -> bool:
     """
+    Perform full lip sync event for user.
 
-    :param lip_sync_dictionary:
-    :param lyric_list:
-    :return:
+    :param event_list: a tuple of variables representing potential lip sync songs
+    :precondition: event_list must be a tuple
+    :postcondition: determines whether enough correct selections were made to complete event successfully
+    :return: True if user was successful else False
     """
-    print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
-    answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
-    if answer in lip_sync_dictionary['Correct Answer']:
-        print("You start the chorus perfectly, giving it the energy required to sell it to the judges.")
-        return True
-    else:
-        print(f"You trip on a loose stage screw and it throws you off. It takes you a few seconds to"
-              f" figure out where you are in the song.")
-        return False
-
-
-def final_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
-    """
-
-    :param lip_sync_dictionary:
-    :param lyric_list:
-    :return:
-    """
-    print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
-          f"Which do you lip sync?")
-    answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
-    if answer in lip_sync_dictionary['Correct Answer']:
-        print("You end the performance with a bang! The judges cheer and clap and you know you've done well.")
-        return True
-    else:
-        print(f"You end on a sour note, while you gave it everything you had you're worried the minor mistakes"
-              f"you made have seriously affected your chances.")
-        return False
-
-
-def perform_lip_sync(event_list: list) -> bool:
-    """
-
-    :param event_list:
-    :return:
-    """
-    event_selection = event_list[random.randint(0, 2)]
+    event_selection = random.choice(event_list)
     print(f'RuPauls voice echoes:\n"Two queens stand before me. For tonight Ive asked you to prepare a lip sync '
           f'performance of {event_selection["Song Title"]}. Ladies...\nthe time has come....'
-          f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.')
-    correct_first_lyrics = first_lyrics(event_selection, event_selection['Initial Lyrics'])
-    correct_second_lyrics = second_lyrics(event_selection, event_selection['Chorus Lyrics'])
-    correct_final_lyrics = final_lyrics(event_selection, event_selection['Final Lyrics'])
+          f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.\nThe music starts and you need to remember the first line '
+          f'of the song, which do you lip sync?')
+    correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
+    print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
+    correct_second_lyrics = perform_lyrics(event_selection, event_selection['Chorus Lyrics'])
+    print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
+          f"Which do you lip sync?")
+    correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
+    print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         return True
@@ -175,6 +153,7 @@ def runway_event(position, character_dictionary):
                   f"Your Charisma increases to {character_dictionary['Charisma']}!\nYour Uniqueness increases to"
                   f" {character_dictionary['Uniqueness']}!\nYour Nerve increases to {character_dictionary['Nerve']}"
                   f"\nYou are ushered towards the Judge's Panel.")
+            return character_dictionary
         else:
             character_dictionary['Nerve'] -= random.randint(5, 10)
             print(f"RuPaul's voice echoes: 'I'm sorry, {character_dictionary['Name']}, but you are safe. But I'm"
@@ -182,14 +161,16 @@ def runway_event(position, character_dictionary):
                   f"try again.'\n"
                   f"You hear your inner saboteur cackling.\nYou have {character_dictionary['Nerve']} Nerve "
                   f"remaining.")
+            return character_dictionary
 
 
-def werkroom_events():
+def werkroom_events(movement, character_dictionary):
     """
 
     :return:
     """
-    pass
+    if random.randint(1, 10) <= 3:
+        fight(character_dictionary)
 
 
 # def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
