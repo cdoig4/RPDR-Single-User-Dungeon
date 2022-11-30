@@ -24,7 +24,7 @@ def generate_directional_tools(current_coordinates, board_name):
     if board_coordinates[current_coordinates] == 'entry':
         pairs.append(('E', 'Enter'))
     if board_coordinates[current_coordinates] == 'exit':
-        pairs.append(('E', 'Exit'))
+        pairs.append(('Q', 'Exit'))
     if row != 0 and board_coordinates[row - 1, column] != False:
         pairs.append(('W', 'Up'))
     if row != limit_coordinate[0] and board_coordinates[row + 1, column] != False:
@@ -61,7 +61,7 @@ def get_input_from_user(game_input: list) -> str:
         print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
-    if answer == 'E':
+    if answer == 'Q':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_input_from_user(game_input)
     if answer not in acceptable_answers:
