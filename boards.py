@@ -66,7 +66,7 @@ def set_board(character):
         character.update({'location': 'judges_panel'})
         character.update({'coordinates': (1, 6)})
     elif character.get('level') == 2:
-        character.update({'location': 'stage'})
+        character.update({'location': 'main_stage'})
         character.update({'coordinates': (0, 5)})
     else:
         character.update({'location': 'werkroom'})
@@ -145,7 +145,7 @@ def main():
                  'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
                  'coordinates': (0, 4), 'location': 'werkroom'}
     # print(board)
-    # print(index_board('stage'))
+    # print(index_board('main_stage'))
     # print(clear_board(board))
     display_board(character)
 
