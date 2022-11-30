@@ -54,11 +54,11 @@ def get_input_from_user(game_input: list) -> str:
     """
     acceptable_answers = []
 
-    print('Controls------------------------------------------------------------------------')
-
     for pair in game_input:
         acceptable_answers += pair[0]
-        print(f'{pair[0]}: {pair[1]}')
+
+    print(f'Controls------------------------------------------------------------------------\n'
+          f'{pair[0]}: {pair[1]}')
 
     answer = input()
     if answer == 'E':
@@ -98,8 +98,7 @@ def move_character(character):
     elif move_to_coordinates == 'right':
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] + 1)
 
-    character.update({'coordinates': move_to_coordinates})
-    return
+    return character.update({'coordinates': move_to_coordinates})
 
 def main():
     """
@@ -112,6 +111,7 @@ def main():
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
+    move_character(character)
     move_character(character)
 
 if __name__ == '__main__':
