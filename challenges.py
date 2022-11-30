@@ -198,7 +198,7 @@ def fight(player_character_dictionary, enemy_character_dictionary):
             print(f"{enemy_character_dictionary['Name']} has clearly never been to the library in her life.")
 
 
-def werkroom_events(character_dictionary):
+def werk_room_events(character_dictionary):
     """
 
     :return:
