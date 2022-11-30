@@ -2,27 +2,11 @@
 Colin Doig A01334230
 Kelly Hagg A01324804
 """
-import character_setup_and_intro
+
 
 import boards
 import controls
-
-def describe_current_location(board, character):
-    """
-
-    :param board:
-    :param character:
-    :return:
-    """
-    pass
-
-
-def check_for_challenges():
-    """
-
-    :return:
-    """
-    pass
+import character_setup_and_intro
 
 
 def game():
@@ -43,7 +27,6 @@ def game():
         #     achieved_goal = check_if_goal_attained(board, character)
         # else:
         #     print('You have to achieve your goal!')
-
 
 def main():
     """
