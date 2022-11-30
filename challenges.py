@@ -1,8 +1,10 @@
 """
 Challenges for the user to help them increase their level!
 """
+import math
 import random
 import controls
+import queens
 
 CHER_LIP_SYNC_CHALLENGE = {'Song Title': 'Believe by Cher',
                            'Correct Answer': ['No matter how hard I try, you keep pushing me aside',
@@ -50,6 +52,8 @@ CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE = {'Song Title': 'Run Away With Me by Carly 
                                                         'Over the weekend, we could turn the world to gold',
                                                         'Over the summer, we could make the world turn gold']}
 LIP_SYNCS = (CHER_LIP_SYNC_CHALLENGE, MADONNA_LIP_SYNC_CHALLENGE, CARLY_RAE_JEPSEN_LIP_SYNC_CHALLENGE)
+POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND dairy.', 'Beauty fades, dumb is forever',
+                   'The last time you got fucked was by genetics')
 
 
 def judge_events(movement, character_dictionary):
@@ -164,13 +168,55 @@ def runway_event(position, character_dictionary):
             return character_dictionary
 
 
+def fight(player_character_dictionary, enemy_character_dictionary):
+    """
+
+    :param player_character_dictionary:
+    :param enemy_character_dictionary:
+    :return:
+    """
+    while enemy_character_dictionary['Nerve'] > 0 and player_character_dictionary['Nerve'] > 0:
+        print("The queen stands strong, what will you do?")
+        player_choice = controls.get_input_from_user(controls.generate_challenge_input(['Read', 'Act Unimpressed',
+                                                                                        'Flee']))
+        if player_choice == 'Read':
+            if random.randint(1, 20) > 2:
+                print(f"You read {enemy_character_dictionary['Name']} for filth, she looks shaken.")
+                enemy_character_dictionary['Nerve'] -= (random.randint(1, 8) +
+                                                        math.ceil(player_character_dictionary['Charisma'] / 4))
+            else:
+                print(f"Your read falls flat and {enemy_character_dictionary['Name']} scoffs.")
+        elif player_choice == 'Act Unimpressed':
+            print("You are emotionally preparing yourself for your opponent to speak")
+            player_character_dictionary['Uniqueness'] += 2
+        else:
+            if random.randint(1, 100) > 33:
+                print("You successfully sashay away from the queen.")
+            else:
+                print(f"You try to get away but {enemy_character_dictionary['Name']} steps in front of you once again.")
+
+        if random.randint(1, 20) > 4:
+            damage_to_player = random.randint(1, 7) + math.ceil(enemy_character_dictionary['Charisma'] / 5)
+            player_character_dictionary['Nerve'] -=
+            print(f"{enemy_character_dictionary['Name']} says {random.choice(POTENTIAL_READS)}.\n"
+                  f"Your Nerve is reduced by {damage_to_player}.")
+        else:
+            print(f"{enemy_character_dictionary['Name']} has clearly never been to the library in her life.")
+
+
+
+
+
 def werkroom_events(movement, character_dictionary):
     """
 
     :return:
     """
-    if random.randint(1, 10) <= 3:
-        fight(character_dictionary)
+    if movement and random.randint(1, 10) <= 3:
+        enemy_queen = random.choice(queens.potential_queen_challengers)
+        print(f"{enemy_queen['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
+              f"library opens.")
+        fight(character_dictionary, enemy_queen)
 
 
 # def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
