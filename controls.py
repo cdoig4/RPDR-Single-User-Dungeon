@@ -54,6 +54,8 @@ def get_input_from_user(game_input: list) -> str:
     """
     acceptable_answers = []
 
+    print('Controls------------------------------------------------------------------------')
+
     for pair in game_input:
         acceptable_answers += pair[0]
         print(f'{pair[0]}: {pair[1]}')
@@ -71,7 +73,7 @@ def get_input_from_user(game_input: list) -> str:
 
     return answer_string.lower()
 
-def move_character(current_coordinates, board_name):
+def move_character(character):
     """
 
     :param current_coordinates:
@@ -79,31 +81,38 @@ def move_character(current_coordinates, board_name):
     :param board_name:
     :return:
     """
+    current_coordinates = character.get('coordinates')
+    board_name = character.get('location')
+
     inputs = generate_directional_tools(current_coordinates, board_name)
-    direction_to_move = get_input_from_user(inputs)
+    move_to_coordinates = get_input_from_user(inputs)
 
-    if direction_to_move == 'exit':
-        direction_to_move = board_name
-    elif direction_to_move == 'up':
-        direction_to_move = (current_coordinates[0] - 1, current_coordinates[1])
-    elif direction_to_move == 'down':
-        direction_to_move = (current_coordinates[0] + 1, current_coordinates[1])
-    elif direction_to_move == 'left':
-        direction_to_move = (current_coordinates[0], current_coordinates[1] - 1)
-    elif direction_to_move == 'right':
-        direction_to_move = (current_coordinates[0], current_coordinates[1] + 1)
+    if move_to_coordinates == 'exit':
+        move_to_coordinates = board_name
+    elif move_to_coordinates == 'up':
+        move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
+    elif move_to_coordinates == 'down':
+        move_to_coordinates = (current_coordinates[0] + 1, current_coordinates[1])
+    elif move_to_coordinates == 'left':
+        move_to_coordinates = (current_coordinates[0], current_coordinates[1] - 1)
+    elif move_to_coordinates == 'right':
+        move_to_coordinates = (current_coordinates[0], current_coordinates[1] + 1)
 
-    return direction_to_move
+    character.update({'coordinates': move_to_coordinates})
+    return
 
 def main():
     """
     Drive the program
     """
+    character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
+                 'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
+                 'coordinates': (0, 4), 'location': 'werkroom'}
     # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
-    print(move_character((1, 1), 'dressing_room'))
+    move_character(character)
 
 if __name__ == '__main__':
     main()
