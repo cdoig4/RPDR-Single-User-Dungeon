@@ -1,4 +1,8 @@
-import sys
+"""
+Colin Doig A01334230
+Kelly Hagg A01324804
+"""
+
 
 def read_board(board_name):
     """
@@ -14,6 +18,7 @@ def read_board(board_name):
 
     with open(f'./boards/{board_name}.txt') as file_object:
         return file_object.read()
+
 
 def index_board(board_name):
     """
@@ -47,6 +52,7 @@ def index_board(board_name):
 
     return described_coordinates
 
+
 def set_board(character):
     """
 
@@ -67,6 +73,7 @@ def set_board(character):
         character.update({'coordinates': (0, 4)})
     return character
 
+
 def place_character_in_board(board, current_coordinates):
     """
 
@@ -74,7 +81,6 @@ def place_character_in_board(board, current_coordinates):
     :param current_coordinates:
     :return:
     """
-    rows = [row for row in board if row == '$']
     columns = [column for column in board if column == '#']
 
     row = current_coordinates[0]
@@ -96,6 +102,7 @@ def place_character_in_board(board, current_coordinates):
 
     return marked_board
 
+
 def clear_board(board):
     """
 
@@ -111,11 +118,11 @@ def clear_board(board):
     cleared_board = cleared_board.replace('e', ' ')
     return cleared_board
 
+
 def display_board(character):
     """
 
-    :param board_name:
-    :param current_coordinates:
+    :param character:
     :return:
     """
     board_name = character.get('location')
@@ -141,6 +148,7 @@ def main():
     # print(index_board('stage'))
     # print(clear_board(board))
     display_board(character)
+
 
 if __name__ == '__main__':
     main()
