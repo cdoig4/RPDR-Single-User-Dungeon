@@ -69,7 +69,7 @@ def set_board(character):
         character.update({'location': 'main_stage'})
         character.update({'coordinates': (0, 5)})
     else:
-        character.update({'location': 'werkroom'})
+        character.update({'location': 'werk_room'})
         character.update({'coordinates': (0, 4)})
     return character
 
@@ -143,7 +143,7 @@ def main():
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
-                 'coordinates': (0, 4), 'location': 'werkroom'}
+                 'coordinates': (0, 4), 'location': 'werk_room'}
     # print(board)
     # print(index_board('main_stage'))
     # print(clear_board(board))

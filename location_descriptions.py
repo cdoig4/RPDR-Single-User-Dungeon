@@ -1,4 +1,4 @@
-werkroom = f"You are currently in the Drag Race Werk Room. There are mirrors along the side of the room, a fabric wall"\
+werk_room = f"You are currently in the Drag Race Werk Room. There are mirrors along the side of the room, a fabric wall"\
            f"covered in rolls of fabric, and several tables with sewing machines."
 main_stage = f"You are currently on the main stage. As you walk along the runway, the lights shine and flash. The"\
             f"anticipation hangs heavy in the air."
