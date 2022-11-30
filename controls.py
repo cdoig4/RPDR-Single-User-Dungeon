@@ -54,11 +54,11 @@ def get_input_from_user(game_input: list) -> str:
     """
     acceptable_answers = []
 
+    print('Controls------------------------------------------------------------------------')
+
     for pair in game_input:
         acceptable_answers += pair[0]
-
-    print(f'Controls------------------------------------------------------------------------\n'
-          f'{pair[0]}: {pair[1]}')
+        print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
     if answer == 'E':
