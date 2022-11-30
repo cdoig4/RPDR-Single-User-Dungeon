@@ -39,7 +39,7 @@ def index_board(board_name):
         if character == 'x':
             location_type += [False]
         if character == 'e':
-            location_type += ['entry']
+            location_type += ['enter']
         if character == 'E':
             location_type += ['exit']
 
