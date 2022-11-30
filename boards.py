@@ -4,7 +4,7 @@ Kelly Hagg A01324804
 """
 
 
-def read_board(board_name):
+def read_board(board_name: str) -> str:
     """
 
     :param board_name:
@@ -20,7 +20,7 @@ def read_board(board_name):
         return file_object.read()
 
 
-def index_board(board_name):
+def index_board(board_name: str) -> dict:
     """
 
     :param board_name:
@@ -74,7 +74,7 @@ def set_board(character):
     return character
 
 
-def place_character_in_board(board, current_coordinates):
+def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     """
 
     :param board:
@@ -103,7 +103,7 @@ def place_character_in_board(board, current_coordinates):
     return marked_board
 
 
-def clear_board(board):
+def clear_board(board: str) -> str:
     """
 
     :param board:
@@ -119,7 +119,7 @@ def clear_board(board):
     return cleared_board
 
 
-def display_board(character):
+def display_board(character: dict) -> None:
     """
 
     :param character:
@@ -131,8 +131,7 @@ def display_board(character):
     print(f'Location: {display_name}')
     current_coordinates = character.get('coordinates')
 
-    opened_board = read_board(board_name)
-    marked_board = place_character_in_board(opened_board, current_coordinates)
+    marked_board = place_character_in_board(read_board(board_name), current_coordinates)
 
     return print(clear_board(marked_board))
 
