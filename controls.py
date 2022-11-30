@@ -3,6 +3,16 @@ from boards import read_board
 from boards import index_board
 from boards import clear_board
 
+def generate_challenge_input(answers: list) -> list:
+    """
+    """
+    pairs = []
+
+    for number, answer in enumerate(answers, 1):
+        pair = (str(number), answer)
+        pairs.append(pair)
+    return pairs
+
 def generate_directional_tools(current_coordinates, board_name):
     """
 
@@ -34,16 +44,6 @@ def generate_directional_tools(current_coordinates, board_name):
     if column != limit_coordinate[1] and board_coordinates[row, column + 1] != False:
         pairs.append(('D', 'Right'))
 
-    return pairs
-
-def generate_challenge_input(answers: list) -> list:
-    """
-    """
-    pairs = []
-
-    for number, answer in enumerate(answers, 1):
-        pair = (str(number), answer)
-        pairs.append(pair)
     return pairs
 
 def get_input_from_user(game_input: list) -> str:
