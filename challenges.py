@@ -214,6 +214,8 @@ def werkroom_events(movement, character_dictionary):
         print(f"{enemy_queen['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
               f"library opens.")
         fight(character_dictionary, enemy_queen)
+    else:
+        return character_dictionary
 
 
 # def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
