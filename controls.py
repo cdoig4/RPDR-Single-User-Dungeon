@@ -21,7 +21,7 @@ def generate_directional_tools(current_coordinates, board_name):
 
     pairs = []
 
-    if board_coordinates[current_coordinates] == 'entry':
+    if board_coordinates[current_coordinates] == 'enter':
         pairs.append(('E', 'Enter'))
     if board_coordinates[current_coordinates] == 'exit':
         pairs.append(('Q', 'Exit'))
@@ -87,8 +87,11 @@ def move_character(character):
     inputs = generate_directional_tools(current_coordinates, board_name)
     move_to_coordinates = get_input_from_user(inputs)
 
-    if move_to_coordinates == 'exit':
-        move_to_coordinates = board_name
+
+    if move_to_coordinates == 'enter':
+        move_to_coordinates = current_coordinates
+        # print(move_to_coordinates)
+        # print('Not until you level up, girl.')
     elif move_to_coordinates == 'up':
         move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
     elif move_to_coordinates == 'down':
@@ -106,7 +109,7 @@ def main():
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
-                 'coordinates': (0, 4), 'location': 'werkroom'}
+                 'coordinates': (6, 4), 'location': 'werkroom'}
     # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
