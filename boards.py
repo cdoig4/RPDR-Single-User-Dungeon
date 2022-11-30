@@ -47,6 +47,26 @@ def index_board(board_name):
 
     return described_coordinates
 
+def set_board(character):
+    """
+
+    :param character:
+    :return:
+    """
+    if character.get('met_rupaul'):
+        character.update({'location': 'dressing_room'})
+        character.update({'coordinates': (1, 5)})
+    elif character.get('completed_lip_sync'):
+        character.update({'location': 'judges_panel'})
+        character.update({'coordinates': (1, 6)})
+    elif character.get('level') == 2:
+        character.update({'location': 'stage'})
+        character.update({'coordinates': (0, 5)})
+    else:
+        character.update({'location': 'werkroom'})
+        character.update({'coordinates': (0, 4)})
+    return character
+
 def place_character_in_board(board, current_coordinates):
     """
 

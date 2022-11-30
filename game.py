@@ -7,55 +7,6 @@ import character_setup_and_intro
 import boards
 import controls
 
-def set_board(character):
-    """
-
-    :param character:
-    :return:
-    """
-    if character.get('met_rupaul'):
-        character.update({'location': 'dressing_room'})
-        character.update({'coordinates': (1, 5)})
-    elif character.get('completed_lip_sync'):
-        character.update({'location': 'judges_panel'})
-        character.update({'coordinates': (1, 6)})
-    elif character.get('level') == 2:
-        character.update({'location': 'stage'})
-        character.update({'coordinates': (0, 5)})
-    else:
-        character.update({'location': 'werkroom'})
-        character.update({'coordinates': (0, 4)})
-    return character
-
-
-def get_user_choice():
-    """
-
-    :return:
-    """
-    pass
-
-
-def validate_move(board, character, direction):
-    """
-
-    :param board:
-    :param character:
-    :param direction:
-    :return:
-    """
-    pass
-
-
-def move_character(character):
-    """
-
-    :param character:
-    :return:
-    """
-    pass
-
-
 def describe_current_location(board, character):
     """
 
@@ -81,15 +32,9 @@ def game():
 
     while not achieved_goal:
         if character.get('location') == None:
-            set_board(character)
+            boards.set_board(character)
         boards.display_board(character)
         controls.move_character(character)
-        # describe_current_location(board, character)
-        # direction = get_user_choice()
-        # valid_move = validate_move(board, character, direction)
-        # if valid_move:
-        #     move_character(character)
-        # describe_current_location(board, character)
         # there_is_a_challenge = check_for_challenges()
         # if there_is_a_challenge:
         #     execute_challenge_protocol(character)
