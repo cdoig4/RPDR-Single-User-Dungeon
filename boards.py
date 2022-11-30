@@ -4,6 +4,9 @@ Kelly Hagg A01324804
 """
 
 
+import json
+
+
 def read_board(board_name: str) -> str:
     """
 
@@ -126,10 +129,19 @@ def display_board(character: dict) -> None:
     :return:
     """
     board_name = character.get('location')
-    display_name = board_name.title().replace('_', ' ')
-
-    print(f'Location: {display_name}')
     current_coordinates = character.get('coordinates')
+    board_indices = index_board(board_name)
+
+    filename = './json_files/location_descriptions.json'
+    with open(filename) as file_object:
+        location_descriptions = json.load(file_object)
+
+    descriptions = location_descriptions.get(board_name)
+
+    print(descriptions[0])
+
+    if board_indices.get(current_coordinates) == 'exit':
+        print(descriptions[1])
 
     marked_board = place_character_in_board(read_board(board_name), current_coordinates)
 
