@@ -83,8 +83,6 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
         return get_directional_input_from_user(game_input, character)
 
     answer_index = acceptable_answers.index(answer)
-    print('acceptable', acceptable_answers)
-    print('answer_1', answer_index)
     answer_string = game_input[answer_index][1]
 
     return answer_string.lower()
@@ -101,8 +99,6 @@ def move_character(character):
 
     game_input = generate_directional_tools(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
-    print("directional", move_to_coordinates)
-    print("current", current_coordinates)
 
     if move_to_coordinates == 'enter':
         move_to_coordinates = current_coordinates
