@@ -69,7 +69,7 @@ def final_battle(character_dictionary):
 
     :param character_dictionary:
     """
-    filename = './json_files/potential_queen_challengers.json'
+    filename = './json_files/queens.json'
     with open(filename) as file_object:
         queens = json.load(file_object)
         queen_bitch_rupaul = queens.get('queen_bitch_rupaul')
