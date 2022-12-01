@@ -104,7 +104,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync() -> bool:
+def perform_lip_sync(character: dict) -> dict:
     """
     Perform full lip sync event for user.
 
@@ -132,13 +132,12 @@ def perform_lip_sync() -> bool:
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
-        return True
+        character = character.update({'completed_lipsync': True})
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
-        return True
+        character = character.update({'completed_lipsync': True})
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
-        return True
-    else:
-        return False
+        character = character.update({'completed_lipsync': True})
+    return character
 
 
 def runway_event(character_dictionary):
@@ -273,7 +272,7 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    perform_lip_sync()
+    perform_lip_sync(character)
     lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
                                    'When all else fails and you take a stand To make tomorrow a brighter day',
                                    'When all else fails and you long to be Something better than you are today')
