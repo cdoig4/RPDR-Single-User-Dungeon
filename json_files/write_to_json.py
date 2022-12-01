@@ -7,6 +7,12 @@ Kelly Hagg A01324804
 import json
 
 
+introduction = ['\n--------------------------------------------------------------------------------\n',"\n\nyou have been selected to compete on the new season of\nRupaul's Drag Race! This season will operate a little differently...\n\nTo obtain the title of 'Greatest Queen of All Time', you must\nfirst win the right to lip-sync on the Main Stage by proving your\nmettle against some fellow queens in the Werk Room. If you win the Lip Sync for\nyour Legacy, you will be invited to RuPaul's dressing room where you will\nLIP SYNC FOR YOUR LIFE against Mother herself.\n\nGood luck, and DON'T fuck it up.\n\nAs you get settled in the Werk Room you hear \"Ooh girl!\" and you see RuPaul\nappear on a TV screen on the side of the room. She says...\n\n\"To be invited to compete in a Lip Sync for your Legacy you must first prove\nthat you are literate. Read enough of your fellow queens for filth and you will\nbe called to the main stage.\n--------------------------------------------------------------------------------"]
+
+filename = 'introduction.json'
+with open(filename, 'w') as file_object:
+    json.dump(introduction, file_object)
+
 """ Queen Challengers """
 # potential_queen_challengers = {'queen_aja_labeija': {"Name": "Aja", "Charisma": 14, "Uniqueness": 17, "Nerve": 10},
 #                                'queen_jinkx_monsoon': {"Name": "Jinkx", "Charisma": 60, "Uniqueness": 60, "Nerve": 55},
