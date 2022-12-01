@@ -113,62 +113,56 @@ def runway_event(perform_lip_sync, character_dictionary):
         return character_dictionary
 
 
-def fight(player_character_dictionary, enemy_character_dictionary):
+def fight(character):
     """
 
-    :param player_character_dictionary:
-    :param enemy_character_dictionary:
+    :param character:
     :return:
     """
-    player_battle_nerve = player_character_dictionary['Nerve']
-    enemy_battle_nerve = enemy_character_dictionary['Nerve']
+    filename = './json_files/queens.json'
+    with open(filename) as file_object:
+        queens = json.load(file_object)
+    queen_names = list(queens.keys())
+    enemy_queen = random.choice(queen_names)
+
+    print(f"{queens[enemy_queen]['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
+          f"library opens.")
+
+    player_battle_nerve = character['Nerve']
+    enemy_battle_nerve = queens[enemy_queen]['Nerve']
     while enemy_battle_nerve > 0 and player_battle_nerve > 0:
         print("The queen stands strong, what will you do?")
         player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
-                print(f"You read {enemy_character_dictionary['Name']} for filth, she looks shaken.")
+                print(f"You read {queens[enemy_queen]['Name']} for filth, she looks shaken.")
                 enemy_battle_nerve -= (random.randint(1, 8) +
-                                                        math.ceil(player_character_dictionary['Charisma'] / 4))
+                                       math.ceil(character['Charisma'] / 4))
             else:
-                print(f"Your read falls flat and {enemy_character_dictionary['Name']} scoffs.")
+                print(f"Your read falls flat and {queens[enemy_queen]['Name']} scoffs.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for your opponent to speak")
-            player_character_dictionary['Uniqueness'] += 2
+            character['Uniqueness'] += 2
         else:
             if random.randint(1, 100) > 33:
                 print("You successfully sashay away from the queen.")
             else:
-                print(f"You try to get away but {enemy_character_dictionary['Name']} steps in front of you once again.")
+                print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of you once again.")
 
         if random.randint(1, 20) > 4:
-            damage_to_player = random.randint(1, 3) + math.ceil(enemy_character_dictionary['Charisma'] / 5)
+            damage_to_player = random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5)
             player_battle_nerve -= damage_to_player
-            print(f"{enemy_character_dictionary['Name']} says {random.choice(POTENTIAL_READS)}.\n"
+            print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.\n"
                   f"Your Nerve is reduced by {damage_to_player}.")
         else:
-            print(f"{enemy_character_dictionary['Name']} has clearly never been to the library in her life.")
+            print(f"{queens[enemy_queen]['Name']} has clearly never been to the library in her life.")
     if enemy_battle_nerve <= 0:
-        print(f"{enemy_character_dictionary['Name']} slinks away, clearly feeling the shade of it all.")
-        player_character_dictionary['Talent'] += random.randint(8, 12)
-        return player_character_dictionary
+        print(f"{queens[enemy_queen]['Name']} slinks away, clearly feeling the shade of it all.")
+        character['Talent'] += random.randint(8, 12)
+        return character
     else:
-        player_character_dictionary['Nerve'] = 0
-        return player_character_dictionary
-
-
-def werk_room_events(character_dictionary):
-    """
-
-    :return:
-    """
-    if random.randint(1, 10) <= 3:
-        enemy_queen = random.choice(queens.potential_queen_challengers)
-        print(f"{enemy_queen['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
-              f"library opens.")
-        fight(character_dictionary, enemy_queen)
-    else:
-        return character_dictionary
+        character['Nerve'] = 0
+        return character
 
 
 def generate_challenge_input(possible_answers: list) -> list:
@@ -216,7 +210,8 @@ def run_challenges(character):
     coordinates = character['coordinates']
 
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
-        return werk_room_events(character)
+        if random.randint(1, 10) <= 3:
+            return fight(character)
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
         return runway_event(perform_lip_sync, character)
 
@@ -225,12 +220,13 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    runway_event(perform_lip_sync, character)
+    # runway_event(perform_lip_sync, character)
     lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
                                    'When all else fails and you take a stand To make tomorrow a brighter day',
                                    'When all else fails and you long to be Something better than you are today')
     # print(generate_challenge_input(lyric_options))
     # print(get_challenge_input_from_user(lyric_options))
+    fight(character)
 
 
 if __name__ == '__main__':
