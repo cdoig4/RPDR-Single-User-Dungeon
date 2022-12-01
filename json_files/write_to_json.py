@@ -20,7 +20,7 @@ import json
 #                                'queen_lashauwn_beyond': {"Name": "LaShauwn", "Charisma": 12, "Uniqueness": 16, "Nerve": 7},
 #                                'queen_bitch_rupaul': {"Name": "RuPaul", "Charisma": 80, "Uniqueness": 75, "Nerve": 80}}
 #
-# filename = 'potential_queen_challengers.json'
+# filename = 'queens.json'
 # with open(filename, 'w') as file_object:
 #     json.dump(potential_queen_challengers, file_object)
 
