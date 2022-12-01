@@ -57,7 +57,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync(character: dict) -> dict:
+def perform_lip_sync(character: dict) -> bool:
     """
     Perform full lip sync event for user.
 
@@ -85,12 +85,12 @@ def perform_lip_sync(character: dict) -> dict:
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
-        character = character.update({'completed_lipsync': True})
+        return True
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
-        character = character.update({'completed_lipsync': True})
+        return True
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
-        character = character.update({'completed_lipsync': True})
-    return character
+        return True
+    return False
 
 
 def runway_event(character_dictionary):
@@ -211,8 +211,11 @@ def run_challenges(character):
     :param character:
     :return:
     """
-    location = character.get('location')
-    coordinates = character.get('coordinates')
+    location = character['location']
+    coordinates = character['coordinates']
+    completed_lipsync = character['completed_lipsync']
+
+    if
 
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
         return werk_room_events(character)
