@@ -5,6 +5,7 @@ import json
 import math
 import random
 import queens
+import character_setup
 
 
 POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND dairy.', 'Beauty fades, dumb is forever',
@@ -57,7 +58,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync(character: dict) -> bool:
+def perform_lip_sync() -> bool:
     """
     Perform full lip sync event for user.
 
@@ -101,16 +102,7 @@ def runway_event(perform_lip_sync, character_dictionary):
     :return:
     """
     if perform_lip_sync(character_dictionary):
-        character_dictionary['level'] += 1
-        character_dictionary['Charisma'] += random.randint(20, 30)
-        character_dictionary['Uniqueness'] += random.randint(20, 30)
-        character_dictionary['Nerve'] += random.randint(20, 30)
-        print(f"RuPaul's voice echoes: 'ConDRAGulations {character_dictionary['Name']}, you're a winner baby!'\n"
-              f"You feel your inner saboteur melting away.\nYou are now level {character_dictionary['level']}\n"
-              f"Your Charisma increases to {character_dictionary['Charisma']}!\nYour Uniqueness increases to"
-              f" {character_dictionary['Uniqueness']}!\nYour Nerve increases to {character_dictionary['Nerve']}"
-              f"\nYou are ushered towards the Judge's Panel.")
-        return character_dictionary
+        character_setup.level_up(character_dictionary)
     else:
         character_dictionary['Nerve'] -= random.randint(5, 10)
         print(f"RuPaul's voice echoes: 'I'm sorry, {character_dictionary['Name']}, but you are safe. But I'm"
