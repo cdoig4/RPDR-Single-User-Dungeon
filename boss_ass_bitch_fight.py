@@ -22,20 +22,19 @@ def final_battle(character_dictionary):
         queen_bitch_rupaul = queens.get('queen_bitch_rupaul')
 
     while queen_bitch_rupaul['Nerve'] > 35 and character_dictionary['Nerve'] > 0:
-        print("The queen stands strong, what will you do?")
+        print("Mother stands strong, what will you do?")
         player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
-                print(f"You read {queen_bitch_rupaul['Name']} for filth, her eye twitches slightly.")
-                queen_bitch_rupaul['Nerve'] -= (random.randint(1, 8) +
-                                                        math.ceil(character_dictionary['Charisma'] / 4))
+                print(f"You read {queen_bitch_rupaul['Name']} for the gods... her eye twitches slightly.")
+                queen_bitch_rupaul['Nerve'] -= (random.randint(1, 8) + math.ceil(character_dictionary['Charisma'] / 4))
             else:
-                print(f"Your read falls flat and {queen_bitch_rupaul['Name']} scoffs.")
+                print(f"Your read falls flat and {queen_bitch_rupaul['Name']} chuckles.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for RuPaul to read you for filth.")
             character_dictionary['Uniqueness'] += 2
         else:
-            print(f'{queen_bitch_rupaul["Name"]} says: "That\'s cute. You are staying right here till I\'m done"')
+            print(f'{queen_bitch_rupaul["Name"]} says: "That\'s cute. You are staying right here till we\'re done"')
 
         if random.randint(1, 20) > 4:
             damage_to_player = random.randint(1, 7) + math.ceil(queen_bitch_rupaul['Charisma'] / 10)
