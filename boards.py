@@ -95,8 +95,6 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
 
     row = current_coordinates[0]
     column = current_coordinates[1]
-    print(row)
-    print(column)
 
     location = row * len(columns) + column
 
