@@ -265,7 +265,7 @@ def run_challenges(character):
     coordinates = character.get('coordinates')
 
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
-        return fight(character)
+        return werk_room_events(character)
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != ():
         return perform_lip_sync(character)
 
