@@ -49,18 +49,19 @@ def deliver_introduction(character_dictionary: dict) -> None:
     :precondition: character_dictionary must be a dictionary
     :postcondition: prints the game introduction
     """
-    print(f"ConDRAGulations {character_dictionary['Name']}, you have been selected to compete on the new season "
-          f"of Rupaul's Drag Race!\nThis season will operate a little differently...\nTo obtain the title of "
-          f"'Greatest Queen of All Time', you must first win the right to lipsync on the Main Stage by proving "
-          f"your mettle against some fellow queens in the Werk Room.\nIf you win the Lip Sync for your Legacy, you "
-          f"will be invited to RuPaul's dressing room where you will LIP SYNC FOR YOUR LIFE against Mother herself.\n"
-          f"Good luck, and DON'T fuck it up.")
-    print('As you get settled in the Werk Room you hear "Ooh girl!" and you see RuPaul appear on a TV screen on'
-          ' the side of the room. She says')
-    print(f'To be invited to compete in a Lip Sync for your Legacy you must first prove that you are'
-          f' literate. Read enough of your fellow queens for filth and you will be called to the'
-          f' main stage.')
-
+    print('\n--------------------------------------------------------------------------------\n')
+    print(f"ConDRAGulations {character_dictionary['Name']},\n\nyou have been selected to compete on the new season "
+          f"of\nRupaul's Drag Race! This season will operate a little differently...\n\nTo obtain the title of "
+          f"'Greatest Queen of All Time', you must\nfirst win the right to lip-sync on the Main Stage by proving "
+          f"your\nmettle against some fellow queens in the Werk Room. If you win the Lip Sync for\nyour Legacy, you "
+          f"will be invited to RuPaul's dressing room where you will\nLIP SYNC FOR YOUR LIFE against Mother herself.\n"
+          f"\nGood luck, and DON'T fuck it up.")
+    print('\nAs you get settled in the Werk Room you hear "Ooh girl!" and you see RuPaul\nappear on a TV screen on'
+          ' the side of the room. She says,')
+    print(f'\n"To be invited to compete in a Lip Sync for your Legacy you must first prove\nthat you are'
+          f' literate. Read enough of your fellow queens for filth and you will\nbe called to the'
+          f' main stage."\n')
+    print('\n--------------------------------------------------------------------------------\n')
 
 def main():
     """Drive the program."""

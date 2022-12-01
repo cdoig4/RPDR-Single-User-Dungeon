@@ -13,11 +13,10 @@ def show_score(character: dict) -> None:
     :param character:
     :return:
     """
-    charisma = character.get('Charisma')
-    uniqueness = character.get('Uniqueness')
-    nerve = character.get('Nerve')
-    talent = character.get('Talent')
-
+    charisma = character['Charisma']
+    uniqueness = character['Uniqueness']
+    nerve = character['Nerve']
+    talent = character['Talent']
     return print(f'Stats: [Charisma: {charisma}, Uniqueness: {uniqueness}, '
                  f'Nerve: {nerve}, Talent: {talent}]')
 
@@ -63,7 +62,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     :param game_input:
     :return:
     """
-    acceptable_answers = ['0']
+    acceptable_answers = []
 
     print('Controls------------------------------------------------------------------------')
 
@@ -75,6 +74,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     
     if answer == '0':
         show_score(character)
+        return get_directional_input_from_user(game_input, character)
     if answer == 'Q':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_directional_input_from_user(game_input, character)
@@ -94,8 +94,8 @@ def move_character(character):
     :param character:
     :return:
     """
-    current_coordinates = character.get('coordinates')
-    board_name = character.get('location')
+    current_coordinates = character['coordinates']
+    board_name = character['location']
 
     game_input = generate_directional_tools(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
@@ -126,8 +126,8 @@ def main():
     # print(generate_directional_tools((0, 5), 'main_stage'))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
-    # move_character(character)
-    # move_character(character)
+    move_character(character)
+    move_character(character)
 
 
 if __name__ == '__main__':

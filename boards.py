@@ -44,12 +44,19 @@ def index_board(board_name: str) -> dict:
     for character in board:
         if character == '!':
             location_type += [True]
+        if character == 'X':
+            location_type += [True]
         if character == 'x':
             location_type += [False]
         if character == 'e':
             location_type += ['enter']
         if character == 'E':
             location_type += ['exit']
+        if character == 'Q':
+            location_type += ['queen']
+        if character == 'R':
+            location_type += ['rupaul']
+
 
     described_coordinates = dict(zip(coordinates, location_type))
 
@@ -89,11 +96,14 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     row = current_coordinates[0]
     column = current_coordinates[1]
 
+    location = row * len(columns) + column
+
     marked_board = board.replace('!', 'x')
     marked_board = marked_board.replace('E', 'x')
     marked_board = marked_board.replace('e', 'x')
-
-    location = row * len(columns) + column
+    marked_board = marked_board.replace('R', 'x')
+    marked_board = marked_board.replace('Q', 'x')
+    marked_board = marked_board.replace('X', 'x')
 
     for _ in range(location):
         next_marker = marked_board.find('x')
@@ -122,6 +132,18 @@ def clear_board(board: str) -> str:
     return cleared_board
 
 
+def format_board(board: str, character: dict) -> str:
+    """
+    """
+    location = character['location']
+
+    if location == 'dressing_room':
+        return board[:118] + 'R' + board[119:]
+    elif location == 'main_stage':
+        return board[:544] + 'Q' + board[545:568] + 'X' + board[569:]
+    return board
+
+
 def display_board(character: dict) -> None:
     """
 
@@ -144,8 +166,9 @@ def display_board(character: dict) -> None:
         print(descriptions[1])
 
     marked_board = place_character_in_board(read_board(board_name), current_coordinates)
+    formatted_board = format_board(marked_board, character)
 
-    return print(clear_board(marked_board))
+    return print(clear_board(formatted_board))
 
 
 def main():
@@ -153,9 +176,11 @@ def main():
     Drive the program.
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                 'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
-                 'coordinates': (0, 4), 'location': 'werk_room'}
-    # print(board)
+                 'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
+                 'coordinates': (0, 5), 'location': 'main_stage'}
+    board = read_board('dressing_room')
+
+    # print(board[:118] + 'R' + board[119:])
     # print(index_board('main_stage'))
     # print(clear_board(board))
     display_board(character)
