@@ -1,6 +1,11 @@
 """
 Create the player character and give them the introduction
 """
+
+
+import challenges
+
+
 LOOK_QUEEN = {"Charisma": 14, "Uniqueness": 15, "Nerve": 10, "Talent": 10, 'met_rupaul': False,
               "completed_lip_sync": False, "level": 1}
 COMEDY_QUEEN = {"Charisma": 15, "Uniqueness": 14, "Nerve": 10, "Talent": 10, 'met_rupaul': False,
@@ -23,15 +28,13 @@ def make_character(character_name: str) -> dict:
     :return: a dictionary representing the user's character
     """
     print("What type of queen are you?")
-    for pair in list(enumerate(CHARACTER_CLASSES)):
-        print(f'{pair[0]}: {pair[1]}')
+    answer = challenges.get_challenge_input_from_user(CHARACTER_CLASSES)
 
-    answer = int(input())
-    if answer == 0:
+    if answer == 'look_queen':
         character = {key: value for key, value in LOOK_QUEEN.items()}
-    elif answer == 1:
+    elif answer == 'comedy_queen':
         character = {key: value for key, value in COMEDY_QUEEN.items()}
-    elif answer == 2:
+    elif answer == 'performance_queen':
         character = {key: value for key, value in PERFORMANCE_QUEEN.items()}
     else:
         character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
