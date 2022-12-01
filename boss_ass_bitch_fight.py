@@ -29,7 +29,7 @@ def final_lip_sync(character_dictionary):
     :param character_dictionary:
     """
     print(f"RuPaul shouts \"The library is officially closed! Now {character_dictionary['Name']}\""
-          f"...\nThe time has come...\nFor you to Lip Sync against me....\nFor. The. CROWN.\"\nThe lights"
+          f"...\nThe time has come...\nFor you to Lip Sync....\nFor. The. CROWN.\"\nThe lights"
           f" dim and the familiar beat of a RuPaul song begins.\n"
           f"Which do you lip sync?")
     correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
