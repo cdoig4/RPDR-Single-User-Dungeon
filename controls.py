@@ -22,17 +22,6 @@ def show_score(character: dict) -> None:
                  f'Nerve: {nerve}, Talent: {talent}]')
 
 
-def generate_challenge_input(answers: list) -> list:
-    """
-    """
-    pairs = []
-
-    for number, answer in enumerate(answers, 1):
-        pair = (str(number), answer)
-        pairs.append(pair)
-    return pairs
-
-
 def generate_directional_tools(current_coordinates, board_name):
     """
 
@@ -68,7 +57,7 @@ def generate_directional_tools(current_coordinates, board_name):
     return pairs
 
 
-def get_input_from_user(game_input: list, character: dict) -> str:
+def get_directional_input_from_user(game_input: list, character: dict) -> str:
     """
 
     :param game_input:
@@ -88,10 +77,10 @@ def get_input_from_user(game_input: list, character: dict) -> str:
         show_score(character)
     if answer == 'Q':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
-        return get_input_from_user(game_input, character)
+        return get_directional_input_from_user(game_input, character)
     if answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
-        return get_input_from_user(game_input, character)
+        return get_directional_input_from_user(game_input, character)
 
     answer_index = acceptable_answers.index(answer)
     answer_string = game_input[answer_index][1]
@@ -109,7 +98,7 @@ def move_character(character):
     board_name = character.get('location')
 
     game_input = generate_directional_tools(current_coordinates, board_name)
-    move_to_coordinates = get_input_from_user(game_input, character)
+    move_to_coordinates = get_directional_input_from_user(game_input, character)
 
     if move_to_coordinates == 'enter':
         move_to_coordinates = current_coordinates
@@ -136,9 +125,9 @@ def main():
     # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), index_board(board)))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
-    # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
-    move_character(character)
-    move_character(character)
+    print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
+    # move_character(character)
+    # move_character(character)
 
 
 if __name__ == '__main__':
