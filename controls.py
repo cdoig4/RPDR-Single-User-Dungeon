@@ -56,7 +56,6 @@ def generate_directional_inputs(current_coordinates, board_name):
             challenge = True
         else:
             pairs.append(('S', 'Down'))
-    print(board_coordinates[row, column - 1])
     if column != 0 and board_coordinates[row, column - 1] is not False:
         if board_coordinates[row, column - 1] == 'queen':
             challenge = True
