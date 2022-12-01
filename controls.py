@@ -13,10 +13,10 @@ def show_score(character: dict) -> None:
     :param character:
     :return:
     """
-    charisma = character.get('Charisma')
-    uniqueness = character.get('Uniqueness')
-    nerve = character.get('Nerve')
-    talent = character.get('Talent')
+    charisma = character['Charisma']
+    uniqueness = character['Uniqueness']
+    nerve = character['Nerve']
+    talent = character['Talent']
 
     return print(f'Stats: [Charisma: {charisma}, Uniqueness: {uniqueness}, '
                  f'Nerve: {nerve}, Talent: {talent}]')
@@ -94,8 +94,8 @@ def move_character(character):
     :param character:
     :return:
     """
-    current_coordinates = character.get('coordinates')
-    board_name = character.get('location')
+    current_coordinates = character['coordinates']
+    board_name = character['location']
 
     game_input = generate_directional_tools(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
