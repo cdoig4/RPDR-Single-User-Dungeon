@@ -7,7 +7,7 @@ Kelly Hagg A01324804
 import boards
 import controls
 import challenges
-import character_setup_and_intro
+import character_setup
 
 
 def game():
@@ -15,8 +15,8 @@ def game():
 
     :return:
     """
-    character = character_setup_and_intro.make_character(input("What is the name of your Drag Persona?\n"))
-    character_setup_and_intro.deliver_introduction(character)
+    character = character_setup.make_character(input("What is the name of your Drag Persona?\n"))
+    character_setup.deliver_introduction(character)
     achieved_goal = False
 
     while not achieved_goal:
@@ -25,8 +25,8 @@ def game():
         boards.display_board(character)
         controls.move_character(character)
         challenges.run_challenges(character)
-        # if character_has_leveled():
-        #     execute_glow_up_protocol()
+        if character['location'] == 'werk_room' and character['Talent'] >= 40:
+            character_setup.level_up(character)
         #     achieved_goal = check_if_goal_attained(board, character)
         # else:
         #     print('You have to achieve your goal!')
@@ -51,6 +51,7 @@ def game():
 #         #     achieved_goal = check_if_goal_attained(board, character)
 #         # else:
 #         #     print('You have to achieve your goal!')
+
 
 def main():
     """
