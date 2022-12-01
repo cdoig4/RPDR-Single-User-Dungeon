@@ -93,14 +93,14 @@ def perform_lip_sync(character: dict) -> bool:
     return False
 
 
-def runway_event(character_dictionary):
+def runway_event(perform_lip_sync, character_dictionary):
     """
 
+    :param perform_lip_sync:
     :param character_dictionary:
     :return:
     """
-    event_results = perform_lip_sync(LIP_SYNCS)
-    if event_results:
+    if perform_lip_sync(character_dictionary):
         character_dictionary['level'] += 1
         character_dictionary['Charisma'] += random.randint(20, 30)
         character_dictionary['Uniqueness'] += random.randint(20, 30)
@@ -213,21 +213,18 @@ def run_challenges(character):
     """
     location = character['location']
     coordinates = character['coordinates']
-    completed_lipsync = character['completed_lipsync']
-
-    if
 
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
         return werk_room_events(character)
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
-        return perform_lip_sync(character)
+        return runway_event(character)
 
 
 def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    perform_lip_sync(character)
+    runway_event(perform_lip_sync, character)
     lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
                                    'When all else fails and you take a stand To make tomorrow a brighter day',
                                    'When all else fails and you long to be Something better than you are today')
