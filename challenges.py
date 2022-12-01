@@ -120,7 +120,8 @@ def fight(player_character_dictionary, enemy_character_dictionary):
     :param enemy_character_dictionary:
     :return:
     """
-    while enemy_character_dictionary['Nerve'] > 0 and player_character_dictionary['Nerve'] > 0:
+    player_battle_nerve = player_character_dictionary['Nerve']
+    while enemy_character_dictionary['Nerve'] > 0 and player_battle_nerve > 0:
         print("The queen stands strong, what will you do?")
         player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
@@ -141,11 +142,18 @@ def fight(player_character_dictionary, enemy_character_dictionary):
 
         if random.randint(1, 20) > 4:
             damage_to_player = random.randint(1, 7) + math.ceil(enemy_character_dictionary['Charisma'] / 5)
-            player_character_dictionary['Nerve'] -= damage_to_player
+            player_battle_nerve -= damage_to_player
             print(f"{enemy_character_dictionary['Name']} says {random.choice(POTENTIAL_READS)}.\n"
                   f"Your Nerve is reduced by {damage_to_player}.")
         else:
             print(f"{enemy_character_dictionary['Name']} has clearly never been to the library in her life.")
+    if enemy_character_dictionary['Nerve'] == 0:
+        print(f"{enemy_character_dictionary['Name']} slinks away, clearly feeling the shade of it all.")
+        player_character_dictionary['Talent'] += random.randint(8, 12)
+        return player_character_dictionary
+    else:
+        player_character_dictionary['Nerve'] = 0
+        return player_character_dictionary
 
 
 def werk_room_events(character_dictionary):
