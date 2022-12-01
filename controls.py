@@ -21,7 +21,7 @@ def show_score(character: dict) -> None:
                  f'Nerve: {nerve}, Talent: {talent}]')
 
 
-def generate_directional_tools(current_coordinates, board_name):
+def generate_directional_inputs(current_coordinates, board_name):
     """
 
     :param current_coordinates:
@@ -43,6 +43,8 @@ def generate_directional_tools(current_coordinates, board_name):
         pairs.append(('E', 'Enter'))
     elif board_coordinates[current_coordinates] == 'exit':
         pairs.append(('X', 'Exit'))
+
+    challenge = False
 
     if row != 0 and board_coordinates[row - 1, column] is not False:
         if board_coordinates[row - 1, column] == 'queen':
@@ -113,7 +115,7 @@ def move_character(character):
     current_coordinates = character['coordinates']
     board_name = character['location']
 
-    game_input = generate_directional_tools(current_coordinates, board_name)
+    game_input = generate_directional_inputs(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
 
     if move_to_coordinates == 'enter':
