@@ -55,8 +55,7 @@ def index_board(board_name: str) -> dict:
         if character == 'Q':
             location_type += ['queen']
         if character == 'R':
-            location_type += ['rupaul']
-
+            location_type += ['queen']
 
     described_coordinates = dict(zip(coordinates, location_type))
 
@@ -181,7 +180,7 @@ def main():
     board = read_board('dressing_room')
 
     # print(board[:118] + 'R' + board[119:])
-    # print(index_board('main_stage'))
+    print(index_board('main_stage'))
     # print(clear_board(board))
     display_board(character)
 
