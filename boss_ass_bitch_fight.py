@@ -23,12 +23,12 @@ RUPAUL_LIP_SYNC = {'Correct Answer': ["Who you waiting for? Another savior",
                                     "I'll say it again It's never been the clothes that make the man"]}
 
 
-def final_lip_sync(character_dictionary):
+def final_lip_sync(character):
     """
 
-    :param character_dictionary:
+    :param character:
     """
-    print(f"RuPaul shouts \"The library is officially closed! Now {character_dictionary['Name']}\""
+    print(f"RuPaul shouts \"The library is officially closed! Now {character['Name']}\""
           f"...\nThe time has come...\nFor you to Lip Sync....\nFor. The. CROWN.\"\nThe lights"
           f" dim and the familiar beat of a RuPaul song begins.\n"
           f"Which do you lip sync?")
@@ -41,27 +41,12 @@ def final_lip_sync(character_dictionary):
     correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
     print(f"The song ends. You stand in your pose, breathing heavily as RuPaul watches you. Her face a mask.")
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
-        print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character_dictionary['Name']}"
-              f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to fall from the ceiling.\n"
-              f"\"You are now the Queen of the Mother Tucking UNIVERSE!\" Mother continues as she places a massive "
-              f"bejeweled crown upon your head and a matching scepter in your hand.\nYou sob with happiness as you"
-              f"know that this... is the beginning of the rest of your life.\nEND.")
-        return character_dictionary.update({'met_rupaul': True})
+        return character.update({'met_rupaul': True})
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
-        print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character_dictionary['Name']}"
-              f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to fall from the ceiling.\n"
-              f"\"You are now the Queen of the Mother Tucking UNIVERSE!\" Mother continues as she places a massive "
-              f"bejeweled crown upon your head and a matching scepter in your hand.\nYou sob with happiness as you"
-              f"know that this... is the beginning of the rest of your life.\nEND.")
-        return character_dictionary.update({'met_rupaul': True})
+        return character.update({'met_rupaul': True})
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
-        print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character_dictionary['Name']}"
-              f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to fall from the ceiling.\n"
-              f"\"You are now the Queen of the Mother Tucking UNIVERSE!\" Mother continues as she places a massive "
-              f"bejeweled crown upon your head and a matching scepter in your hand.\nYou sob with happiness as you"
-              f"know that this... is the beginning of the rest of your life.\nEND.")
-        return character_dictionary.update({'met_rupaul': True})
-    return character_dictionary.update({'Nerve': 0})
+        return character.update({'met_rupaul': True})
+    return character.update({'Nerve': 0})  # why is this here? This will kill them lol
 
 
 def final_battle(character_dictionary):
