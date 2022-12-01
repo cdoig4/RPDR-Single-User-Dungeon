@@ -41,18 +41,34 @@ def generate_directional_tools(current_coordinates, board_name):
 
     if board_coordinates[current_coordinates] == 'enter':
         pairs.append(('E', 'Enter'))
-    if board_coordinates[current_coordinates] == 'exit':
-        pairs.append(('Q', 'Exit'))
+    elif board_coordinates[current_coordinates] == 'exit':
+        pairs.append(('X', 'Exit'))
+
     if row != 0 and board_coordinates[row - 1, column] is not False:
-        pairs.append(('W', 'Up'))
+        if board_coordinates[row - 1, column] == 'queen':
+            challenge = True
+        else:
+            pairs.append(('W', 'Up'))
     if row != limit_coordinate[0] and board_coordinates[row + 1, column] is not False:
-        pairs.append(('S', 'Down'))
+        if board_coordinates[row + 1, column] == 'queen':
+            challenge = True
+        else:
+            pairs.append(('S', 'Down'))
+    print(board_coordinates[row, column - 1])
     if column != 0 and board_coordinates[row, column - 1] is not False:
-        pairs.append(('A', 'Left'))
+        if board_coordinates[row, column - 1] == 'queen':
+            challenge = True
+        else:
+            pairs.append(('A', 'Left'))
     if column != limit_coordinate[1] and board_coordinates[row, column + 1] is not False:
-        pairs.append(('D', 'Right'))
+        if board_coordinates[row, column + 1] == 'queen':
+            challenge = True
+        else:
+            pairs.append(('D', 'Right'))
     pairs.append(('0', 'Stats'))
 
+    if challenge:
+        pairs.insert(0, ('Q', 'Challenge her'))
     return pairs
 
 
@@ -75,7 +91,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     if answer == '0':
         show_score(character)
         return get_directional_input_from_user(game_input, character)
-    if answer == 'Q':
+    if answer == 'X':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_directional_input_from_user(game_input, character)
     if answer not in acceptable_answers:
@@ -121,7 +137,7 @@ def main():
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
-                 'coordinates': (3, 3), 'location': 'werk_room'}
+                 'coordinates': (6, 3), 'location': 'main_stage'}
     # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), 'main_stage'))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
