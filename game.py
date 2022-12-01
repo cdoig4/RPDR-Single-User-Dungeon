@@ -20,7 +20,7 @@ def game():
             boards.set_board(character)
         boards.display_board(character)
         controls.move_character(character)
-        challenges.run_challenge(character)
+        challenges.run_challenges(character)
         # if character_has_leveled():
         #     execute_glow_up_protocol()
         #     achieved_goal = check_if_goal_attained(board, character)
