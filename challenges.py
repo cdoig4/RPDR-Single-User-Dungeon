@@ -4,7 +4,6 @@ Challenges for the user to help them increase their level!
 import json
 import math
 import random
-import queens
 import character_setup
 
 
