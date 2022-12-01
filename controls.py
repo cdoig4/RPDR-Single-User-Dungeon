@@ -17,7 +17,6 @@ def show_score(character: dict) -> None:
     uniqueness = character['Uniqueness']
     nerve = character['Nerve']
     talent = character['Talent']
-
     return print(f'Stats: [Charisma: {charisma}, Uniqueness: {uniqueness}, '
                  f'Nerve: {nerve}, Talent: {talent}]')
 
@@ -63,7 +62,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     :param game_input:
     :return:
     """
-    acceptable_answers = ['0']
+    acceptable_answers = []
 
     print('Controls------------------------------------------------------------------------')
 
@@ -75,6 +74,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     
     if answer == '0':
         show_score(character)
+        return get_directional_input_from_user(game_input, character)
     if answer == 'Q':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_directional_input_from_user(game_input, character)
@@ -83,6 +83,8 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
         return get_directional_input_from_user(game_input, character)
 
     answer_index = acceptable_answers.index(answer)
+    print('acceptable', acceptable_answers)
+    print('answer_1', answer_index)
     answer_string = game_input[answer_index][1]
 
     return answer_string.lower()
@@ -99,6 +101,8 @@ def move_character(character):
 
     game_input = generate_directional_tools(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
+    print("directional", move_to_coordinates)
+    print("current", current_coordinates)
 
     if move_to_coordinates == 'enter':
         move_to_coordinates = current_coordinates
@@ -126,8 +130,8 @@ def main():
     # print(generate_directional_tools((0, 5), 'main_stage'))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
     # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
-    # move_character(character)
-    # move_character(character)
+    move_character(character)
+    move_character(character)
 
 
 if __name__ == '__main__':
