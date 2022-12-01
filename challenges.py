@@ -104,7 +104,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync(character) -> bool:
+def perform_lip_sync() -> bool:
     """
     Perform full lip sync event for user.
 
@@ -220,13 +220,13 @@ def werk_room_events(character_dictionary):
         return character_dictionary
 
 
-def generate_challenge_input(answers: list) -> list:
+def generate_challenge_input(possible_answers: list) -> list:
     """
     """
     pairs = []
 
-    for number, answers in enumerate(answers, 1):
-        pair = (str(number), answers)
+    for number, possible_answers in enumerate(possible_answers, 1):
+        pair = (str(number), possible_answers)
         pairs.append(pair)
     return pairs
 
@@ -274,12 +274,12 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    # perform_lip_sync(character)
+    perform_lip_sync(character)
     lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
                                    'When all else fails and you take a stand To make tomorrow a brighter day',
                                    'When all else fails and you long to be Something better than you are today')
     # print(generate_challenge_input(lyric_options))
-    print(get_challenge_input_from_user(lyric_options))
+    # print(get_challenge_input_from_user(lyric_options))
 
 
 if __name__ == '__main__':
