@@ -95,14 +95,17 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
 
     row = current_coordinates[0]
     column = current_coordinates[1]
+    print(row)
+    print(column)
+
+    location = row * len(columns) + column
 
     marked_board = board.replace('!', 'x')
     marked_board = marked_board.replace('E', 'x')
     marked_board = marked_board.replace('e', 'x')
     marked_board = marked_board.replace('R', 'x')
     marked_board = marked_board.replace('Q', 'x')
-
-    location = row * len(columns) + column
+    marked_board = marked_board.replace('X', 'x')
 
     for _ in range(location):
         next_marker = marked_board.find('x')
@@ -139,7 +142,7 @@ def format_board(board: str, character: dict) -> str:
     if location == 'dressing_room':
         return board[:118] + 'R' + board[119:]
     elif location == 'main_stage':
-        return board[:544] + 'Q' + board[545:]
+        return board[:544] + 'Q' + board[545:568] + 'X' + board[569:]
     return board
 
 
@@ -175,7 +178,7 @@ def main():
     Drive the program.
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                 'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
+                 'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (0, 5), 'location': 'main_stage'}
     board = read_board('dressing_room')
 
