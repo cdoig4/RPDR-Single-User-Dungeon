@@ -122,14 +122,13 @@ def perform_lip_sync() -> bool:
           f'performance of {event_selection.get("Song Title")}. Ladies...\nthe time has come....'
           f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.\nThe music starts and you need to remember the first line '
           f'of the song, which do you lip sync?\n')
-    print(event_selection.get('Initial Lyrics'))
-    correct_first_lyrics = perform_lyrics(event_selection, event_selection.get('Initial Lyrics'))
+    correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
 
     print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
-    correct_second_lyrics = perform_lyrics(event_selection, event_selection.get('Chorus Lyrics'))
+    correct_second_lyrics = perform_lyrics(event_selection, event_selection['Chorus Lyrics'])
     print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
           f"Which do you lip sync?")
-    correct_final_lyrics = perform_lyrics(event_selection, event_selection.get('Final Lyrics'))
+    correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
@@ -274,7 +273,7 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    perform_lip_sync(character)
+    perform_lip_sync()
     lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
                                    'When all else fails and you take a stand To make tomorrow a brighter day',
                                    'When all else fails and you long to be Something better than you are today')
