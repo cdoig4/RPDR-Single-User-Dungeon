@@ -1,10 +1,12 @@
 """
 Challenges for the user to help them increase their level!
 """
+import json
 import math
 import random
 import controls
 import queens
+
 
 CHER_LIP_SYNC_CHALLENGE = {'Song Title': 'Believe by Cher',
                            'Correct Answer': ['No matter how hard I try, you keep pushing me aside',
@@ -56,7 +58,7 @@ POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND d
                    'The last time you got fucked was by genetics')
 
 
-def judge_events(character_dictionary):
+def judge_events(character_dictionary):  #could print to user that their stats have changed & call the show score function in controls
     """
     Provide possible random events for each character movement.
 
@@ -92,7 +94,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     :postcondition: determine whether the user's selection is present in the 'Correct Answer' key's value list
     :return: True if user's selection was correct else False
     """
-    answer = controls.get_input_from_user(controls.generate_challenge_input(lyric_list))
+    answer = get_challenge_input_from_user(lyric_list)
     if answer in lip_sync_dictionary['Correct Answer']:
         print("You flawlessly mouth along to the words of the song, giving you a boost in confidence.")
         return True
@@ -102,26 +104,32 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync(event_list: tuple) -> bool:
+def perform_lip_sync(character) -> bool:
     """
     Perform full lip sync event for user.
 
-    :param event_list: a tuple of variables representing potential lip sync songs
     :precondition: event_list must be a tuple
     :postcondition: determines whether enough correct selections were made to complete event successfully
     :return: True if user was successful else False
     """
-    event_selection = random.choice(event_list)
+    filename = './json_files/lip_sync_data.json'
+    with open(filename) as file_object:
+        lip_sync_data = json.load(file_object)
+
+    event_selection = lip_sync_data.get(random.choice(list(lip_sync_data)))
+
     print(f'RuPauls voice echoes:\n"Two queens stand before me. For tonight Ive asked you to prepare a lip sync '
-          f'performance of {event_selection["Song Title"]}. Ladies...\nthe time has come....'
+          f'performance of {event_selection.get("Song Title")}. Ladies...\nthe time has come....'
           f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.\nThe music starts and you need to remember the first line '
-          f'of the song, which do you lip sync?')
-    correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
+          f'of the song, which do you lip sync?\n')
+    print(event_selection.get('Initial Lyrics'))
+    correct_first_lyrics = perform_lyrics(event_selection, event_selection.get('Initial Lyrics'))
+
     print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
-    correct_second_lyrics = perform_lyrics(event_selection, event_selection['Chorus Lyrics'])
+    correct_second_lyrics = perform_lyrics(event_selection, event_selection.get('Chorus Lyrics'))
     print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
           f"Which do you lip sync?")
-    correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
+    correct_final_lyrics = perform_lyrics(event_selection, event_selection.get('Final Lyrics'))
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
@@ -171,7 +179,7 @@ def fight(player_character_dictionary, enemy_character_dictionary):
     """
     while enemy_character_dictionary['Nerve'] > 0 and player_character_dictionary['Nerve'] > 0:
         print("The queen stands strong, what will you do?")
-        player_choice = controls.get_input_from_user(controls.generate_challenge_input(['Read', 'Act Unimpressed',
+        player_choice = get_challenge_input_from_user(controls.generate_challenge_input(['Read', 'Act Unimpressed',
                                                                                         'Flee']))
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
@@ -212,23 +220,72 @@ def werk_room_events(character_dictionary):
         return character_dictionary
 
 
+def generate_challenge_input(answers: list) -> list:
+    """
+    """
+    pairs = []
+
+    for number, answers in enumerate(answers, 1):
+        pair = (str(number), answers)
+        pairs.append(pair)
+    return pairs
+
+
+def get_challenge_input_from_user(possible_answers: list):
+
+    def wrapper():
+        game_input = generate_challenge_input(possible_answers)
+    return wrapper
+
+    acceptable_answers = []
+
+    print('Choices-------------------------------------------------------------------------')
+
+    for pair in game_input:
+        acceptable_answers += pair[0]
+        print(f'{pair[0]}: {pair[1]}')
+
+    answer = input()
+
+    if answer not in acceptable_answers:
+        print('That is not an acceptable answer! Please try again:')
+        return get_challenge_input_from_user(game_input)
+
+    answer_index = acceptable_answers.index(answer)
+    answer_string = game_input[answer_index][1]
+
+    return answer_string
+
+
 def run_challenges(character):
+    """
+
+    :param character:
+    :return:
+    """
     location = character.get('location')
     coordinates = character.get('coordinates')
 
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
-        fight(character)
-    if location == 'judges_panel' and coordinates != (1, 6) and coordinates != ()
-        perform_lip_sync(character)
+        return fight(character)
+    if location == 'judges_panel' and coordinates != (1, 6) and coordinates != ():
+        return perform_lip_sync(character)
 
-    return
 
 def main():
+    character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
+                 'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
+                 'coordinates': (6, 8), 'location': 'main_stage'}
+    # perform_lip_sync(character)
+    lyric_options = ['When all else fails and you long to be Somewhere other than you are right now',
+                                   'When all else fails and you take a stand To make tomorrow a brighter day',
+                                   'When all else fails and you long to be Something better than you are today']
+    # print(generate_challenge_input(lyric_options))
+    print(get_challenge_input_from_user(lyric_options))
 
 
 if __name__ == '__main__':
     main()
-
 
 
 # def main(movement: bool, position: tuple, character_dictionary: dict) -> None:
