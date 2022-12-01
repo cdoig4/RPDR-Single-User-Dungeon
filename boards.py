@@ -160,7 +160,7 @@ def display_board(character: dict) -> None:
 
     descriptions = location_descriptions.get(board_name)
 
-    print(descriptions[0])
+    print(f'\n{descriptions[0]}')
 
     if board_indices.get(current_coordinates) == 'exit':
         print(descriptions[1])
