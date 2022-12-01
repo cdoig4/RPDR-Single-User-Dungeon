@@ -123,9 +123,9 @@ def main():
                  'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
                  'coordinates': (3, 3), 'location': 'werk_room'}
     # print(read_board('dressing_room'))
-    # print(generate_directional_tools((0, 5), index_board(board)))
+    # print(generate_directional_tools((0, 5), 'main_stage'))
     # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
-    print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
+    # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
     # move_character(character)
     # move_character(character)
 
