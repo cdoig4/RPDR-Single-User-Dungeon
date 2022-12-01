@@ -156,7 +156,7 @@ def fight(character):
         else:
             print(f"{queens[enemy_queen]['Name']} has clearly never been to the library in her life.")
     if enemy_battle_nerve <= 0:
-        print(f"{queens[enemy_queen]['Name']} slinks away, clearly feeling the shade of it all.")
+        print(f"{queens[enemy_queen]['Name']} slinks away, clearly feeling the shade of it all.\n")
         character['Talent'] += random.randint(8, 12)
         return character
     else:

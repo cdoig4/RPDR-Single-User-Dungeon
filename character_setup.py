@@ -78,6 +78,19 @@ def level_up(character):
     return character
 
 
+def check_if_dead(character):
+    """
+
+    :param character:
+    :return:
+    """
+    if character['Nerve'] <= 0:
+        print("\nYou died. Try again\n"
+              "--------------------------------------------------------------------------------")  # colin to write something better here
+        character = make_character(input("What is the name of your Drag Persona?\n"))
+        deliver_introduction(character)
+    return character
+
 def main():
     """Drive the program."""
     new_character = make_character(input('What is the name of your Drag Persona?\n'))
