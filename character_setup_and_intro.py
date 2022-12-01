@@ -63,8 +63,8 @@ def deliver_introduction(character_dictionary: dict) -> None:
           ' the side of the room. She says,')
     print(f'\n"To be invited to compete in a Lip Sync for your Legacy you must first prove\nthat you are'
           f' literate. Read enough of your fellow queens for filth and you will\nbe called to the'
-          f' main stage."\n')
-    print('\n--------------------------------------------------------------------------------\n')
+          f' main stage."')
+    print('\n--------------------------------------------------------------------------------')
 
 def main():
     """Drive the program."""
