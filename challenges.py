@@ -121,7 +121,8 @@ def fight(player_character_dictionary, enemy_character_dictionary):
     :return:
     """
     player_battle_nerve = player_character_dictionary['Nerve']
-    while enemy_character_dictionary['Nerve'] > 0 and player_battle_nerve > 0:
+    enemy_battle_nerve = enemy_character_dictionary['Nerve']
+    while enemy_battle_nerve > 0 and player_battle_nerve > 0:
         print("The queen stands strong, what will you do?")
         player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
@@ -141,7 +142,7 @@ def fight(player_character_dictionary, enemy_character_dictionary):
                 print(f"You try to get away but {enemy_character_dictionary['Name']} steps in front of you once again.")
 
         if random.randint(1, 20) > 4:
-            damage_to_player = random.randint(1, 7) + math.ceil(enemy_character_dictionary['Charisma'] / 5)
+            damage_to_player = random.randint(1, 3) + math.ceil(enemy_character_dictionary['Charisma'] / 5)
             player_battle_nerve -= damage_to_player
             print(f"{enemy_character_dictionary['Name']} says {random.choice(POTENTIAL_READS)}.\n"
                   f"Your Nerve is reduced by {damage_to_player}.")
