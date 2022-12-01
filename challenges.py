@@ -177,8 +177,7 @@ def fight(player_character_dictionary, enemy_character_dictionary):
     """
     while enemy_character_dictionary['Nerve'] > 0 and player_character_dictionary['Nerve'] > 0:
         print("The queen stands strong, what will you do?")
-        player_choice = get_challenge_input_from_user(controls.generate_challenge_input(['Read', 'Act Unimpressed',
-                                                                                        'Flee']))
+        player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
                 print(f"You read {enemy_character_dictionary['Name']} for filth, she looks shaken.")
