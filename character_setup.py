@@ -85,8 +85,10 @@ def check_if_dead(character):
     :return:
     """
     if character['Nerve'] <= 0:
-        print("\nYou died. Try again\n"
-              "--------------------------------------------------------------------------------")  # colin to write something better here
+        print(f"\nYou hear RuPaul's voice:\n\"{character['Name']}, thank you for bringing your Charisma, Uniqueness, "
+              f"Nerve, and Talent to the competition. But this is not your time.\n"
+              f"Now.... Sashay Away.\n"
+              f"--------------------------------------------------------------------------------")
         character = make_character(input("What is the name of your Drag Persona?\n"))
         deliver_introduction(character)
     return character
