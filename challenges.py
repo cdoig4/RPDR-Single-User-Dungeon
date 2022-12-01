@@ -233,11 +233,9 @@ def generate_challenge_input(answers: list) -> list:
 
 def get_challenge_input_from_user(possible_answers: list):
 
-    def wrapper():
-        game_input = generate_challenge_input(possible_answers)
-    return wrapper
-
     acceptable_answers = []
+
+    game_input = generate_challenge_input(possible_answers)
 
     print('Choices-------------------------------------------------------------------------')
 
@@ -249,7 +247,7 @@ def get_challenge_input_from_user(possible_answers: list):
 
     if answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
-        return get_challenge_input_from_user(game_input)
+        return get_challenge_input_from_user(possible_answers)
 
     answer_index = acceptable_answers.index(answer)
     answer_string = game_input[answer_index][1]
@@ -277,9 +275,9 @@ def main():
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
     # perform_lip_sync(character)
-    lyric_options = ['When all else fails and you long to be Somewhere other than you are right now',
+    lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
                                    'When all else fails and you take a stand To make tomorrow a brighter day',
-                                   'When all else fails and you long to be Something better than you are today']
+                                   'When all else fails and you long to be Something better than you are today')
     # print(generate_challenge_input(lyric_options))
     print(get_challenge_input_from_user(lyric_options))
 
