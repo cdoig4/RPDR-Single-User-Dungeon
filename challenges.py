@@ -128,7 +128,7 @@ def fight(player_character_dictionary, enemy_character_dictionary):
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
                 print(f"You read {enemy_character_dictionary['Name']} for filth, she looks shaken.")
-                enemy_character_dictionary['Nerve'] -= (random.randint(1, 8) +
+                enemy_battle_nerve -= (random.randint(1, 8) +
                                                         math.ceil(player_character_dictionary['Charisma'] / 4))
             else:
                 print(f"Your read falls flat and {enemy_character_dictionary['Name']} scoffs.")
