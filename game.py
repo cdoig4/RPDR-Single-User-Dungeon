@@ -25,7 +25,6 @@ def game():
         boards.display_board(character)
         controls.move_character(character)
         challenges.run_challenges(character)
-        character_setup.check_if_dead(character)
         if character['location'] == 'werk_room' and character['Talent'] >= 40:
             character_setup.check_for_level_up(character)
         if achieved_goal:
