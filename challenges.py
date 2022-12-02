@@ -46,8 +46,8 @@ def makeover_challenge(character):
     correct_answers = 0
 
     print(f"You hear RuPaul's voice: \"My queens! You have 10 minutes to put one of your fellow queens into the best "
-          f"quick drag you can manage. Get to it!\n{queens[fellow_queen]['Name']} approaches you, ready to have her "
-          f"face beat for the gods.\n You know that to get the best results you have to put the makeup on in the right"
+          f"quick drag you can manage. Get to it!\nYou run up to {queens[fellow_queen]['Name']}, ready to beat her "
+          f"face for the gods.\n You know that to get the best results you have to put the makeup on in the right"
           f" order.\nWhat order do you apply makeup in?")
     first_answer = get_challenge_input_from_user(first_options)
     if first_answer == ['Foundation', 'Eye shadow', 'Contouring']:
