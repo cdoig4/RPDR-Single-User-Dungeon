@@ -5,6 +5,7 @@ Create the player character and give them the introduction
 import json
 import random
 import challenges
+from game import game
 
 
 LOOK_QUEEN = {"Charisma": 14, "Uniqueness": 15, "Nerve": 10, "Talent": 10, 'met_rupaul': False,
@@ -106,7 +107,8 @@ def you_win(character, enemy_name, challenge_name):
     if challenge_name == 'fight':
         print(f"{enemy_name} slinks away, clearly feeling the shade of it all.\n")
         increase = random.randint(8, 12)
-        return f'You win! {power_up_or_down(character, [0, 0, 0, increase])}'
+        print('You win!')
+        return power_up_or_down(character, [0, 0, 0, increase])
 
 
 def check_for_level_up(character):
@@ -134,12 +136,12 @@ def check_if_dead(character):
     :return:
     """
     if character['Nerve'] <= 0:
-        print(f"\nYou hear RuPaul's voice:\n\"{character['Name']}, thank you for bringing your Charisma, Uniqueness, "
-              f"Nerve, and Talent to the\ncompetition. But this is not your time.\n"
-              f"Now.... Sashay Away.\"\n"
+        print(f"\nYou hear RuPaul's voice:\n\n\"{character['Name']},\nThank you for bringing your "
+              f"Charisma, Uniqueness, Nerve, and Talent to the\ncompetition. "
+              f"But this is not your time.\nNow.... Sashay Away.\"\n"
               f"--------------------------------------------------------------------------------")
-        character = make_character(input("What is the name of your Drag Persona?\n"))
-        deliver_introduction(character)
+        character.clear()
+        game()
     return character
 
 
