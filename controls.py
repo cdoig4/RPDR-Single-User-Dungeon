@@ -7,7 +7,7 @@ Kelly Hagg A01324804
 from boards import index_board
 
 
-def show_score(character: dict) -> None:  # use filter here
+def show_score(character: dict) -> None:
     """
 
     :param character:
@@ -117,10 +117,7 @@ def move_character(character):
     game_input = generate_directional_inputs(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
 
-    if move_to_coordinates == 'enter':
-        move_to_coordinates = current_coordinates
-        print('Not until you level up, girl.')
-    elif move_to_coordinates == 'up':
+    if move_to_coordinates == 'up':
         move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
     elif move_to_coordinates == 'down':
         move_to_coordinates = (current_coordinates[0] + 1, current_coordinates[1])
