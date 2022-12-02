@@ -135,8 +135,8 @@ def check_if_dead(character):
     """
     if character['Nerve'] <= 0:
         print(f"\nYou hear RuPaul's voice:\n\"{character['Name']}, thank you for bringing your Charisma, Uniqueness, "
-              f"Nerve, and Talent to the competition. But this is not your time.\n"
-              f"Now.... Sashay Away.\n"
+              f"Nerve, and Talent to the\ncompetition. But this is not your time.\n"
+              f"Now.... Sashay Away.\"\n"
               f"--------------------------------------------------------------------------------")
         character = make_character(input("What is the name of your Drag Persona?\n"))
         deliver_introduction(character)
