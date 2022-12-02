@@ -110,13 +110,13 @@ def judge_events(character):
     event_check = random.randint(1, 20)
     if event_check == 1:
         print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it, Party City?"')
-        character_setup.power_up_or_down(character, [-5, 0, 0, 0])
+        character_setup.power_up_or_down(character, [-5, 0, 0, 0], True)
     elif event_check == 7:
         print(f'Ross shouts:\n"Your pussy is on fire! Go get your crown, girl!"')
-        character_setup.power_up_or_down(character, [0, 4, 0, 0])
+        character_setup.power_up_or_down(character, [0, 4, 0, 0], True)
     elif event_check == 14:
         print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so fabulous!"')
-        character_setup.power_up_or_down(character, [0, 0, 6, 0])
+        character_setup.power_up_or_down(character, [0, 0, 6, 0], True)
     else:
         return character
 
@@ -232,7 +232,7 @@ def fight(character):
                 print(f"Your read falls flat and {queens[enemy_queen]['Name']} scoffs.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for your opponent to speak")
-            character_setup.power_up_or_down(character, [0, 2, 0, 0])
+            character_setup.power_up_or_down(character, [0, 2, 0, 0], True)
         elif player_choice == 'Flee':
             if random.randint(1, 100) > 33:
                 print("You successfully sashay away from the queen.")
@@ -242,7 +242,7 @@ def fight(character):
         if random.randint(1, 20) > 6:
             damage_to_player = -(random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
-            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0])
+            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], True)
             character_setup.check_if_dead(character)
         else:
             print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never been to the library "

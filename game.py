@@ -27,7 +27,7 @@ def game():
         challenges.run_challenges(character)
         if character['location'] == 'werk_room' and character['Talent'] >= 40:
             character_setup.check_for_level_up(character)
-        if challenges.run_challenges(character):
+        if character['location'] == 'main_stage' and challenges.run_challenges(character):
             character_setup.check_for_level_up(character)
         if character['met_rupaul']:
             print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
