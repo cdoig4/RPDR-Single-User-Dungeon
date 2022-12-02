@@ -90,7 +90,7 @@ def makeover_challenge(character):
           f" her throat.")
     if correct_answers > 1:
         print(f"She says: \"{queens[fellow_queen]['Name']}, {character['Name']}, conDRAGulations you are the"
-              f" winners of this mini challenge!\n\"")
+              f" winners of this mini challenge!\"\n")
     else:
         print(f"...and gives the win to another team, who you have to admit do look fucking fierce. You feel "
               f"your confidence wane slightly.")
