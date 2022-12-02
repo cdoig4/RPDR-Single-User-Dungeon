@@ -76,7 +76,7 @@ def apply_power_up(stat, value):
     return {stat[0]: stat[1] + value}
 
 
-def power_up(character, values):
+def power_up_or_down(character, values):
     """
     """
     stat_names = ['Charisma', 'Uniqueness', 'Nerve', 'Talent']
@@ -89,18 +89,22 @@ def power_up(character, values):
     filtered_pairs = list(filter(filter_no_delta, list(zip(new_pairs, values))))
     for pair in filtered_pairs:
         key = list(pair[0].keys())
-        print(f'Your {key[0]} has decreased by {pair[1]} to {pair[0].get(key[0])}!')
+        if pair[1] < 0:
+            up_or_down = 'decreased'
+        else:
+            up_or_down = 'increased'
+        print(f'Your {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
 
     return character
 
 
-def you_win(character, enemy, challenge_name):
+def you_win(character, enemy_name, challenge_name):
     """
     """
     if challenge_name == 'fight':
-        print(f"{enemy['Name']} slinks away, clearly feeling the shade of it all.\n")
+        print(f"{enemy_name} slinks away, clearly feeling the shade of it all.\n")
         increase = random.randint(8, 12)
-        return power_up(character, [0, 0, 0, increase])
+        return power_up_or_down(character, [0, 0, 0, increase])
 
 
 def check_for_level_up(character):
@@ -135,6 +139,7 @@ def check_if_dead(character):
         character = make_character(input("What is the name of your Drag Persona?\n"))
         deliver_introduction(character)
     return character
+
 
 def main():
     """Drive the program."""
