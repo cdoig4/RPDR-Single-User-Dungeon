@@ -60,7 +60,45 @@ def make_character(character_name: str) -> dict:
     return character
 
 
-def level_up(character):
+def print_stat_delta(stat_pair) -> None:
+    """
+
+    :param stat_pair:
+    :return:
+    """
+    print(f'Your {stat_pair[0]} has decreased by {stat_pair[1]}.\n')
+
+
+def apply_power_up(stat, value):
+    """
+    """
+    return {stat[0]: stat[1] + value}
+
+
+def power_up(character, values):
+    """
+    """
+    stat_names = ['Charisma', 'Uniqueness', 'Nerve', 'Talent']
+    stats = [(stat, value) for stat, value in character.items() if stat in stat_names]
+    new_pairs = list(map(apply_power_up, stats, values))
+
+    for pair in new_pairs:
+        character.update(pair)
+
+    return character
+
+
+def you_win(character, enemy, challenge_name):
+    """
+    """
+    if challenge_name == 'fight':
+        print(f"{enemy['Name']} slinks away, clearly feeling the shade of it all.\n")
+        increase = random.randint(8, 12)
+        return power_up(character, [0, 0, 0, increase])
+
+
+
+def check_for_level_up(character):
     """
 
     :param character:
@@ -95,9 +133,15 @@ def check_if_dead(character):
 
 def main():
     """Drive the program."""
-    new_character = make_character(input('What is the name of your Drag Persona?\n'))
-    deliver_introduction(new_character)
-    print(new_character)
+    # new_character = make_character(input('What is the name of your Drag Persona?\n'))
+    # deliver_introduction(new_character)
+    # print(new_character)
+    character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
+                 'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
+                 'coordinates': (6, 8), 'location': 'main_stage'}
+    you_win(character, {'Name': 'test'}, 'fight')
+    print(character)
+    # print(power_up(character, [0, 0, 0, 8]))
 
 
 if __name__ == '__main__':
