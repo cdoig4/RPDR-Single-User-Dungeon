@@ -79,7 +79,7 @@ def apply_power_up(stat, value):
     return {stat[0]: stat[1] + value}
 
 
-def power_up_or_down(character, values):
+def power_up_or_down(character, values, is_queen):
     """
     """
     stat_names = ['Charisma', 'Uniqueness', 'Nerve', 'Talent']
@@ -92,11 +92,17 @@ def power_up_or_down(character, values):
     filtered_pairs = list(filter(filter_no_delta, list(zip(new_pairs, values))))
     for pair in filtered_pairs:
         key = list(pair[0].keys())
+
         if pair[1] < 0:
             up_or_down = 'decreased'
         else:
             up_or_down = 'increased'
-        print(f'Your {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
+
+        if is_queen:
+            name = character['Name']
+            print(f'{name} {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
+        else:
+            print(f'Your {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
 
     return character
 
