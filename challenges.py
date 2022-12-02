@@ -25,13 +25,13 @@ def judge_events(character):  #could print to user that their stats have changed
     event_check = random.randint(1, 20)
     if event_check == 1:
         print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it, Party City?"')
-        character['Charisma'] -= 5
+        character_setup.power_up_or_down(character, [-5, 0, 0, 0])
     elif event_check == 7:
         print(f'Ross shouts:\n"Your pussy is on fire! Go get your crown, girl!"')
-        character['Uniqueness'] += 4
+        character_setup.power_up_or_down(character, [0, 4, 0, 0])
     elif event_check == 14:
         print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so fabulous!"')
-        character['Nerve'] += 6
+        character_setup.power_up_or_down(character, [0, 0, 6, 0])
     else:
         return character
 
@@ -152,6 +152,7 @@ def fight(character):
             damage_to_player = -(random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0])
+            character_setup.check_if_dead(character)
         else:
             print(f"{queens[enemy_queen]['Name']} has clearly never been to the library in her life.")
 
