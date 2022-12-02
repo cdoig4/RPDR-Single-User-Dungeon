@@ -91,7 +91,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     answer = input()
 
     if answer == 'Q' and character['location'] == 'werk_room':
-        return challenges.fight(character)
+        return challenges.makeover_challenge(character)
     if answer == 'Q' and character['location'] == 'dressing_room':
         return challenges.final_battle(character)
     if answer == '0':
@@ -130,6 +130,8 @@ def move_character(character):
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] - 1)
     elif move_to_coordinates == 'right':
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] + 1)
+    else:
+        move_to_coordinates = current_coordinates
 
     return character.update({'coordinates': move_to_coordinates})
 
