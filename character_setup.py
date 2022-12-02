@@ -106,7 +106,7 @@ def you_win(character, enemy_name, challenge_name):
     if challenge_name == 'fight':
         print(f"{enemy_name} slinks away, clearly feeling the shade of it all.\n")
         increase = random.randint(8, 12)
-        return power_up_or_down(character, [0, 0, 0, increase])
+        return f'You win! {power_up_or_down(character, [0, 0, 0, increase])}'
 
 
 def check_for_level_up(character):
