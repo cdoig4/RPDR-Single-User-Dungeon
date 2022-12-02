@@ -87,7 +87,6 @@ def power_up(character, values):
         character.update(pair)
 
     filtered_pairs = list(filter(filter_no_delta, list(zip(new_pairs, values))))
-    print(filtered_pairs)
     for pair in filtered_pairs:
         key = list(pair[0].keys())
         print(f'Your {key[0]} has decreased by {pair[1]} to {pair[0].get(key[0])}!')
