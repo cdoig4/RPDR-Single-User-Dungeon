@@ -7,7 +7,7 @@ Kelly Hagg A01324804
 from boards import index_board
 
 
-def show_score(character: dict) -> None:
+def show_score(character: dict) -> None:  # use filter here
     """
 
     :param character:
