@@ -27,7 +27,7 @@ def game():
         challenges.run_challenges(character)
         character_setup.check_if_dead(character)
         if character['location'] == 'werk_room' and character['Talent'] >= 40:
-            character_setup.level_up(character)
+            character_setup.check_for_level_up(character)
         if achieved_goal:
             print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
                   f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
