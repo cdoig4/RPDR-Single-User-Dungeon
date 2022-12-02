@@ -4,6 +4,7 @@ Kelly Hagg A01324804
 """
 
 
+import challenges
 from boards import index_board
 
 
@@ -88,7 +89,11 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
         print(f'{pair[0]}: {pair[1]}')
 
     answer = input()
-    
+
+    if answer == 'Q' and character['location'] == 'werk_room':
+        return challenges.fight(character)
+    if answer == 'Q' and character['location'] == 'dressing_room':
+        return challenges.final_battle(character)
     if answer == '0':
         show_score(character)
         return get_directional_input_from_user(game_input, character)
