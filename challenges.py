@@ -202,7 +202,7 @@ def final_lip_sync(character):
         return character.update({'met_rupaul': True})
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
         return character.update({'met_rupaul': True})
-    return character.update({'Nerve': 0})  # why is this here? This will kill them lol
+    return character.update({'Nerve': 0})
 
 
 def final_battle(character_dictionary):
