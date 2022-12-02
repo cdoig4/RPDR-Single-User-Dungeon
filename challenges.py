@@ -164,13 +164,14 @@ def fight(character):
             else:
                 print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of you once again.")
 
-        if random.randint(1, 20) > 4:
+        if random.randint(1, 20) > 6:
             damage_to_player = -(random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0])
             character_setup.check_if_dead(character)
         else:
-            print(f"{queens[enemy_queen]['Name']} has clearly never been to the library in her life.")
+            print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never been to the library "
+                  f"in her life.")
 
     if enemy_battle_nerve <= 0:
         return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
@@ -288,6 +289,8 @@ def run_challenges(character):
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
         if random.randint(1, 10) <= 3:
             return fight(character)
+    if location == 'main_stage' and coordinates == (6, 8) #placeholder:
+        return perform_lip_sync()
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
         return runway_event(perform_lip_sync, character)
 
