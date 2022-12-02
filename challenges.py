@@ -142,7 +142,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync() -> bool:
+def perform_lip_sync(character) -> bool:
     """
     Perform full lip sync event for user.
 
@@ -178,26 +178,27 @@ def perform_lip_sync() -> bool:
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
         print(f"You are ushered towards the Judge's Panel.")
         return True
-    return False
-
-
-def runway_event(perform_lip_sync, character):  # can be removed
-    """
-
-    :param perform_lip_sync:
-    :param character:
-    :return:
-    """
-    if perform_lip_sync(character):
-        character_setup.check_for_level_up(character)
     else:
         character['Nerve'] -= random.randint(5, 10)
         print(f"RuPaul's voice echoes: 'I'm sorry, {character['Name']}, but you are safe. But I'm"
               f"willing to give you another try. Practice up and assume the position when you're ready to "
-              f"try again.'\n"
-              f"You hear your inner saboteur cackling.\nYou have {character['Nerve']} Nerve "
+              f"try again.'\nYou hear your inner saboteur cackling.\nYou have {character['Nerve']} Nerve "
               f"remaining.")
-        return character
+    return character
+
+
+# def runway_event(perform_lip_sync, character):  # can be removed
+#     """
+#
+#     :param perform_lip_sync:
+#     :param character:
+#     :return:
+#     """
+#     if perform_lip_sync(character):
+#         character_setup.check_for_level_up(character)
+#     else:
+#
+#         return character
 
 
 def fight(character):
@@ -367,9 +368,9 @@ def run_challenges(character):
         if random.randint(1, 10) <= 3:
             return fight(character)
     if location == 'main_stage' and coordinates == (6, 8):
-        return perform_lip_sync()
+        return perform_lip_sync(character)
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
-        return runway_event(perform_lip_sync, character)
+        return judge_events(character)
 
 
 def main():
