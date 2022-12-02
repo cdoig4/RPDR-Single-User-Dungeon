@@ -174,6 +174,7 @@ def fight(character):
                   f"in her life.")
 
     if enemy_battle_nerve <= 0:
+        character.update({'Nerve': 10})
         return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
     else:
         character['Nerve'] = 0
@@ -289,7 +290,7 @@ def run_challenges(character):
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
         if random.randint(1, 10) <= 3:
             return fight(character)
-    if location == 'main_stage' and coordinates == (6, 8) #placeholder:
+    if location == 'main_stage' and coordinates == (6, 8):
         return perform_lip_sync()
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
         return runway_event(perform_lip_sync, character)
