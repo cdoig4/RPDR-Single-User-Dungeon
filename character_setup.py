@@ -73,6 +73,8 @@ def filter_no_delta(structure):
 def apply_power_up(stat, value):
     """
     """
+    if stat[1] + value < 0:
+        return {stat[0]: 0}
     return {stat[0]: stat[1] + value}
 
 
