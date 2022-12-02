@@ -11,7 +11,7 @@ POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND d
                    'The last time you got fucked was by genetics')
 
 
-def judge_events(character):  #could print to user that their stats have changed & call the show score function in controls
+def judge_events(character):
     """
     Provide possible random events for each character movement.
 
