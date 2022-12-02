@@ -173,7 +173,7 @@ def fight(character):
             print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never been to the library "
                   f"in her life.")
 
-    if enemy_battle_nerve <= 0:
+    if enemy_battle_nerve <= 0 and character['level'] != 2:
         character.update({'Nerve': 10})
         return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
     else:
@@ -287,7 +287,7 @@ def run_challenges(character):
     location = character['location']
     coordinates = character['coordinates']
 
-    if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
+    if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4) and character['level'] != 2:
         if random.randint(1, 10) <= 3:
             return fight(character)
     if location == 'main_stage' and coordinates == (6, 8):
