@@ -136,7 +136,10 @@ def format_board(board: str, character: dict) -> str:
     """
     location = character['location']
 
-    if location == 'dressing_room':
+    if location == 'werk_room':
+        return board[:231] + 'Q' + board[232:299] + 'Q' + board[300:407] + 'Q' + \
+               board[408:475] + 'Q' + board[476:]
+    elif location == 'dressing_room':
         return board[:118] + 'R' + board[119:]
     elif location == 'main_stage':
         return board[:544] + 'Q' + board[545:568] + 'X' + board[569:]
@@ -177,11 +180,10 @@ def main():
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
-                 'coordinates': (0, 5), 'location': 'main_stage'}
+                 'coordinates': (0, 4), 'location': 'werk_room'}
     board = read_board('dressing_room')
 
     # print(board[:118] + 'R' + board[119:])
-    print(index_board('main_stage'))
     # print(clear_board(board))
     display_board(character)
 
