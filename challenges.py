@@ -143,7 +143,6 @@ def fight(character):
 
     queen_names = list(queens.keys())
     queen_names.remove('queen_bitch_rupaul')
-    print(queen_names)
     enemy_queen = random.choice(queen_names)
 
     print(f"{queens[enemy_queen]['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
