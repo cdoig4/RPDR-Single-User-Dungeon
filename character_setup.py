@@ -60,13 +60,14 @@ def make_character(character_name: str) -> dict:
     return character
 
 
-def print_stat_delta(stat_pair) -> None:
+def filter_no_delta(structure):
     """
 
-    :param stat_pair:
+    :param structure:
     :return:
     """
-    print(f'Your {stat_pair[0]} has decreased by {stat_pair[1]}.\n')
+    if structure[1] != 0:
+        return structure[0]
 
 
 def apply_power_up(stat, value):
@@ -85,6 +86,12 @@ def power_up(character, values):
     for pair in new_pairs:
         character.update(pair)
 
+    filtered_pairs = list(filter(filter_no_delta, list(zip(new_pairs, values))))
+    print(filtered_pairs)
+    for pair in filtered_pairs:
+        key = list(pair[0].keys())
+        print(f'Your {key[0]} has decreased by {pair[1]} to {pair[0].get(key[0])}!')
+
     return character
 
 
@@ -95,7 +102,6 @@ def you_win(character, enemy, challenge_name):
         print(f"{enemy['Name']} slinks away, clearly feeling the shade of it all.\n")
         increase = random.randint(8, 12)
         return power_up(character, [0, 0, 0, increase])
-
 
 
 def check_for_level_up(character):
