@@ -33,6 +33,21 @@ lips_question = ['Lipstick', 'Lip Gloss', 'Lip Liner']
 outfit_question = ['Gown', 'Shoes', 'Wig']
 
 
+def generate_random_makeover_answers(correct_answer):
+    """
+
+    :param correct_answer:
+    :return:
+    """
+    all_permutations = list(itertools.permutations(correct_answer))
+    all_permutations.remove(tuple(correct_answer))
+    random.shuffle(all_permutations)
+    sliced = all_permutations[:3]
+    sliced.append(tuple(correct_answer))
+    random.shuffle(sliced)
+    return sliced
+
+
 def makeover_challenge(character):
     """
     :param character:
