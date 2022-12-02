@@ -170,7 +170,8 @@ def fight(character):
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0])
             character_setup.check_if_dead(character)
         else:
-            print(f"{queens[enemy_queen]['Name']} has clearly never been to the library in her life.")
+            print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never been to the library "
+                  f"in her life.")
 
     if enemy_battle_nerve <= 0:
         return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
