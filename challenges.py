@@ -28,10 +28,6 @@ RUPAUL_LIP_SYNC = {'Correct Answer': ["Who you waiting for? Another savior",
 POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND dairy.', 'Beauty fades, dumb is forever',
                    'The last time you got fucked was by genetics')
 
-makeup_question = ['Contouring', 'Foundation', 'Eye shadow']
-lips_question = ['Lipstick', 'Lip Gloss', 'Lip Liner']
-outfit_question = ['Gown', 'Shoes', 'Wig']
-
 
 def generate_random_makeover_answers(correct_answer):
     """
@@ -52,29 +48,30 @@ def makeover_challenge(character):
     """
     :param character:
     """
+    makeup_question = ('Foundation', 'Eye shadow', 'Contouring')
+    lips_question = ('Lip Liner', 'Lipstick', 'Lip Gloss')
+    outfit_question = ('Gown', 'Shoes', 'Wig')
+
     filename = './json_files/queens.json'
     with open(filename) as file_object:
         queens = json.load(file_object)
     queen_names = list(queens.keys())
     fellow_queen = random.choice(queen_names)
-    first_options = list(itertools.permutations(makeup_question))
-    second_options = list(itertools.permutations(lips_question))
-    final_options = list(itertools.permutations(outfit_question))
     correct_answers = 0
 
     print(f"You hear RuPaul's voice: \"My queens! You have 10 minutes to put one of your fellow queens into the best "
           f"quick drag you can manage. Get to it!\nYou run up to {queens[fellow_queen]['Name']}, ready to beat her "
           f"face for the gods.\n You know that to get the best results you have to put the makeup on in the right"
           f" order.\nWhat order do you apply makeup in?")
-    first_answer = get_challenge_input_from_user(first_options)
-    if first_answer == ['Foundation', 'Eye shadow', 'Contouring']:
+    first_answer = get_challenge_input_from_user(generate_random_makeover_answers(makeup_question))
+    if first_answer == makeup_question:
         correct_answers += 1
         print(f"You take a step back to admire your work. {queens[fellow_queen]['Name']} is looking fierce!")
     else:
         print(f"You take a step back to examine {queens[fellow_queen]['Name']}'s face. It's looking a little busted.")
     print(f"Next you have to do the lips. What order do you apply makeup in?")
-    second_answer = get_challenge_input_from_user(second_options)
-    if second_answer == ['Lip Liner', 'Lipstick', 'Lip Gloss']:
+    second_answer = get_challenge_input_from_user(generate_random_makeover_answers(lips_question))
+    if second_answer == lips_question:
         correct_answers += 1
         print(f"{queens[fellow_queen]['Name']}'s lips are looking luscious and divine! Way to go!")
     else:
@@ -82,8 +79,8 @@ def makeover_challenge(character):
               f" fix them right now.")
     print(f"You hear a call for one minute left and you rush to get {queens[fellow_queen]['Name']} into an outfit!\n"
           f"What order do you dress her in?")
-    final_answer = get_challenge_input_from_user(final_options)
-    if final_answer == ['Gown', 'Shoes', 'Wig']:
+    final_answer = get_challenge_input_from_user(generate_random_makeover_answers(outfit_question))
+    if final_answer == outfit_question:
         correct_answers += 1
         print(f"You finish dressing {queens[fellow_queen]['Name']} and the outfit looks stunning on her!")
     else:
