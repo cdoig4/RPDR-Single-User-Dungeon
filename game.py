@@ -29,7 +29,9 @@ def game():
             character_setup.check_for_level_up(character)
             print(f"RuPaul's voice echoes through the room. \"{character['Name']}, "
                   f"please make your way to the Main Stage. You have been chosen to take part in a Lip Sync "
-                  f"for Your Legacy!\"\nYou hear the door at the South side of the room open.")
+                  f"for Your Legacy!\"\nYou quickly make your way to the stage, the potential lip sync songs spinning"
+                  f" through your head")
+            character['location'] = 'main_stage'
         if character['location'] == 'main_stage' and challenges.run_challenges(character):
             character_setup.check_for_level_up(character)
         if character['met_rupaul']:
