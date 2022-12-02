@@ -93,7 +93,7 @@ def perform_lip_sync() -> bool:
     return False
 
 
-def runway_event(perform_lip_sync, character):
+def runway_event(perform_lip_sync, character):  # can be removed
     """
 
     :param perform_lip_sync:
@@ -101,7 +101,7 @@ def runway_event(perform_lip_sync, character):
     :return:
     """
     if perform_lip_sync(character):
-        character_setup.level_up(character)
+        character_setup.check_for_level_up(character)
     else:
         character['Nerve'] -= random.randint(5, 10)
         print(f"RuPaul's voice echoes: 'I'm sorry, {character['Name']}, but you are safe. But I'm"
@@ -141,24 +141,22 @@ def fight(character):
                 print(f"Your read falls flat and {queens[enemy_queen]['Name']} scoffs.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for your opponent to speak")
-            character['Uniqueness'] += 2
-        else:
+            character_setup.power_up_or_down(character, [0, 2, 0, 0])
+        elif player_choice == 'Flee':
             if random.randint(1, 100) > 33:
                 print("You successfully sashay away from the queen.")
             else:
                 print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of you once again.")
 
         if random.randint(1, 20) > 4:
-            damage_to_player = random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5)
-            player_battle_nerve -= damage_to_player
-            print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.\n"
-                  f"Your Nerve is reduced by {damage_to_player}.")
+            damage_to_player = -(random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5))
+            print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
+            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0])
         else:
             print(f"{queens[enemy_queen]['Name']} has clearly never been to the library in her life.")
+
     if enemy_battle_nerve <= 0:
-        print(f"{queens[enemy_queen]['Name']} slinks away, clearly feeling the shade of it all.\n")
-        character['Talent'] += random.randint(8, 12)
-        return character
+        return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
     else:
         character['Nerve'] = 0
         return character
