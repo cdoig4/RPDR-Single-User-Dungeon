@@ -82,5 +82,5 @@ def final_battle(character_dictionary):
         else:
             print(f"{queen_bitch_rupaul['Name']} throws out a read that goes over your head.")
 
-    if character_dictionary['Nerve'] != 0:
+    if character_dictionary['Nerve'] > 0:
         final_lip_sync(character_dictionary)
