@@ -5,6 +5,8 @@ import json
 import math
 import random
 import character_setup
+import itertools
+
 
 RUPAUL_READS = ("I never thought I'd meet a queen whose heels weigh more than her brain",
                 "I've always wondered what the female Gremlin would look like in 25 years. Now I know.",
