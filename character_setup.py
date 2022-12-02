@@ -124,9 +124,9 @@ def check_for_level_up(character):
     :return:
     """
     character['level'] += 1
-    character['Charisma'] += random.randint(20, 30)
-    character['Uniqueness'] += random.randint(20, 30)
-    character['Nerve'] += random.randint(20, 30)
+    character['Charisma'] += random.randint(30, 40)
+    character['Uniqueness'] += random.randint(30, 40)
+    character['Nerve'] += random.randint(30, 40)
     print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
           f"You feel your inner saboteur melting away.\nYou are now level {character['level']}\n"
           f"Your Charisma increases to {character['Charisma']}!\nYour Uniqueness increases to"
