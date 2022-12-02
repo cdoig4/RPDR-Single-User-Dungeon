@@ -27,13 +27,14 @@ def game():
         challenges.run_challenges(character)
         if character['location'] == 'werk_room' and character['Talent'] >= 40:
             character_setup.check_for_level_up(character)
-        if achieved_goal:
+        if character['met_rupaul']:
             print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
                   f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
                   f"fall from the ceiling.\n\"You are now the Queen of the Mother Tucking "
                   f"UNIVERSE!\" Mother continues as she places a massive bejeweled crown upon your"
                   f" head and a matching scepter in your hand.\nYou sob with happiness as you"
                   f"know that this... is the beginning of the rest of your life.\nEND.")
+            achieved_goal = True
 
 
 """to test lvl 2"""
