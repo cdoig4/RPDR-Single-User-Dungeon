@@ -164,7 +164,7 @@ def fight(character):
             else:
                 print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of you once again.")
 
-        if random.randint(1, 20) > 4:
+        if random.randint(1, 20) > 6:
             damage_to_player = -(random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0])
