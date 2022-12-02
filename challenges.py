@@ -101,10 +101,13 @@ def perform_lip_sync() -> bool:
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
+        print(f"You are ushered towards the Judge's Panel.")
         return True
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
+        print(f"You are ushered towards the Judge's Panel.")
         return True
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
+        print(f"You are ushered towards the Judge's Panel.")
         return True
     return False
 

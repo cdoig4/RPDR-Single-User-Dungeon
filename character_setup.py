@@ -124,8 +124,7 @@ def check_for_level_up(character):
     print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
           f"You feel your inner saboteur melting away.\nYou are now level {character['level']}\n"
           f"Your Charisma increases to {character['Charisma']}!\nYour Uniqueness increases to"
-          f" {character['Uniqueness']}!\nYour Nerve increases to {character['Nerve']}"
-          f"\nYou are ushered towards the Judge's Panel.")
+          f" {character['Uniqueness']}!\nYour Nerve increases to {character['Nerve']}")
     return character
 
 
