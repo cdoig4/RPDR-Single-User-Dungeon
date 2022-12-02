@@ -171,13 +171,16 @@ def perform_lip_sync(character) -> bool:
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         print(f"You are ushered towards the Judge's Panel.")
-        return True
+        character["completed_lip_sync"] = True
+        return character.update({'location': 'judges_panel'})
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
+        character["completed_lip_sync"] = True
         print(f"You are ushered towards the Judge's Panel.")
-        return True
+        return character.update({'location': 'judges_panel'})
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
+        character["completed_lip_sync"] = True
         print(f"You are ushered towards the Judge's Panel.")
-        return True
+        return character.update({'location': 'judges_panel'})
     else:
         character['Nerve'] -= random.randint(5, 10)
         character['coordinates'] = (6, 7)

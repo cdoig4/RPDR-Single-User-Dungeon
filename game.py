@@ -32,7 +32,7 @@ def game():
                   f"for Your Legacy!\"\nYou quickly make your way to the stage, the potential lip sync songs spinning"
                   f" through your head")
             character['location'] = 'main_stage'
-        if character['location'] == 'main_stage' and challenges.run_challenges(character):
+        if character['location'] == 'judges_panel' and character["completed_lip_sync"]:
             character_setup.check_for_level_up(character)
         if character['met_rupaul']:
             print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
