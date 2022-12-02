@@ -122,6 +122,9 @@ def move_character(character):
     game_input = generate_directional_inputs(current_coordinates, board_name)
     move_to_coordinates = get_directional_input_from_user(game_input, character)
 
+    if move_to_coordinates == 'enter':
+        print('Not until you level up girl.')
+        move_to_coordinates = current_coordinates
     if move_to_coordinates == 'up':
         move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
     elif move_to_coordinates == 'down':
