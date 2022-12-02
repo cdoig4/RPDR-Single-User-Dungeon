@@ -288,6 +288,8 @@ def run_challenges(character):
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4):
         if random.randint(1, 10) <= 3:
             return fight(character)
+    if location == 'main_stage' and coordinates == (0, 0) #placeholder:
+        return perform_lip_sync()
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
         return runway_event(perform_lip_sync, character)
 
