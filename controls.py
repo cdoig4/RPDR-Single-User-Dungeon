@@ -89,15 +89,8 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
 
     answer = input()
 
-    if answer == 'Q' and character['location'] == 'werk_room':
-        return challenges.makeover_challenge(character)
-    if answer == 'Q' and character['location'] == 'dressing_room':
-        return challenges.final_battle(character)
     if answer == '0':
         show_score(character)
-        return get_directional_input_from_user(game_input, character)
-    if answer == 'X' and character['location'] != 'judges_panel':
-        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_directional_input_from_user(game_input, character)
     if answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
@@ -122,8 +115,14 @@ def move_character(character):
     move_to_coordinates = get_directional_input_from_user(game_input, character)
 
     if move_to_coordinates == 'enter':
+        if character['location'] == 'judges_panel':
+            character['met_rupaul'] = True
+            return boards.set_board(character)
         print('Not until you level up girl.')
         move_to_coordinates = current_coordinates
+    elif move_to_coordinates == 'exit' and character['location']:
+        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
+        return get_directional_input_from_user(game_input, character)
     elif move_to_coordinates == 'up':
         move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
     elif move_to_coordinates == 'down':
@@ -132,9 +131,10 @@ def move_character(character):
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] - 1)
     elif move_to_coordinates == 'right':
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] + 1)
-    elif move_to_coordinates == 'exit':
-        character['met_rupaul'] = True
-        boards.set_board(character)
+    elif move_to_coordinates == 'challenge her' and character['location'] == 'werk_room':
+        return challenges.makeover_challenge(character)
+    elif move_to_coordinates == 'challenge her' and character['location'] == 'dressing_room':
+        return challenges.final_battle(character)
     else:
         move_to_coordinates = current_coordinates
 
