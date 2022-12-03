@@ -105,6 +105,8 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     if answer == '0':
         show_score(character)
         return get_directional_input_from_user(game_input, character)
+    if answer == 'quit':
+        raise SystemExit("You quit the game.")
     if answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
         return get_directional_input_from_user(game_input, character)
