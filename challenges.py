@@ -223,16 +223,16 @@ def fight(character):
     print(f"{queens[enemy_queen]['Name']} approaches you, placing the dreaded Reading Glasses on "
           f"her face as the library opens.")
 
-    player_battle_nerve = character['Nerve']
-    enemy_battle_nerve = queens[enemy_queen]['Nerve']
-    while enemy_battle_nerve > 0 and player_battle_nerve > 0:
+    starting_nerve = character['Nerve']
+    while queens[enemy_queen]['Nerve'] > 0:
         print("The queen stands strong, what will you do?")
         player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
                 print(f"You read {queens[enemy_queen]['Name']} for filth, she looks shaken.")
-                enemy_battle_nerve -= (random.randint(1, 8) +
-                                       math.ceil(character['Charisma'] / 4))
+                damage = -(random.randint(1, 8) + math.ceil(character['Charisma'] / 4))
+                character_setup.power_up_or_down(queens[enemy_queen],
+                                                 [random.choice([-1, 0]), damage], True)
             else:
                 print(f"Your read falls flat and {queens[enemy_queen]['Name']} scoffs.")
         elif player_choice == 'Act Unimpressed':
@@ -245,18 +245,19 @@ def fight(character):
                 print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of "
                       f"you once again.")
 
-        if random.randint(1, 20) > 6:
-            damage_to_player = -(random.randint(1, 3)
-                                 + math.ceil(queens[enemy_queen]['Charisma'] / 5))
-            print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
-            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
-            character_setup.check_if_dead(character)
-        else:
-            print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never "
-                  f"been to the library in her life.")
+        if queens[enemy_queen]['Nerve'] > 0:
+            if random.randint(1, 20) > 6:
+                damage_to_player = -(random.randint(1, 3)
+                                     + math.ceil(queens[enemy_queen]['Charisma'] / 5))
+                print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
+                character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
+                character_setup.check_if_dead(character)
+            else:
+                print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never "
+                      f"been to the library in her life.")
 
-    if enemy_battle_nerve <= 0 and character['level'] != 2:
-        character.update({'Nerve': 10})
+    if character['level'] != 2:
+        character['Nerve'] = starting_nerve
         return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
     else:
         return character.update({'Nerve': 0})
