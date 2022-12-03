@@ -26,8 +26,7 @@ def generate_random_makeover_answers(correct_answer):
     :param correct_answer: a list representing the correct answer to the makeover question
     :precondition: correct_answer must be a list
     :postcondition: generate a tuple of lists representing possible answers to makeover question
-    :return: a tuple containing four lists of three elements each, one of which is the
-    correct answer
+    :return: a list containing four tuples of three elements each, one of which is the correct answer
     """
     all_permutations = list(itertools.permutations(correct_answer))
     all_permutations.remove(tuple(correct_answer))
