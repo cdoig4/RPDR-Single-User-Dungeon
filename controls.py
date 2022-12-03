@@ -2,8 +2,7 @@
 Colin Doig A01334230
 Kelly Hagg A01324804
 """
-
-
+import boards
 import challenges
 from boards import index_board
 
@@ -97,7 +96,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     if answer == '0':
         show_score(character)
         return get_directional_input_from_user(game_input, character)
-    if answer == 'X':
+    if answer == 'X' and character['location'] != 'judges_panel':
         print('Where the hell do you think you\'re going girl? Get your ass back in here!')
         return get_directional_input_from_user(game_input, character)
     if answer not in acceptable_answers:
@@ -125,7 +124,7 @@ def move_character(character):
     if move_to_coordinates == 'enter':
         print('Not until you level up girl.')
         move_to_coordinates = current_coordinates
-    if move_to_coordinates == 'up':
+    elif move_to_coordinates == 'up':
         move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
     elif move_to_coordinates == 'down':
         move_to_coordinates = (current_coordinates[0] + 1, current_coordinates[1])
@@ -133,6 +132,9 @@ def move_character(character):
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] - 1)
     elif move_to_coordinates == 'right':
         move_to_coordinates = (current_coordinates[0], current_coordinates[1] + 1)
+    elif move_to_coordinates == 'exit':
+        character['met_rupaul'] = True
+        boards.set_board(character)
     else:
         move_to_coordinates = current_coordinates
 
