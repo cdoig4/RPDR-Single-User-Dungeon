@@ -1,4 +1,6 @@
 """
+Colin Doig A01334230
+Kelly Hagg A01324804
 Create the player character and give them the introduction
 """
 
@@ -106,7 +108,6 @@ def apply_power_up(stat, value):
         return {stat[0]: stat[1] + value}
     except IndexError:
         print("Stat must have two elements!")
-
 
 
 def power_up_or_down(character, values, is_queen):
