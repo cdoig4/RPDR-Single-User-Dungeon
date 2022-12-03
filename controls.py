@@ -9,9 +9,13 @@ from boards import index_board
 
 def show_score(character: dict) -> None:
     """
+    Display current character stats for player
 
-    :param character:
-    :return:
+    :param character: must be dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
+    'Nerve', and 'Talent' whose values must all be positive integers
+    :precondition: character must be a dictionary
+    :postcondition: creates a string with the current stats of the player character inside
+    :return: print statement displaying current stats of the player character
     """
     charisma = character['Charisma']
     uniqueness = character['Uniqueness']
