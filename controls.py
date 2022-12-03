@@ -9,9 +9,13 @@ from boards import index_board
 
 def show_score(character: dict) -> None:
     """
+    Display current character stats for player
 
-    :param character:
-    :return:
+    :param character: must be dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
+    'Nerve', and 'Talent' whose values must all be positive integers
+    :precondition: character must be a dictionary
+    :postcondition: creates a string with the current stats of the player character inside
+    :return: print statement displaying current stats of the player character
     """
     charisma = character['Charisma']
     uniqueness = character['Uniqueness']
@@ -23,10 +27,14 @@ def show_score(character: dict) -> None:
 
 def generate_directional_inputs(current_coordinates, board_name):
     """
+    Generate possible directional inputs for player.
 
-    :param current_coordinates:
-    :param board_name:
-    :return:
+    :param current_coordinates: must be a tuple containing two positive integers representing the current coordinates
+    of the player character on the game board
+    :param board_name: must be a string representing the name of the current board
+    :precondition: current_coordinates must be a tuple and board_name must be a string
+    :postcondition: generates possible inputs for the player based on their current coordinates on the board
+    :return: a list of strings representing the possible inputs for the player
     """
     board_coordinates = index_board(board_name)
 
