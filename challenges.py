@@ -10,8 +10,8 @@ import itertools
 
 RUPAUL_READS = ("I never thought I'd meet a queen whose heels weigh more than her brain",
                 "I've always wondered what the female Gremlin would look like in 25 years. Now I know.",
-                f"Those other queens have been saying you have terrible makeup skills, no fashion sense, and you're"
-                f"dumb as a rock. But they're wrong...\n you don't have terrible makeup skills.")
+                f"those other queens have been saying you have terrible makeup skills,\nno fashion sense, and you're "
+                f"dumb as a rock. But they're wrong...\nYou don't have terrible makeup skills.")
 RUPAUL_LIP_SYNC = {'Correct Answer': ["Who you waiting for? Another savior",
                                       "Who do you think you are? I'm telling the truth now",
                                       "I'll say it again It's never been the clothes that make the man"],
@@ -272,7 +272,7 @@ def final_lip_sync(character):
         event_selection = json.load(file_object)
 
     print(f"RuPaul shouts \"The library is officially closed! Now {character['Name']}\""
-          f"...\nThe time has come...\nFor you to Lip Sync....\nFor. The. CROWN.\"\nThe lights"
+          f"...\n\nThe time has come...\nFor you to Lip Sync....\nFor. \nThe. \nCROWN.\"\n\nThe lights"
           f" dim and the familiar beat of a RuPaul song begins.\n"
           f"Which do you lip sync?")
     correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
