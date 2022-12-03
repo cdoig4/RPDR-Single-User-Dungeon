@@ -176,11 +176,11 @@ def you_win(character, enemy_name, challenge_name):
         boards.set_board(character)
         return print(f"\nYou are ushered towards the Judge's Panel.")
     if challenge_name == 'rupaul':
-        print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
+        print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}, "
               f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
-              f"fall from the ceiling.\n\"You are now the Queen of the Mother Tucking "
-              f"UNIVERSE!\" Mother continues as she places a massive bejeweled crown upon your"
-              f" head and a matching scepter in your hand.\nYou sob with happiness as you"
+              f"fall from the ceiling.\n\nRuPaul says,\"You are now the Queen of the Mother Tucking"
+              f" UNIVERSE!\"\n\nMother continues as she places a massive bejeweled crown upon your"
+              f" head and a\nmatching scepter in your hand.\nYou sob with happiness.\nYou"
               f"know that this... is the beginning of the rest of your life.\n")
         game.achieved_goal = True
 

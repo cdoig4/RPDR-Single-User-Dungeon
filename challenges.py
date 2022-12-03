@@ -9,7 +9,8 @@ import itertools
 
 
 RUPAUL_READS = ("I never thought I'd meet a queen whose heels weigh more than her brain",
-                "I've always wondered what the female Gremlin would look like in 25 years. Now I know.",
+                "I've always wondered what the female Gremlin would look like in 25 years."
+                "\nNow I know.",
                 f"those other queens have been saying you have terrible makeup skills,\nno fashion sense, and you're "
                 f"dumb as a rock. But they're wrong...\nYou don't have terrible makeup skills.")
 RUPAUL_LIP_SYNC = {'Correct Answer': ["Who you waiting for? Another savior",
@@ -295,8 +296,8 @@ def final_lip_sync(character):
     print(f"It's the final stretch.\nYou've pulled out all your tricks and you know you have to "
           f"end strong.\nWhich do you lip sync?")
     correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
-    print(f"The song ends. You stand in your pose, breathing heavily as RuPaul watches you. "
-          f"Her face a mask.")
+    print(f"\nThe song ends. You stand in your pose, breathing heavily as RuPaul watches you.\n"
+          f"Her face a mask.\n")
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         return character_setup.you_win(character, 'rupaul', 'rupaul')
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
@@ -321,21 +322,23 @@ def final_battle(character):
         player_choice = get_challenge_input_from_user(['Read', 'Act Unimpressed', 'Flee'])
         if player_choice == 'Read':
             if random.randint(1, 20) > 2:
-                print(f"You read {queen_bitch_rupaul['Name']} for the gods... her eye twitches slightly.")
-                queen_bitch_rupaul['Nerve'] -= (random.randint(1, 8) + math.ceil(character['Charisma'] / 4))
+                print(f"You read {queen_bitch_rupaul['Name']} for the gods... "
+                      f"her eye twitches slightly.")
+                rupaul_damage = -(random.randint(1, 8) + math.ceil(character['Charisma'] / 4))
+                character_setup.power_up_or_down(queen_bitch_rupaul, [0, rupaul_damage], True)
             else:
                 print(f"Your read falls flat and {queen_bitch_rupaul['Name']} chuckles.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for RuPaul to read you for filth.")
-            character['Uniqueness'] += 2
+            character_setup.power_up_or_down(character, [0, 6, 0, 0])
         else:
-            print(f'{queen_bitch_rupaul["Name"]} says: "That\'s cute. You are staying right here till we\'re done"')
+            print(f'{queen_bitch_rupaul["Name"]} says: "That\'s cute. '
+                  f'You are staying right here till we\'re done"')
 
         if random.randint(1, 20) > 4:
             damage_to_player = random.randint(1, 7) + math.ceil(queen_bitch_rupaul['Charisma'] / 10)
-            character['Nerve'] -= damage_to_player
-            print(f"{queen_bitch_rupaul['Name']} says {random.choice(RUPAUL_READS)}.\n"
-                  f"Your Nerve is reduced by {damage_to_player}.")
+            print(f"{queen_bitch_rupaul['Name']} says,\n\"{random.choice(RUPAUL_READS)}.\"")
+            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
         else:
             print(f"{queen_bitch_rupaul['Name']} throws out a read that goes over your head.")
 
