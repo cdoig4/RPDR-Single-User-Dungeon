@@ -132,7 +132,7 @@ def you_win(character, enemy_name, challenge_name):
               f"for Your Legacy!\"\nYou quickly make your way to the stage, the potential lip sync songs spinning"
               f" through your head.")
         return boards.set_board(character)
-    if challenge_name == 'lipsync':
+    if challenge_name == 'lip_sync':
         print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
               f"You feel your inner saboteur melting away.")
         print("\nYou are now level 3!")
@@ -185,7 +185,7 @@ def main():
     # deliver_introduction(new_character)
     # print(new_character)
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                 'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
+                 'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
     you_win(character, {'Name': 'test'}, 'fight')
     print(character)

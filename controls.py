@@ -169,7 +169,7 @@ def main():
     Drive the program
     """
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                 'completed_lipsync': False, 'level': 1, 'Name': 'Ginger Snaps',
+                 'completed_lip_sync': False, 'level': 1, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 3), 'location': 'main_stage'}
     # print(read_board('dressing_room'))
     # print(generate_directional_tools((0, 5), 'main_stage'))
