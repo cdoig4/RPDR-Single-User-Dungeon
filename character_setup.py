@@ -57,7 +57,7 @@ def make_character(character_name: str) -> dict:
         character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
 
     character['Name'] = character_name
-    character.update({'coordinates': None})
+    character.update({'coordinates': (0, 4), 'location': 'werk_room'})
     return character
 
 
@@ -111,10 +111,10 @@ def you_win(character, enemy_name, challenge_name):
     """
     """
     if challenge_name == 'fight':
+        print('You win!')
         print(f"{enemy_name} slinks away, clearly feeling the shade of it all.\n"
               f"You regain composure after all the reads. You return to full Nerve.")
         increase = random.randint(8, 12)
-        print('You win!')
         return power_up_or_down(character, [0, 0, 0, increase], True)
     if challenge_name == 'makeover_challenge':
         print(f"She says: ConDRAGulations {character['Name']} and {enemy_name}, you are the"
@@ -122,6 +122,28 @@ def you_win(character, enemy_name, challenge_name):
         increase = random.randint(10, 15)
         print('You win!')
         return power_up_or_down(character, [0, increase, 0, increase], True)
+    if challenge_name == 'werk_room':
+        print(f"RuPaul's voice echoes through the room. \"{character['Name']}, "
+              f"please make your way to the Main Stage. You have been chosen to take part in a Lip Sync "
+              f"for Your Legacy!\"\nYou quickly make your way to the stage, the potential lip sync songs spinning"
+              f" through your head")
+        print("You are now level 2!")
+        return power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
+                                            random.randint(30, 40), 0], False)
+    if challenge_name == 'lipsync':
+        print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
+              f"You feel your inner saboteur melting away.")
+        print("You are now level 3!")
+        return power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
+                                            random.randint(30, 40), 0], False)
+    if challenge_name == 'rupaul':
+        print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
+              f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
+              f"fall from the ceiling.\n\"You are now the Queen of the Mother Tucking "
+              f"UNIVERSE!\" Mother continues as she places a massive bejeweled crown upon your"
+              f" head and a matching scepter in your hand.\nYou sob with happiness as you"
+              f"know that this... is the beginning of the rest of your life.\n")
+        game.achieved_goal = True
 
 
 def check_for_level_up(character):
@@ -130,14 +152,10 @@ def check_for_level_up(character):
     :param character:
     :return:
     """
-    character['level'] += 1
-    character['Charisma'] += random.randint(30, 40)
-    character['Uniqueness'] += random.randint(30, 40)
-    character['Nerve'] += random.randint(30, 40)
-    print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
-          f"You feel your inner saboteur melting away.\nYou are now level {character['level']}\n"
-          f"Your Charisma increases to {character['Charisma']}!\nYour Uniqueness increases to"
-          f" {character['Uniqueness']}!\nYour Nerve increases to {character['Nerve']}")
+    print(character)
+    if character['location'] == 'werk_room' and character['Talent'] >= 40:
+        character['level'] += 1
+        you_win(character, None, 'werk_room')
     return character
 
 

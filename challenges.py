@@ -178,37 +178,23 @@ def perform_lip_sync(character) -> bool:
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         print(f"You are ushered towards the Judge's Panel.")
         character["completed_lip_sync"] = True
-        return character.update({'location': 'judges_panel'})
+        return character_setup.you_win(character, None, 'lipsync')
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
         character["completed_lip_sync"] = True
         print(f"You are ushered towards the Judge's Panel.")
-        return character.update({'location': 'judges_panel'})
+        return character_setup.you_win(character, None, 'lipsync')
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
         character["completed_lip_sync"] = True
         print(f"You are ushered towards the Judge's Panel.")
-        return character.update({'location': 'judges_panel'})
+        return character_setup.you_win(character, None, 'lipsync')
     else:
-        character['Nerve'] -= random.randint(5, 10)
+        character_setup.power_up_or_down(character, [0, 0, -random.randint(5, 10),0], False)
         character['coordinates'] = (6, 7)
-        print(f"RuPaul's voice echoes: 'I'm sorry, {character['Name']}, but you are safe. But...\nI'm"
+        print(f"RuPaul's voice echoes: 'I'm sorry, {character['Name']}, you didn't win. But...\nI'm"
               f" willing to give you another try. Practice up and assume the position when you're ready to "
               f"try again.'\nYou hear your inner saboteur cackling.\nYou have {character['Nerve']} Nerve "
               f"remaining.")
     return character
-
-
-# def runway_event(perform_lip_sync, character):  # can be removed
-#     """
-#
-#     :param perform_lip_sync:
-#     :param character:
-#     :return:
-#     """
-#     if perform_lip_sync(character):
-#         character_setup.check_for_level_up(character)
-#     else:
-#
-#         return character
 
 
 def fight(character):
@@ -231,8 +217,8 @@ def fight(character):
     queen_names.remove('queen_bitch_rupaul')
     enemy_queen = random.choice(queen_names)
 
-    print(f"{queens[enemy_queen]['Name']} approaches you, placing the dreaded Reading Glasses on her face as the "
-          f"library opens.")
+    print(f"{queens[enemy_queen]['Name']} approaches you, placing the dreaded Reading Glasses on "
+          f"her face as the library opens.")
 
     player_battle_nerve = character['Nerve']
     enemy_battle_nerve = queens[enemy_queen]['Nerve']
@@ -248,21 +234,23 @@ def fight(character):
                 print(f"Your read falls flat and {queens[enemy_queen]['Name']} scoffs.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for your opponent to speak")
-            character_setup.power_up_or_down(character, [0, 2, 0, 0], True)
+            character_setup.power_up_or_down(character, [0, 2, 0, 0], False)
         elif player_choice == 'Flee':
             if random.randint(1, 100) > 33:
                 print("You successfully sashay away from the queen.")
             else:
-                print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of you once again.")
+                print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of "
+                      f"you once again.")
 
         if random.randint(1, 20) > 6:
-            damage_to_player = -(random.randint(1, 3) + math.ceil(queens[enemy_queen]['Charisma'] / 5))
+            damage_to_player = -(random.randint(1, 3)
+                                 + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
-            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], True)
+            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
             character_setup.check_if_dead(character)
         else:
-            print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never been to the library "
-                  f"in her life.")
+            print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never "
+                  f"been to the library in her life.")
 
     if enemy_battle_nerve <= 0 and character['level'] != 2:
         character.update({'Nerve': 10})
@@ -281,13 +269,14 @@ def final_lip_sync(character):
           f" dim and the familiar beat of a RuPaul song begins.\n"
           f"Which do you lip sync?")
     correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
-    print(f'You continue your performance, knowing that it all comes down to this. Your entire journey has come down'
-          f'to one last performance\nWhich do you lip sync?')
+    print(f'You continue your performance, knowing that it all comes down to this. Your entire '
+          f'journey has come down to one last performance\nWhich do you lip sync?')
     correct_second_lyrics = perform_lyrics(event_selection, event_selection['Chorus Lyrics'])
-    print(f"It's the final stretch. You've pulled out all your tricks and you know you have to end strong.\n"
-          f"Which do you lip sync?")
+    print(f"It's the final stretch. You've pulled out all your tricks and you know you have to "
+          f"end strong.\nWhich do you lip sync?")
     correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
-    print(f"The song ends. You stand in your pose, breathing heavily as RuPaul watches you. Her face a mask.")
+    print(f"The song ends. You stand in your pose, breathing heavily as RuPaul watches you. "
+          f"Her face a mask.")
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         return character.update({'met_rupaul': True})
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
