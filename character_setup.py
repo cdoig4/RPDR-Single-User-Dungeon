@@ -57,7 +57,7 @@ def make_character(character_name: str) -> dict:
         character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
 
     character['Name'] = character_name
-    character.update({'coordinates': None})
+    character.update({'coordinates': (0, 4), 'location': 'werk_room'})
     return character
 
 
@@ -152,6 +152,7 @@ def check_for_level_up(character):
     :param character:
     :return:
     """
+    print(character)
     if character['location'] == 'werk_room' and character['Talent'] >= 40:
         character['level'] += 1
         you_win(character, None, 'werk_room')
