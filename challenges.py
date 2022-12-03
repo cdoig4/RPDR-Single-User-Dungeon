@@ -410,9 +410,17 @@ def get_challenge_input_from_user(possible_answers: list):
 
 def run_challenges(character):
     """
+    Run challenges for player.
 
-    :param character:
-    :return:
+    :param character: a dictionary representing the player character with the keys 'location', 'coordinates', and
+    'level' present where the value assigned to 'location' is a string, the value assigned to 'coordinates' is a tuple
+    containing two positive integers, and the value assigned to 'level' is a positive integer
+    :precondition: character must be a dictionary
+    :postcondition: determines if a challenge is run based on the values stored in the character parameter
+    :return: fight function if the value assigned to 'location' is 'werk_room', the value assigned to 'coordinates' is
+    not (0, 4) or (6, 4) and the value assigned to 'level' is not 2, perform_lip_sync function if the value assigned to
+    'location' is 'main_stage' and the value assigned to 'coordinates' is (6, 8), judge_events function if the value
+    assigned to 'location' is 'judges_panel' and the value assigned to 'coordinates' is not (1, 6) or (2, 0)
     """
     location = character['location']
     coordinates = character['coordinates']
