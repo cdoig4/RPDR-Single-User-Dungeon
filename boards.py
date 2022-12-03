@@ -68,18 +68,10 @@ def set_board(character):
     :param character:
     :return:
     """
-    if character.get('met_rupaul'):
-        character.update({'location': 'dressing_room'})
-        character.update({'coordinates': (1, 5)})
-    elif character.get('completed_lip_sync'):
-        character.update({'location': 'judges_panel'})
-        character.update({'coordinates': (1, 6)})
-    elif character.get('level') == 2:
-        character.update({'location': 'main_stage'})
-        character.update({'coordinates': (0, 5)})
-    else:
-        character.update({'location': 'werk_room'})
-        character.update({'coordinates': (0, 4)})
+    if character['completed_lip_sync']:
+        character.update({'location': 'judges_panel', 'coordinates': (1, 6)})
+    elif character['level'] == 2:
+        character.update({'location': 'main_stage', 'coordinates': (0, 5)})
     return character
 
 
