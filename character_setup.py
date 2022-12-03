@@ -83,6 +83,14 @@ def apply_power_up(stat, value):
 
 def power_up_or_down(character, values, is_queen):
     """
+    Inform player of changes to stats for either themselves or the enemy.
+
+    :param character: must be a dictionary representing a game character, either player or non-player
+    :param values: a list containing four integers
+    :param is_queen: a Boolean representing whether the dictionary represents the player character or not
+    :postcondition: adjusts values stored inside character dictionary either up or down depending on whether
+    the integers in values are positive or negative
+    :return: dictionary representing a game character
     """
     stat_names = ['Charisma', 'Uniqueness', 'Nerve', 'Talent']
     stats = [(stat, value) for stat, value in character.items() if stat in stat_names]
