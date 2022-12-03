@@ -137,10 +137,10 @@ def you_win(character, enemy_name, challenge_name):
               f"You feel your inner saboteur melting away.")
         print("\nYou are now level 3!")
         character['completed_lip_sync'] = True
-        print(f"You are ushered towards the Judge's Panel.")
         power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
                                      random.randint(30, 40), 0], False)
-        return boards.set_board(character)
+        boards.set_board(character)
+        return print(f"\nYou are ushered towards the Judge's Panel.")
     if challenge_name == 'rupaul':
         print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
               f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
