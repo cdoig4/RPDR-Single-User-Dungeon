@@ -46,7 +46,14 @@ def generate_random_makeover_answers(correct_answer):
 
 def makeover_challenge(character):
     """
-    :param character:
+    Run makeover challenge for player character.
+
+    :param character: must be a dictionary representing the player character with the keys 'Name', 'Uniqueness' and
+    'Talent' present
+    :precondition: character must be a dictionary
+    :postcondition: runs makeup challenge for player
+    :postcondition: determines whether player succeeds or fails challenge
+    :return: win function if player won else prints failure message
     """
     makeup_question = ('Foundation', 'Eye shadow', 'Contouring')
     lips_question = ('Lip Liner', 'Lipstick', 'Lip Gloss')
@@ -100,8 +107,8 @@ def judge_events(character):
     Provide possible random events for each character movement.
 
     :param character: a dictionary representing the player character
-    :precondition: movement must be a Boolean and character must be a dictionary with the keys 'Charisma',
-    'Uniqueness', and 'Nerve' present and each must have a positive integer for their value
+    :precondition: character must be a dictionary with the keys 'Charisma', 'Uniqueness', 'Nerve', and 'Talent' present
+    and each must have a positive integer for their value
     :postcondition: determine whether a random judge event happens or not
     :return: character that has either not been altered or has had a single value altered based which event
     occured
@@ -122,7 +129,7 @@ def judge_events(character):
 
 def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
-    Provide first set of lyrics to user.
+    Provide set of lyrics to user.
 
     :param lip_sync_dictionary: a dictionary representing the lip sync song with the key 'Correct Answer' present whose
     value is a list of the correct lyrics
@@ -143,7 +150,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
 
 def perform_lip_sync(character) -> bool:
     """
-    Perform full lip sync event for user.
+    Run lip sync event for user.
 
     :precondition: event_list must be a tuple
     :postcondition: determines whether enough correct selections were made to complete event successfully
@@ -192,9 +199,15 @@ def perform_lip_sync(character) -> bool:
 
 def fight(character):
     """
+    Run fight event for player.
 
-    :param character:
-    :return:
+    :param character: must be a dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
+    and Nerve present with each of their values being positive integers
+    :precondition: character must be a dictionary
+    :postcondition: randomly pulls a queen dictionary from a JSON file and sets them as the enemy
+    :postcondition: runs combat for the player
+    :postcondition: sets player health ('Nerve') back to full on success
+    :return: win function on player success else character dictionary with health ('Nerve') set to 0
     """
     filename = './json_files/queens.json'
     with open(filename) as file_object:
@@ -243,8 +256,7 @@ def fight(character):
         character.update({'Nerve': 10})
         return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
     else:
-        character['Nerve'] = 0
-        return character
+        return character.update({'Nerve': 0})
 
 
 def final_lip_sync(character):
