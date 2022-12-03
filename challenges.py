@@ -315,13 +315,14 @@ def final_battle(character):
     """
     Run final battle event for player.
 
-    :param character: must be a dictionary representing the player character with the keys 'Name', 'Charisma', and
-    'Nerve' present, where the value assigned to 'Name' is a string, and the values assigned to 'Charisma' and 'Nerve'
-    are both positive integers
+    :param character: must be a dictionary representing the player character with the keys 'Name',
+    'Charisma', and 'Nerve' present, where the value assigned to 'Name' is a string, and the values
+    assigned to 'Charisma' and 'Nerve' are both positive integers
     :precondition: character must be a dictionary
     :postcondition: runs the final battle for the player
     :postcondition: determines whether the player is successful in the final battle or not
-    :postcondition: runs final_lip_sync function if player character's health ('Nerve') does not reach or go below 0
+    :postcondition: runs final_lip_sync function if player character's health ('Nerve') does not
+    reach or go below 0
     """
     filename = './json_files/queens.json'
     with open(filename) as file_object:
