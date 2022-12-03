@@ -179,17 +179,14 @@ def perform_lip_sync(character) -> bool:
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
-        print(f"You are ushered towards the Judge's Panel.")
         character["completed_lip_sync"] = True
-        return character_setup.you_win(character, None, 'lipsync')
+        return character_setup.you_win(character, None, 'lip_sync')
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
         character["completed_lip_sync"] = True
-        print(f"You are ushered towards the Judge's Panel.")
-        return character_setup.you_win(character, None, 'lipsync')
+        return character_setup.you_win(character, None, 'lip_sync')
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
         character["completed_lip_sync"] = True
-        print(f"You are ushered towards the Judge's Panel.")
-        return character_setup.you_win(character, None, 'lipsync')
+        return character_setup.you_win(character, None, 'lip_sync')
     else:
         character_setup.power_up_or_down(character, [0, 0, -random.randint(5, 10),0], False)
         character['coordinates'] = (6, 7)
@@ -383,7 +380,7 @@ def run_challenges(character):
 
 def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                 'completed_lipsync': False, 'level': 2, 'Name': 'Ginger Snaps',
+                 'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
     # runway_event(perform_lip_sync, character)
     lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
