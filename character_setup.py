@@ -157,7 +157,6 @@ def check_for_level_up(character):
     :param character:
     :return:
     """
-    print(character)
     if character['location'] == 'werk_room' and character['Talent'] >= 40:
         character['level'] += 1
         you_win(character, None, 'werk_room')
