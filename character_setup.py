@@ -23,9 +23,9 @@ CHARACTER_CLASSES = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alterna
 
 def deliver_introduction(character_dictionary: dict) -> None:
     """
-    Deliver introduction to user.
+    Deliver introduction to player.
 
-    :param character_dictionary: must be a dictionary representing the user's character with the key 'Name' present
+    :param character_dictionary: must be a dictionary representing the player's character with the key 'Name' present
     :precondition: character must be a dictionary
     :postcondition: prints the game introduction
     """
@@ -44,7 +44,7 @@ def make_character(character_name: str) -> dict:
     :precondition: character_name must be a string
     :postcondition: asks the user for input to determine class stats
     :postcondition: creates character dictionary containing name and stats of desired class
-    :return: a dictionary representing the user's character
+    :return: a dictionary representing the player's character
     """
     print("What type of queen are you?")
     answer = challenges.get_challenge_input_from_user(CHARACTER_CLASSES)
@@ -165,9 +165,14 @@ def check_for_level_up(character):
 
 def check_if_dead(character):
     """
+    Determine whether player character has lost all of their health ('Nerve')
 
-    :param character:
-    :return:
+    :param character: must be a dictionary with the keys 'Nerve' and 'Name' present, with the value assigned to 'Nerve'
+    being an integer and the value assigned to 'Name' being a string
+    :precondition: character must be a dictionary
+    :postcondition: determines whether the value assigned to 'Nerve' is 0 or less
+    :postcondition: prints loss statement, clears character dictionary, and restarts game if 'Nerve' is 0 or less
+    :return: dictionary that is either empty or that represents the current player character
     """
     if character['Nerve'] <= 0:
         print(f"\nYou hear RuPaul's voice:\n\n\"{character['Name']},\nThank you for bringing your "
