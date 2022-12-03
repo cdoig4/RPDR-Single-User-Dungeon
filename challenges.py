@@ -51,12 +51,12 @@ def makeover_challenge(character):
     """
     Run makeover challenge for player character.
 
-    :param character: must be a dictionary representing the player character with the keys 'Name', 'Uniqueness' and
-    'Talent' present
+    :param character: must be a dictionary representing the player character with the key 'Name' present whose assigned
+    value must be a string
     :precondition: character must be a dictionary
     :postcondition: runs makeup challenge for player
     :postcondition: determines whether player succeeds or fails challenge
-    :return: win function if player won else prints failure message
+    :return: win function if player successfully complete challenge else prints failure message
     """
     makeup_question = ('Foundation', 'Eye shadow', 'Contouring')
     lips_question = ('Lip Liner', 'Lipstick', 'Lip Gloss')
@@ -158,11 +158,16 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
 
 def perform_lip_sync(character) -> bool:
     """
-    Run lip sync event for user.
+    Run lip sync event for player.
 
-    :precondition: event_list must be a tuple
-    :postcondition: determines whether enough correct selections were made to complete event successfully
-    :return: True if user was successful else False
+    :param character: a dictionary representing the player character which contains the keys 'Name'
+    'completed_lip_sync', and 'Nerve' where the value assigned to 'Name' is a string, the value assigned to
+    'completed_lip_sync' is a Boolean, and the value assigned to 'Nerve' is a positive integer
+    :precondition: character must be a dictionary
+    :postcondition: runs the lip sync event for the player
+    :postcondition: determines whether the player provided enough correct answers to pass the event
+    :postcondition: sets value assigned to 'completed_lip_sync' key in player character dictionary to True
+    :return: winning function
     """
     filename = './json_files/lip_sync_data.json'
     with open(filename) as file_object:
