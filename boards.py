@@ -9,9 +9,12 @@ import json
 
 def read_board(board_name: str) -> str:
     """
+    Read JSON file representing game board.
 
-    :param board_name:
-    :return:
+    :param board_name: must be a string representing the name of the desired game board
+    :precondition: board_name must be a string
+    :postcondition: opens and reads JSON file of the desired board title
+    :return: string representing the correct board that has been read from the JSON file
     """
     try:
         with open(f'./txt_files/{board_name}.txt') as file_object:
