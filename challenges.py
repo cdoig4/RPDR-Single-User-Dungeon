@@ -113,16 +113,19 @@ def judge_events(character):
     :return: character that has either not been altered or has had a single value altered based which event
     occured
     """
-    event_check = random.randint(1, 20)
+    event_check = random.randint(1, 10)
     if event_check == 1:
         print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it, Party City?"')
         character_setup.power_up_or_down(character, [-5, 0, 0, 0], True)
-    elif event_check == 7:
+        return get_challenge_input_from_user(['Continue'])
+    elif event_check == 2:
         print(f'Ross shouts:\n"Your pussy is on fire! Go get your crown, girl!"')
         character_setup.power_up_or_down(character, [0, 4, 0, 0], True)
-    elif event_check == 14:
+        return get_challenge_input_from_user(['Continue'])
+    elif event_check == 3:
         print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so fabulous!"')
         character_setup.power_up_or_down(character, [0, 0, 6, 0], True)
+        return get_challenge_input_from_user(['Continue'])
     else:
         return character
 
