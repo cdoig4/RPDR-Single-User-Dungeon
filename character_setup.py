@@ -4,6 +4,8 @@ Create the player character and give them the introduction
 
 import json
 import random
+
+import boards
 import challenges
 from game import game
 
@@ -134,6 +136,8 @@ def you_win(character, enemy_name, challenge_name):
         print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
               f"You feel your inner saboteur melting away.")
         print("You are now level 3!")
+        character['completed_lip_sync'] = True
+        boards.set_board(character)
         return power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
                                             random.randint(30, 40), 0], False)
     if challenge_name == 'rupaul':
