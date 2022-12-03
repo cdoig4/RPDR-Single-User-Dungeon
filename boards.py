@@ -64,9 +64,19 @@ def index_board(board_name: str) -> dict:
 
 def set_board(character):
     """
+    Set correct values into player character dictionary to represent where they are in the game.
 
-    :param character:
-    :return:
+    :param character: must be a dictionary representing the player character with the keys 'met_rupaul', 'location',
+    'coordinates', and 'level' present, the value of 'met_rupaul' must be a Boolean, the value of 'location' must be
+    a string, the value of 'coordinates' must be a tuple containing two positive integers, and the value of 'level'
+    must be a positive integer
+    :precondition: character must be a dictionary
+    :postcondition: if player has met_rupaul their location is updated with values representing the dressing room
+    :postcondition: if player has completed_lip_sync their location is updated with values representing the judges
+    panel
+    :postcondition: if the player character's level is 2 their location is updated with values representing the
+    main stage
+    :return: dictionary with 'location' and 'coordinates' values updated to reflect correct player position
     """
     if character['met_rupaul']:
         character.update({'location': 'dressing_room', 'coordinates': (1, 5)})
@@ -82,7 +92,8 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     Create representation of player character in correct location on the game board.
 
     :param board: must be a string representing the board of the current location of the user
-    :param current_coordinates: must be a tuple representing the current location of the user on the board
+    :param current_coordinates: must be a tuple representing the current location of the user on the board using two
+    positive integers
     :precondition: board must be a string and current_coordinates must be a tuple
     :postcondition: calculates the current location of the user on the game board
     :postcondition: places player symbol ('&') in the correct location on the game board
@@ -160,7 +171,7 @@ def display_board(character: dict) -> None:
 
     :param character: must be a dictionary representing the player character with the keys 'location' and
     'coordinates' present and the value of 'location' must be a string while the value of 'coordinates' must be
-    a tuple containing two integer that represent the coordinates of the player
+    a tuple containing two positive integers that represent the coordinates of the player
     :precondition: character must be a dictionary
     :postcondition: passes correct board into the format_board function
     :postcondition: creates string representing correctly formatted board
