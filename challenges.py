@@ -221,7 +221,7 @@ def fight(character):
                 print(f"Your read falls flat and {queens[enemy_queen]['Name']} scoffs.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for your opponent to speak")
-            character_setup.power_up_or_down(character, [0, 2, 0, 0], True)
+            character_setup.power_up_or_down(character, [0, 2, 0, 0], False)
         elif player_choice == 'Flee':
             if random.randint(1, 100) > 33:
                 print("You successfully sashay away from the queen.")
@@ -233,8 +233,7 @@ def fight(character):
             damage_to_player = -(random.randint(1, 3)
                                  + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
-            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], True)
-            character_setup.check_if_dead(character)
+            character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
         else:
             print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never "
                   f"been to the library in her life.")
