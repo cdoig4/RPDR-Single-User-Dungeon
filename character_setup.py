@@ -117,13 +117,13 @@ def you_win(character, enemy_name, challenge_name):
         print(f"{enemy_name} slinks away, clearly feeling the shade of it all.\n"
               f"You regain composure after all the reads. You return to full Nerve.")
         increase = random.randint(8, 12)
-        return power_up_or_down(character, [0, 0, 0, increase], True)
+        return power_up_or_down(character, [0, 0, 0, increase], False)
     if challenge_name == 'makeover_challenge':
         print(f"She says: ConDRAGulations {character['Name']} and {enemy_name}, you are the"
               f" winners of this mini challenge!\"\n")
         increase = random.randint(10, 15)
         print('You win!')
-        return power_up_or_down(character, [0, increase, 0, increase], True)
+        return power_up_or_down(character, [0, increase, 0, increase], False)
     if challenge_name == 'werk_room':
         print(f"RuPaul's voice echoes through the room. \"{character['Name']}, "
               f"please make your way to the Main Stage. You have been chosen to take part in a Lip Sync "
