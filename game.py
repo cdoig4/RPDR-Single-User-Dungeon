@@ -10,21 +10,21 @@ import challenges
 import character_setup
 
 
-def game():
-    """
-
-    :return:
-    """
-    character = character_setup.make_character(input("What is the name of your Drag Persona?\n"))
-    character_setup.deliver_introduction(character)
-    achieved_goal = False
-
-    while not achieved_goal:
-        boards.display_board(character)
-        controls.move_character(character)
-        challenges.run_challenges(character)
-        character_setup.check_for_level_up(character)
-    print('The END.')
+# def game():
+#     """
+#
+#     :return:
+#     """
+#     character = character_setup.make_character(input("What is the name of your Drag Persona?\n"))
+#     character_setup.deliver_introduction(character)
+#     achieved_goal = False
+#
+#     while not achieved_goal:
+#         boards.display_board(character)
+#         controls.move_character(character)
+#         challenges.run_challenges(character)
+#         character_setup.check_for_level_up(character)
+#     print('The END.')
 
 """to test lvl 2"""
 # def game():
@@ -35,16 +35,27 @@ def game():
 #     achieved_goal = False
 #
 #     while not achieved_goal:
-#         if character.get('location') is None:
-#             boards.set_board(character)
 #         boards.display_board(character)
 #         controls.move_character(character)
 #         challenges.run_challenges(character)
-#         # if character_has_leveled():
-#         #     execute_glow_up_protocol()
-#         #     achieved_goal = check_if_goal_attained(board, character)
-#         # else:
-#         #     print('You have to achieve your goal!')
+#         character_setup.check_for_level_up(character)
+#     print('The END.')
+
+
+"""to test lvl 3 (judges panel)"""
+def game():
+
+    character = {'Charisma': 80, 'Uniqueness': 80, 'Nerve': 70, 'Talent': 70, 'met_rupaul': False,
+                 'completed_lipsync': True, 'level': 2, 'Name': 'Ginger Snaps',
+                 'coordinates': (1, 5), 'location': 'judges_panel'}
+    achieved_goal = False
+
+    while not achieved_goal:
+        boards.display_board(character)
+        controls.move_character(character)
+        challenges.run_challenges(character)
+        character_setup.check_for_level_up(character)
+    print('The END.')
 
 
 def main():
