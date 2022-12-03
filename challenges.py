@@ -111,7 +111,7 @@ def judge_events(character):
     and each must have a positive integer for their value
     :postcondition: determine whether a random judge event happens or not
     :return: character that has either not been altered or has had a single value altered based which event
-    occured
+    occurred
     """
     event_check = random.randint(1, 10)
     if event_check == 1:
