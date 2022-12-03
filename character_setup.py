@@ -12,17 +12,6 @@ import challenges
 from game import game
 
 
-LOOK_QUEEN = {"Charisma": 14, "Uniqueness": 15, "Nerve": 10, "Talent": 10, 'met_rupaul': False,
-              "completed_lip_sync": False, "level": 1}
-COMEDY_QUEEN = {"Charisma": 15, "Uniqueness": 14, "Nerve": 10, "Talent": 10, 'met_rupaul': False,
-                "completed_lip_sync": False, "level": 1}
-PERFORMANCE_QUEEN = {"Charisma": 17, "Uniqueness": 12, "Nerve": 10, "Talent": 10, 'met_rupaul': False,
-                     "completed_lip_sync": False, "level": 1}
-ALTERNATIVE_QUEEN = {'Charisma': 12, 'Uniqueness': 17, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                     "completed_lip_sync": False, "level": 1}
-CHARACTER_CLASSES = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alternative Queen']
-
-
 def deliver_introduction(character_dictionary: dict) -> None:
     """
     Deliver introduction to player.
