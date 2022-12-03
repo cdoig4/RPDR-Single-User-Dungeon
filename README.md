@@ -25,6 +25,9 @@ against Mother herself.
 | Q      | Another queen   |
 | J      | Judge           |
 | R      | RuPaul (Mother) |
+| [ ]    | Door            |
+| . >    | Stairs up       |
+| < .    | Stairs down     |
 
 
 **Universal Commands:**
