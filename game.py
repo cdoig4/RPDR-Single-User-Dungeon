@@ -20,8 +20,6 @@ def game():
     achieved_goal = False
 
     while not achieved_goal:
-        if character.get('location') is None:
-            boards.set_board(character)
         boards.display_board(character)
         controls.move_character(character)
         challenges.run_challenges(character)
