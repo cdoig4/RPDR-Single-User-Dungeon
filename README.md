@@ -52,17 +52,17 @@ against Mother herself.
 
 
 ### Required elements key:
-|     | Element                     | Line No. |
-|-----|-----------------------------|----------|
-| a.  | Tuple                       |          |
-| b.  | List                        |          |
-| c.  | Dict & list comprehension   |          |
-| d.  | Selection with if-statement |          |
-| e.  | Repetition with for-loop    |          |
-| f.  | Membership Operator         |          |
-| g.  | Range function              |          |
-| h.  | Itertools (permutations)    |          |
-| i.  | Enumerate function          |          |
-| j.  | Filter or map function      |          |
-| k.  | Random module               |          |
+|     | Element                     | Line No.                     |
+|-----|-----------------------------|------------------------------|
+| a.  | Tuple                       |                              |
+| b.  | List                        |                              |
+| c.  | Dict or list comprehension  | character_setup.py: line 54  |
+| d.  | Selection with if-statement |                              |
+| e.  | Repetition with for-loop    |                              |
+| f.  | Membership Operator         | challenges.py: line 150      |
+| g.  | Range function              | boards.py: line 121          |
+| h.  | Itertools (permutations)    | challenges.py: line 32       |
+| i.  | Enumerate function          | challenges.py: line 372      |
+| j.  | Filter or map function      | character_setup.py: line 113 |
+| k.  | Random module               |                              |
 
