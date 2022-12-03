@@ -25,7 +25,8 @@ def deliver_introduction(character_dictionary: dict) -> None:
     """
     Deliver introduction to player.
 
-    :param character_dictionary: must be a dictionary representing the player's character with the key 'Name' present
+    :param character_dictionary: must be a dictionary representing the player's character with the
+    key 'Name' present
     :precondition: character must be a dictionary
     :postcondition: prints the game introduction
     """
@@ -78,15 +79,16 @@ def apply_power_up(stat, value):
     """
     Calculate new value to be assigned to a stat.
 
-    :param stat: must be a tuple containing a string representing the name of a stat and an integer representing
-    the value assigned to that stat
+    :param stat: must be a tuple containing a string representing the name of a stat and an integer
+    representing the value assigned to that stat
     :param value: must be an integer
     :precondition: stat must be a tuple and value must be an integer
-    :postcondition: calculate the new value of the second element in the stat tuple after the addition of value
-    :return: a dictionary with a key which is equal to the first element of the stat tuple with a value of 0 if adding
-    the value parameter to it would have made it negative, else a dictionary with a key which is equal to the first
-    element of the stat tuple with a value that is equal to the second element of the stat tuple with the value
-    parameter added to it
+    :postcondition: calculate the new value of the second element in the stat tuple after the
+    addition of value
+    :return: a dictionary with a key which is equal to the first element of the stat tuple with a
+    value of 0 if adding the value parameter to it would have made it negative, else a dictionary
+    with a key which is equal to the first element of the stat tuple with a value that is equal to
+    the second element of the stat tuple with the value parameter added to it
     """
     if stat[1] + value < 0:
         return {stat[0]: 0}
@@ -97,11 +99,13 @@ def power_up_or_down(character, values, is_queen):
     """
     Inform player of changes to stats for either themselves or the enemy.
 
-    :param character: must be a dictionary representing a game character, either player or non-player
+    :param character: must be a dictionary representing a game character, either player or
+    non-player
     :param values: a list containing four integers
-    :param is_queen: a Boolean representing whether the dictionary represents the player character or not
-    :postcondition: adjusts values stored inside character dictionary either up or down depending on whether
-    the integers in values are positive or negative
+    :param is_queen: a Boolean representing whether the dictionary represents the player character
+    or not
+    :postcondition: adjusts values stored inside character dictionary either up or down depending
+    on whether the integers in values are positive or negative
     :return: dictionary representing a game character
     """
     stat_names = ['Charisma', 'Uniqueness', 'Nerve', 'Talent']
@@ -122,7 +126,8 @@ def power_up_or_down(character, values, is_queen):
 
         if is_queen:
             name = character['Name']
-            print(f'{name}\'s {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
+            print(f'{name}\'s {key[0]} has {up_or_down} by {abs(pair[1])} to '
+                  f'{pair[0].get(key[0])}!')
         else:
             print(f'Your {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
 
@@ -133,17 +138,21 @@ def you_win(character, enemy_name, challenge_name):
     """
     Perform win events for player.
 
-    :param character: must be a dictionary representing the player character with the keys 'Name' and
-    'completed_lip_sync' present, with the value assigned to 'Name' being a string and the value assigned to
-    'completed_lip_sync' being a Boolean
+    :param character: must be a dictionary representing the player character with the keys 'Name'
+    and 'completed_lip_sync' present, with the value assigned to 'Name' being a string and the
+    value assigned to 'completed_lip_sync' being a Boolean
     :param enemy_name: must be a non-empty string
     :param challenge_name: must be a non-empty string
-    :precondition: character must be a dictionary, and enemy_name and challenge_name must both be string
+    :precondition: character must be a dictionary, and enemy_name and challenge_name must both be
+    string
     :postcondition: prints specified win statements depending on the string passed as challenge_name
     :postcondition: changes achieved_goal value to True if challenge_name is equal to 'rupaul'
-    :return: function to alter stats stored within character dictionary if challenge_name is equal to 'fight' or
-    'makeover_challenge', function to change the board the player is on if challenge_name is equal to 'werk_room',
-    else print statement introducing the judges panel location if challenge_name is equal to 'lip_sync'
+    :return: function to alter stats stored within character dictionary if challenge_name is equal
+    to 'fight' or
+    'makeover_challenge', function to change the board the player is on if challenge_name is equal
+    to 'werk_room',
+    else print statement introducing the judges panel location if challenge_name is equal to
+    'lip_sync'
     """
     if challenge_name == 'fight':
         print('You win!')
@@ -167,8 +176,8 @@ def you_win(character, enemy_name, challenge_name):
               f" through your head.")
         return boards.set_board(character)
     if challenge_name == 'lip_sync':
-        print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
-              f"You feel your inner saboteur melting away.")
+        print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, "
+              f"you're a winner baby!'\nYou feel your inner saboteur melting away.")
         print("\nYou are now level 3!")
         character['completed_lip_sync'] = True
         power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
@@ -189,13 +198,14 @@ def check_for_level_up(character):
     """
     Determine whether the player character has leveled up.
 
-    :param character: must be a dictionary representing the player character with the keys 'location', 'Talent',
-    and 'level' present, with the value assigned to 'location' being a string and the values assigned to 'Talent'
-    and 'level' being positive integers
+    :param character: must be a dictionary representing the player character with the keys
+    'location', 'Talent', and 'level' present, with the value assigned to 'location' being a string
+    and the values assigned to 'Talent' and 'level' being positive integers
     :precondition: character must be a dictionary
-    :postcondition: determines whether the player character has leveled up based on the values currently assigned
-    to the 'location' and 'Talent' keys
-    :postcondition: passes character dictionary to function which levels up the character if the conditions are met
+    :postcondition: determines whether the player character has leveled up based on the values
+    currently assigned to the 'location' and 'Talent' keys
+    :postcondition: passes character dictionary to function which levels up the character if the
+    conditions are met
     :return: dictionary representing the player character
     """
     if character['location'] == 'werk_room' and character['Talent'] >= 40:
@@ -208,11 +218,12 @@ def check_if_dead(character):
     """
     Determine whether player character has lost all of their health ('Nerve')
 
-    :param character: must be a dictionary with the keys 'Nerve' and 'Name' present, with the value assigned to 'Nerve'
-    being an integer and the value assigned to 'Name' being a string
+    :param character: must be a dictionary with the keys 'Nerve' and 'Name' present, with the value
+    assigned to 'Nerve' being an integer and the value assigned to 'Name' being a string
     :precondition: character must be a dictionary
     :postcondition: determines whether the value assigned to 'Nerve' is 0 or less
-    :postcondition: prints loss statement, clears character dictionary, and restarts game if 'Nerve' is 0 or less
+    :postcondition: prints loss statement, clears character dictionary, and restarts game if 'Nerve'
+    is 0 or less
     :return: dictionary that is either empty or that represents the current player character
     """
     if character['Nerve'] <= 0:
