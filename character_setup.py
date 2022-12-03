@@ -120,9 +120,8 @@ def you_win(character, enemy_name, challenge_name):
         return power_up_or_down(character, [0, 0, 2, increase], False)
     if challenge_name == 'makeover_challenge':
         print(f"She says: ConDRAGulations {character['Name']} and {enemy_name}, you are the"
-              f" winners of this mini challenge!\"\n")
+              f" winners of this mini challenge!\"")
         increase = random.randint(10, 15)
-        print('You win!')
         return power_up_or_down(character, [0, increase, 0, increase], False)
     if challenge_name == 'werk_room':
         print(f"RuPaul's voice echoes through the room. \"{character['Name']}, "
