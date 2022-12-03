@@ -125,6 +125,14 @@ def clear_board(board: str) -> str:
 
 def format_board(board: str, character: dict) -> str:
     """
+    Format game board for player.
+
+    :param board: must be a string representing the name of the current board
+    :param character: must be a dictionary representing the player character with the key 'location' present
+    whose value must be a string
+    :precondition: board must be a string and character must be a dictionary
+    :postcondition: formats correct board based on the current location of the player character
+    :return: string representing the board of the current location of the user
     """
     location = character['location']
 
@@ -140,9 +148,15 @@ def format_board(board: str, character: dict) -> str:
 
 def display_board(character: dict) -> None:
     """
+    Display game board of current location for the player.
 
-    :param character:
-    :return:
+    :param character: must be a dictionary representing the player character with the keys 'location' and
+    'coordinates' present and the value of 'location' must be a string while the value of 'coordinates' must be
+    a tuple containing two integer that represent the coordinates of the player
+    :precondition: character must be a dictionary
+    :postcondition: passes correct board into the format_board function
+    :postcondition: creates string representing correctly formatted board
+    :return: print statement containing the correctly formatted board string to be displayed to the player
     """
     board_name = character.get('location')
     current_coordinates = character.get('coordinates')
