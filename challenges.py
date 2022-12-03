@@ -265,6 +265,10 @@ def final_lip_sync(character):
 
     :param character:
     """
+    filename = './json_files/rupaul_lip_sync.json'
+    with open(filename) as file_object:
+        rupaul_lip_sync = json.load(file_object)
+
     print(f"RuPaul shouts \"The library is officially closed! Now {character['Name']}\""
           f"...\nThe time has come...\nFor you to Lip Sync....\nFor. The. CROWN.\"\nThe lights"
           f" dim and the familiar beat of a RuPaul song begins.\n"
