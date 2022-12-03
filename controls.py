@@ -83,9 +83,14 @@ def generate_directional_inputs(current_coordinates, board_name):
 
 def get_directional_input_from_user(game_input: list, character: dict) -> str:
     """
+    Process directional input of the player.
 
-    :param game_input:
-    :return:
+    :param game_input: must be a list representing valid potential inputs
+    :param character: must be a dictionary representing the player character
+    :precondition: game_input must be a list and character must be a dictionary
+    :postcondition: accepts input from player
+    :postcondition: determines whether input is valid
+    :return: self if user input is 'O' or not valid else string representing valid input from user
     """
     acceptable_answers = []
 
