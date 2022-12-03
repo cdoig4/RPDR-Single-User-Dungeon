@@ -7,11 +7,31 @@ Kelly Hagg A01324804
 import json
 
 
-introduction = ['\n--------------------------------------------------------------------------------\n',"\n\nyou have been selected to compete on the new season of\nRupaul's Drag Race! This season will operate a little differently...\n\nTo obtain the title of 'Greatest Queen of All Time', you must\nfirst win the right to lip-sync on the Main Stage by proving your\nmettle against some fellow queens in the Werk Room. If you win the Lip Sync for\nyour Legacy, you will be invited to RuPaul's dressing room where you will\nLIP SYNC FOR YOUR LIFE against Mother herself.\n\nGood luck, and DON'T fuck it up.\n\nAs you get settled in the Werk Room you hear \"Ooh girl!\" and you see RuPaul\nappear on a TV screen on the side of the room. She says...\n\n\"To be invited to compete in a Lip Sync for your Legacy you must first prove\nthat you are literate. Read enough of your fellow queens for filth and you will\nbe called to the main stage.\n--------------------------------------------------------------------------------"]
 
-filename = 'introduction.json'
-with open(filename, 'w') as file_object:
-    json.dump(introduction, file_object)
+"""RuPaul Lip Sync"""
+# rupaul_lip_sync = {'Correct Answer': ["Who you waiting for? Another savior",
+#                                       "Who do you think you are? I'm telling the truth now",
+#                                       "I'll say it again It's never been the clothes that make the man"],
+#                    'Initial Lyrics': ["Who you waiting for? Another savior",
+#                                       "What you waiting for? Your best behaviour",
+#                                       "Who is that for? Another favor"],
+#                    'Chorus Lyrics': ["Where did you get that car? I'm going to Buick now",
+#                                      "Who do you think you are? I'm telling the truth now",
+#                                      "Who do you think you are? You're blowing a fuse now"],
+#                    'Final Lyrics': ["I'll say it again It's never been me who meets the fans",
+#                                     "I'll say it again It's always been the wig that makes the queen",
+#                                     "I'll say it again It's never been the clothes that make the man"]}
+# filename = 'rupaul_lip_sync.json'
+# with open(filename, 'w') as file_object:
+#     json.dump(rupaul_lip_sync, file_object)
+#
+
+"""Introduction"""
+# introduction = ['\n--------------------------------------------------------------------------------\n',"\n\nyou have been selected to compete on the new season of\nRupaul's Drag Race! This season will operate a little differently...\n\nTo obtain the title of 'Greatest Queen of All Time', you must\nfirst win the right to lip-sync on the Main Stage by proving your\nmettle against some fellow queens in the Werk Room. If you win the Lip Sync for\nyour Legacy, you will be invited to RuPaul's dressing room where you will\nLIP SYNC FOR YOUR LIFE against Mother herself.\n\nGood luck, and DON'T fuck it up.\n\nAs you get settled in the Werk Room you hear \"Ooh girl!\" and you see RuPaul\nappear on a TV screen on the side of the room. She says...\n\n\"To be invited to compete in a Lip Sync for your Legacy you must first prove\nthat you are literate. Read enough of your fellow queens for filth and you will\nbe called to the main stage.\n--------------------------------------------------------------------------------"]
+#
+# filename = 'introduction.json'
+# with open(filename, 'w') as file_object:
+#     json.dump(introduction, file_object)
 
 """ Queen Challengers """
 # potential_queen_challengers = {'queen_aja_labeija': {"Name": "Aja", "Charisma": 14, "Uniqueness": 17, "Nerve": 10},
