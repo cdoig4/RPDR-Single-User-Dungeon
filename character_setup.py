@@ -111,6 +111,19 @@ def power_up_or_down(character, values, is_queen):
 
 def you_win(character, enemy_name, challenge_name):
     """
+    Perform win events for player.
+
+    :param character: must be a dictionary representing the player character with the keys 'Name' and
+    'completed_lip_sync' present, with the value assigned to 'Name' being a string and the value assigned to
+    'completed_lip_sync' being a Boolean
+    :param enemy_name: must be a non-empty string
+    :param challenge_name: must be a non-empty string
+    :precondition: character must be a dictionary, and enemy_name and challenge_name must both be string
+    :postcondition: prints specified win statements depending on the string passed as challenge_name
+    :postcondition: changes achieved_goal value to True if challenge_name is equal to 'rupaul'
+    :return: function to alter stats stored within character dictionary if challenge_name is equal to 'fight' or
+    'makeover_challenge', function to change the board the player is on if challenge_name is equal to 'werk_room',
+    else print statement introducing the judges panel location if challenge_name is equal to 'lip_sync'
     """
     if challenge_name == 'fight':
         print('You win!')
