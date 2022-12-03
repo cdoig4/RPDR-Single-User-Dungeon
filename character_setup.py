@@ -102,7 +102,7 @@ def power_up_or_down(character, values, is_queen):
 
         if is_queen:
             name = character['Name']
-            print(f'{name} {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
+            print(f'{name}\'s {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
         else:
             print(f'Your {key[0]} has {up_or_down} by {abs(pair[1])} to {pair[0].get(key[0])}!')
 
