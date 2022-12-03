@@ -111,9 +111,11 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
 
 def clear_board(board: str) -> str:
     """
+    Clear game board.
 
-    :param board:
-    :return:
+    :param board: must be a string representing board of the current location of the player character
+    :precondition: board must be a string
+    :return: board string that has been cleared of all symbols
     """
 
     cleared_board = board.replace('#', ' ')
