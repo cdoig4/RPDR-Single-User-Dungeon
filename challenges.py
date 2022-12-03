@@ -132,13 +132,15 @@ def judge_events(character):
 
 def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
-    Provide set of lyrics to user.
+    Perform section of lip sync event for player.
 
     :param lip_sync_dictionary: a dictionary representing the lip sync song with the key 'Correct Answer' present whose
     value is a list of the correct lyrics
     :param lyric_list: a list containing multiple strings representing possible lyric selections
     :precondition: lip_sync_dictionary must be a dictionary and lyric_list must be a list
-    :postcondition: determine whether the user's selection is present in the 'Correct Answer' key's value list
+    :postcondition: receive input from player representing their answer
+    :postcondition: determine whether the player's selection is present in the 'Correct Answer' key's value list
+    :postcondition: print a positive statement on user success else print a negative statement
     :return: True if user's selection was correct else False
     """
     answer = get_challenge_input_from_user(lyric_list)
