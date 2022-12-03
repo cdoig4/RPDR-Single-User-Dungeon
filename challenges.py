@@ -371,6 +371,15 @@ def generate_challenge_input(possible_answers: list) -> list:
 
 
 def get_challenge_input_from_user(possible_answers: list):
+    """
+    Receive answer input from player.
+
+    :param possible_answers: a list of strings
+    :precondition: possible_answers must be a list
+    :postcondition: prints potential input options for player
+    :postcondition: receives answer input from player
+    :return: a string representing the answer chosen by the player
+    """
 
     acceptable_answers = []
 
