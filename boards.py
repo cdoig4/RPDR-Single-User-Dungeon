@@ -209,7 +209,7 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (0, 4), 'location': 'werk_room'}
-    board = read_board('dressing_room')
+    # board = read_board('dressing_room')
 
     # print(board[:118] + 'R' + board[119:])
     # print(clear_board(board))
