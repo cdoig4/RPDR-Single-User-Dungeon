@@ -26,5 +26,3 @@ class TestApplyPowerUp(TestCase):
 
     def test_tuple_first_element_non_empty_string_second_element_plus_value_greater_than_zero(self):
         self.assertEqual({'test_string': 16}, apply_power_up(('test_string', 8), 8))
-
-
