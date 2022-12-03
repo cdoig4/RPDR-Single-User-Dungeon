@@ -7,26 +7,15 @@ import random
 import character_setup
 import itertools
 
-
 RUPAUL_READS = ("I never thought I'd meet a queen whose heels weigh more than her brain",
                 "I've always wondered what the female Gremlin would look like in 25 years."
                 "\nNow I know.",
-                f"those other queens have been saying you have terrible makeup skills,\nno fashion sense, and you're "
-                f"dumb as a rock. But they're wrong...\nYou don't have terrible makeup skills.")
-RUPAUL_LIP_SYNC = {'Correct Answer': ["Who you waiting for? Another savior",
-                                      "Who do you think you are? I'm telling the truth now",
-                                      "I'll say it again It's never been the clothes that make the man"],
-                   'Initial Lyrics': ["Who you waiting for? Another savior",
-                                      "What you waiting for? Your best behaviour",
-                                      "Who is that for? Another favor"],
-                   'Chorus Lyrics': ["Where did you get that car? I'm going to Buick now",
-                                     "Who do you think you are? I'm telling the truth now",
-                                     "Who do you think you are? You're blowing a fuse now"],
-                   'Final Lyrics': ["I'll say it again It's never been me who meets the fans",
-                                    "I'll say it again It's always been the wig that makes the queen",
-                                    "I'll say it again It's never been the clothes that make the man"]}
+                f"those other queens have been saying you have terrible makeup skills,"
+                f"\nno fashion sense, and you're dumb as a rock. But they're wrong...\n"
+                f"You don't have terrible makeup skills.")
 
-POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND dairy.', 'Beauty fades, dumb is forever',
+POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND dairy.',
+                   'Beauty fades, dumb is forever',
                    'The last time you got fucked was by genetics')
 
 
@@ -52,8 +41,8 @@ def makeover_challenge(character):
     """
     Run makeover challenge for player character.
 
-    :param character: must be a dictionary representing the player character with the key 'Name' present whose assigned
-    value must be a string
+    :param character: must be a dictionary representing the player character with the key 'Name'
+    present whose assigned value must be a string
     :precondition: character must be a dictionary
     :postcondition: runs makeup challenge for player
     :postcondition: determines whether player succeeds or fails challenge
@@ -70,40 +59,45 @@ def makeover_challenge(character):
     fellow_queen = random.choice(queen_names)
     correct_answers = 0
 
-    print(f"You hear RuPaul's voice: \"My queens! You have 10 minutes to put one of your fellow queens into the best "
-          f"quick drag you can manage. Get to it!\nYou run up to {queens[fellow_queen]['Name']}, ready to beat her "
-          f"face for the gods.\n You know that to get the best results you have to put the makeup on in the right"
-          f" order.\nWhat order do you apply makeup in?")
+    print(f"You hear RuPaul's voice:\n\"My queens!\nYou have 10 minutes to put one of your fellow "
+          f"queens into the best quick drag\nyou can manage. Get to it!\nYou run up to "
+          f"{queens[fellow_queen]['Name']}, ready to beat her face for the gods.\n You know that to"
+          f" get the best results you have to put the makeup on in the right order."
+          f"\nWhat order do you apply makeup in?")
     first_answer = get_challenge_input_from_user(generate_random_makeover_answers(makeup_question))
     if first_answer == makeup_question:
         correct_answers += 1
-        print(f"You take a step back to admire your work. {queens[fellow_queen]['Name']} is looking fierce!")
+        print(f"You take a step back to admire your work. {queens[fellow_queen]['Name']} is looking"
+              f" fierce!")
     else:
-        print(f"You take a step back to examine {queens[fellow_queen]['Name']}'s face. It's looking a little busted.")
+        print(f"You take a step back to examine {queens[fellow_queen]['Name']}'s face. It's looking"
+              f" a little busted.")
     print(f"Next you have to do the lips. What order do you apply makeup in?")
     second_answer = get_challenge_input_from_user(generate_random_makeover_answers(lips_question))
     if second_answer == lips_question:
         correct_answers += 1
         print(f"{queens[fellow_queen]['Name']}'s lips are looking luscious and divine! Way to go!")
     else:
-        print(f"{queens[fellow_queen]['Name']}'s lips are looking a little crusty and dusty, but you don't have time to"
-              f" fix them right now.")
-    print(f"You hear a call for one minute left and you rush to get {queens[fellow_queen]['Name']} into an outfit!\n"
-          f"What order do you dress her in?")
+        print(f"{queens[fellow_queen]['Name']}'s lips are looking a little crusty and dusty, but "
+              f"you don't have time to fix them right now.")
+    print(f"You hear a call for one minute left and you rush to get {queens[fellow_queen]['Name']}"
+          f" into an outfit!\nWhat order do you dress her in?")
     final_answer = get_challenge_input_from_user(generate_random_makeover_answers(outfit_question))
     if final_answer == outfit_question:
         correct_answers += 1
-        print(f"You finish dressing {queens[fellow_queen]['Name']} and the outfit looks stunning on her!")
+        print(f"You finish dressing {queens[fellow_queen]['Name']} and the outfit looks "
+              f"stunning on her!")
     else:
-        print(f"You finish dressing {queens[fellow_queen]['Name']} but her wig is sliding back and she has major"
-              f" cliffhangers because the shoes are way too small.")
-    print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of queen. She clears"
-          f" her throat.")
+        print(f"You finish dressing {queens[fellow_queen]['Name']} but her wig is sliding back and"
+              f" she has major cliffhangers because the shoes are way too small.")
+    print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of queen."
+          f" She clears her throat.")
     if correct_answers > 1:
-        return character_setup.you_win(character, queens[fellow_queen]['Name'], 'makeover_challenge')
+        return character_setup.you_win(character, queens[fellow_queen]['Name'],
+                                       'makeover_challenge')
     else:
-        print(f"...and gives the win to another team, who you have to admit do look fucking fierce. You feel "
-              f"your confidence wane slightly.")
+        print(f"...and gives the win to another team, who you have to admit look fucking fierce."
+              f"\nYou feel your confidence wane slightly.")
 
 
 def judge_events(character):
@@ -111,15 +105,17 @@ def judge_events(character):
     Provide possible random events for each character movement.
 
     :param character: a dictionary representing the player character
-    :precondition: character must be a dictionary with the keys 'Charisma', 'Uniqueness', 'Nerve', and 'Talent' present
+    :precondition: character must be a dictionary with the keys 'Charisma', 'Uniqueness', 'Nerve',
+    and 'Talent' present
     and each must have a positive integer for their value
     :postcondition: determine whether a random judge event happens or not
-    :return: character that has either not been altered or has had a single value altered based which event
-    occurred
+    :return: character that has either not been altered or has had a single value altered based
+    which event occurred
     """
     event_check = random.randint(1, 10)
     if event_check == 1:
-        print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it, Party City?"')
+        print(f'Michelle glares at you and says:\n"That dress is hideous. Where did you get it,'
+              f' Party City?"')
         character_setup.power_up_or_down(character, [-5, 0, 0, 0], True)
         return get_challenge_input_from_user(['Continue'])
     elif event_check == 2:
@@ -127,7 +123,8 @@ def judge_events(character):
         character_setup.power_up_or_down(character, [0, 4, 0, 0], True)
         return get_challenge_input_from_user(['Continue'])
     elif event_check == 3:
-        print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so fabulous!"')
+        print(f'Carson claps his hands and says:\n"Oh I just loved your lip syncs, they were so '
+              f'fabulous!"')
         character_setup.power_up_or_down(character, [0, 0, 6, 0], True)
         return get_challenge_input_from_user(['Continue'])
     else:
@@ -138,12 +135,13 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
     Perform section of lip sync event for player.
 
-    :param lip_sync_dictionary: a dictionary representing the lip sync song with the key 'Correct Answer' present whose
-    value is a list of the correct lyrics
+    :param lip_sync_dictionary: a dictionary representing the lip sync song with the key
+    'Correct Answer' present whose value is a list of the correct lyrics
     :param lyric_list: a list containing multiple strings representing possible lyric selections
     :precondition: lip_sync_dictionary must be a dictionary and lyric_list must be a list
     :postcondition: receive input from player representing their answer
-    :postcondition: determine whether the player's selection is present in the 'Correct Answer' key's value list
+    :postcondition: determine whether the player's selection is present in the 'Correct Answer'
+    key's value list
     :postcondition: print a positive statement on user success else print a negative statement
     :return: True if user's selection was correct else False
     """
@@ -152,8 +150,8 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         print("You flawlessly mouth the words of the song, giving you a boost in confidence.")
         return True
     else:
-        print(f"You fumble a few words and inwardly curse yourself,\nbut a short instrumental gives you the chance to"
-              f" gather yourself.")
+        print(f"You fumble a few words and inwardly curse yourself,\nbut a short instrumental gives"
+              f" you the chance to gather yourself.")
         return False
 
 
@@ -162,12 +160,14 @@ def perform_lip_sync(character) -> bool:
     Run lip sync event for player.
 
     :param character: a dictionary representing the player character which contains the keys 'Name'
-    'completed_lip_sync', and 'Nerve' where the value assigned to 'Name' is a string, the value assigned to
-    'completed_lip_sync' is a Boolean, and the value assigned to 'Nerve' is a positive integer
+    'completed_lip_sync', and 'Nerve' where the value assigned to 'Name' is a string, the value
+    assigned to 'completed_lip_sync' is a Boolean, and the value assigned to 'Nerve' is a
+    positive integer
     :precondition: character must be a dictionary
     :postcondition: runs the lip sync event for the player
     :postcondition: determines whether the player provided enough correct answers to pass the event
-    :postcondition: sets value assigned to 'completed_lip_sync' key in player character dictionary to True
+    :postcondition: sets value assigned to 'completed_lip_sync' key in player character dictionary
+    to True
     :return: winning function
     """
     filename = './json_files/lip_sync_data.json'
@@ -176,16 +176,18 @@ def perform_lip_sync(character) -> bool:
 
     event_selection = lip_sync_data.get(random.choice(list(lip_sync_data)))
 
-    print(f'RuPauls voice echoes:\n"Two queens stand before me. For tonight Ive asked you to prepare a lip sync '
-          f'performance of {event_selection.get("Song Title")}. Ladies...\nthe time has come....'
-          f'\nfor you to lip sync\nFOR\nYOUR\nLEGACY.\nThe music starts and you need to remember the first line '
-          f'of the song, which do you lip sync?\n')
+    print(f'RuPauls voice echoes:\n"Two queens stand before me. For tonight Ive asked you to '
+          f'prepare a lip sync performance of {event_selection.get("Song Title")}. '
+          f'Ladies...\nthe time has come....\nfor you to lip sync\nFOR\nYOUR\nLEGACY.\n'
+          f'The music starts and you need to remember the first line of the song, which do you '
+          f'lip sync?\n')
     correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
 
-    print(f'You make it to the chorus and you know you have to start it off right, which do you lip sync?')
+    print(f'You make it to the chorus and you know you have to start it off right,\nwhich do you '
+          f'lip sync?')
     correct_second_lyrics = perform_lyrics(event_selection, event_selection['Chorus Lyrics'])
-    print(f"It's the last verse before the closing chorus, you're so close and you know you have to end strong."
-          f"Which do you lip sync?")
+    print(f"It's the last verse before the closing chorus,\nyou're so close and you know you have "
+          f"to end strong.\nWhich do you lip sync?")
     correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
     print(f"The music stops and you catch your breath, your anticipation growing.")
 
@@ -212,8 +214,8 @@ def fight(character):
     """
     Run fight event for player.
 
-    :param character: must be a dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
-    and Nerve present with each of their values being positive integers
+    :param character: must be a dictionary representing the player character with the keys
+    'Charisma', 'Uniqueness', and Nerve present with each of their values being positive integers
     :precondition: character must be a dictionary
     :postcondition: randomly pulls a queen dictionary from a JSON file and sets them as the enemy
     :postcondition: runs combat for the player
@@ -275,11 +277,12 @@ def final_lip_sync(character):
     """
     Run final lip sync challenge for the player.
 
-    :param character: a dictionary representing the player character with the key 'Name' present whose assigned value
-    is a string
+    :param character: a dictionary representing the player character with the key 'Name' present
+    whose assigned value is a string
     :precondition: character must be a dictionary
     :postcondition: determines whether the player successfully completed the challenge or not
-    :return: win function if player was successful else character dictionary with health ('Nerve') value set to 0
+    :return: win function if player was successful else character dictionary with health ('Nerve')
+    value set to 0
     """
     filename = './json_files/rupaul_lip_sync.json'
     with open(filename) as file_object:
@@ -405,9 +408,6 @@ def main():
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
     # runway_event(perform_lip_sync, character)
-    lyric_options = ('When all else fails and you long to be Somewhere other than you are right now',
-                                   'When all else fails and you take a stand To make tomorrow a brighter day',
-                                   'When all else fails and you long to be Something better than you are today')
     # print(generate_challenge_input(lyric_options))
     # print(get_challenge_input_from_user(lyric_options))
     fight(character)
