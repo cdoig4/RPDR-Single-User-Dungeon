@@ -79,10 +79,14 @@ def set_board(character):
 
 def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     """
+    Create representation of player character in correct location on the game board.
 
-    :param board:
-    :param current_coordinates:
-    :return:
+    :param board: must be a string representing the board of the current location of the user
+    :param current_coordinates: must be a tuple representing the current location of the user on the board
+    :precondition: board must be a string and current_coordinates must be a tuple
+    :postcondition: calculates the current location of the user on the game board
+    :postcondition: places player symbol ('&') in the correct location on the game board
+    :return: string representing the correctly marked board with the correct current location of the user shown
     """
     columns = [column for column in board if column == '#']
 
