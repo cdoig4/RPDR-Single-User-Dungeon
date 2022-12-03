@@ -90,9 +90,14 @@ def apply_power_up(stat, value):
     with a key which is equal to the first element of the stat tuple with a value that is equal to
     the second element of the stat tuple with the value parameter added to it
     """
-    if stat[1] + value < 0:
-        return {stat[0]: 0}
-    return {stat[0]: stat[1] + value}
+    try:
+        stat[1] + value
+        if stat[1] + value < 0:
+            return {stat[0]: 0}
+        return {stat[0]: stat[1] + value}
+    except IndexError:
+        print("Stat must have two elements!")
+
 
 
 def power_up_or_down(character, values, is_queen):
