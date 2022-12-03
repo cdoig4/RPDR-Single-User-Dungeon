@@ -154,9 +154,16 @@ def you_win(character, enemy_name, challenge_name):
 
 def check_for_level_up(character):
     """
+    Determine whether the player character has leveled up.
 
-    :param character:
-    :return:
+    :param character: must be a dictionary representing the player character with the keys 'location', 'Talent',
+    and 'level' present, with the value assigned to 'location' being a string and the values assigned to 'Talent'
+    and 'level' being positive integers
+    :precondition: character must be a dictionary
+    :postcondition: determines whether the player character has leveled up based on the values currently assigned
+    to the 'location' and 'Talent' keys
+    :postcondition: passes character dictionary to function which levels up the character if the conditions are met
+    :return: dictionary representing the player character
     """
     if character['location'] == 'werk_room' and character['Talent'] >= 40:
         character['level'] += 1
