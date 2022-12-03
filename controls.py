@@ -117,9 +117,19 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
 
 def move_character(character):
     """
+    Process character movement.
 
-    :param character:
-    :return:
+    :param character: must be a dictionary representing the player character with the keys 'coordinates', 'location',
+    and 'met_rupaul' present with the value of 'coordinates' being a tuple containing two positive integers, the value
+    of 'location' being a string, and the value of 'met_rupaul' being a Boolean
+    :precondition: character must be a dictionary
+    :postcondition: processes the movement of the player character depending on several conditions
+    :return: function to set new board if player input is 'enter', 'location' value is 'judges_panel', and 'met_rupaul'
+    value is True, function to get new input from user if player input is 'exit' and 'location' value is not False or
+    None, function to run makeover challenge if player input is equal to 'challenge her' and 'location' value is
+    'werk_room', function to run final battle if player input is equal to 'challenge her' and 'location' value is
+    'dressing_room', else character dictionary with 'coordinates' value updated to reflect new coordinates of the
+    player character on the game board
     """
     current_coordinates = character['coordinates']
     board_name = character['location']
