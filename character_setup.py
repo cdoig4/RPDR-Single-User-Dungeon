@@ -124,22 +124,23 @@ def you_win(character, enemy_name, challenge_name):
         increase = random.randint(10, 15)
         return power_up_or_down(character, [0, increase, 0, increase], False)
     if challenge_name == 'werk_room':
+        print("\nYou are now level 2!")
+        power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
+                                     random.randint(30, 40), 0], False)
         print(f"RuPaul's voice echoes through the room. \"{character['Name']}, "
               f"please make your way to the Main Stage. You have been chosen to take part in a Lip Sync "
               f"for Your Legacy!\"\nYou quickly make your way to the stage, the potential lip sync songs spinning"
-              f" through your head\n")
-        print("You are now level 2!")
-        boards.set_board(character)
-        return power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
-                                            random.randint(30, 40), 0], False)
+              f" through your head.")
+        return boards.set_board(character)
     if challenge_name == 'lipsync':
         print(f"RuPaul's voice echoes: 'ConDRAGulations {character['Name']}, you're a winner baby!'\n"
               f"You feel your inner saboteur melting away.")
-        print("You are now level 3!")
+        print("\nYou are now level 3!")
         character['completed_lip_sync'] = True
-        boards.set_board(character)
-        return power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
-                                            random.randint(30, 40), 0], False)
+        print(f"You are ushered towards the Judge's Panel.")
+        power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
+                                     random.randint(30, 40), 0], False)
+        return boards.set_board(character)
     if challenge_name == 'rupaul':
         print(f"RuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}"
               f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
