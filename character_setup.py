@@ -115,8 +115,9 @@ def you_win(character, enemy_name, challenge_name):
     if challenge_name == 'fight':
         print('You win!')
         print(f"{enemy_name} slinks away, clearly feeling the shade of it all.\n")
+        print('You regain composure after all the reads.')
         increase = random.randint(8, 12)
-        return power_up_or_down(character, [0, 0, 0, increase], False)
+        return power_up_or_down(character, [0, 0, 2, increase], False)
     if challenge_name == 'makeover_challenge':
         print(f"She says: ConDRAGulations {character['Name']} and {enemy_name}, you are the"
               f" winners of this mini challenge!\"\n")
