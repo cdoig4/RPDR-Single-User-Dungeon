@@ -234,6 +234,7 @@ def fight(character):
                                  + math.ceil(queens[enemy_queen]['Charisma'] / 5))
             print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
+            character_setup.check_if_dead(character)
         else:
             print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never "
                   f"been to the library in her life.")
