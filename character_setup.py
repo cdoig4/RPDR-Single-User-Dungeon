@@ -115,6 +115,12 @@ def you_win(character, enemy_name, challenge_name):
         increase = random.randint(8, 12)
         print('You win!')
         return power_up_or_down(character, [0, 0, 0, increase], True)
+    if challenge_name == 'makeover_challenge':
+        print(f"She says: ConDRAGulations {character['Name']} and {enemy_name}, you are the"
+              f" winners of this mini challenge!\"\n")
+        increase = random.randint(10, 15)
+        print('You win!')
+        return power_up_or_down(character, [0, 0, 0, increase], True)
 
 
 def check_for_level_up(character):

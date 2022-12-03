@@ -89,8 +89,7 @@ def makeover_challenge(character):
     print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of queen. She clears"
           f" her throat.")
     if correct_answers > 1:
-        print(f"She says: \"{queens[fellow_queen]['Name']}, {character['Name']}, conDRAGulations you are the"
-              f" winners of this mini challenge!\"\n")
+        return character_setup.you_win(character, queens[fellow_queen]['Name'], 'makeover_challenge')
     else:
         print(f"...and gives the win to another team, who you have to admit do look fucking fierce. You feel "
               f"your confidence wane slightly.")
