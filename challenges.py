@@ -143,10 +143,10 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
     """
     answer = get_challenge_input_from_user(lyric_list)
     if answer in lip_sync_dictionary['Correct Answer']:
-        print("You flawlessly mouth along to the words of the song, giving you a boost in confidence.")
+        print("You flawlessly mouth the words of the song, giving you a boost in confidence.")
         return True
     else:
-        print(f"You fumble a few words and inwardly curse yourself, but a short instrumental gives you the chance to"
+        print(f"You fumble a few words and inwardly curse yourself,\nbut a short instrumental gives you the chance to"
               f" gather yourself.")
         return False
 
@@ -270,24 +270,24 @@ def final_lip_sync(character):
         event_selection = json.load(file_object)
 
     print(f"RuPaul shouts \"The library is officially closed! Now {character['Name']}\""
-          f"...\n\nThe time has come...\nFor you to Lip Sync....\nFor. \nThe. \nCROWN.\"\n\nThe lights"
-          f" dim and the familiar beat of a RuPaul song begins.\n"
+          f"...\n\nThe time has come...\nFor you to Lip Sync....\nFor. \nThe."
+          f"\nCROWN.\n\nThe lights dim and the familiar beat of a RuPaul song begins.\n"
           f"Which do you lip sync?")
     correct_first_lyrics = perform_lyrics(event_selection, event_selection['Initial Lyrics'])
-    print(f'You continue your performance, knowing that it all comes down to this. Your entire '
+    print(f'You continue your performance, knowing that it all comes down to this.\nYour entire '
           f'journey has come down to one last performance\nWhich do you lip sync?')
     correct_second_lyrics = perform_lyrics(event_selection, event_selection['Chorus Lyrics'])
-    print(f"It's the final stretch. You've pulled out all your tricks and you know you have to "
+    print(f"It's the final stretch.\nYou've pulled out all your tricks and you know you have to "
           f"end strong.\nWhich do you lip sync?")
     correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
     print(f"The song ends. You stand in your pose, breathing heavily as RuPaul watches you. "
           f"Her face a mask.")
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
-        return character.update({'met_rupaul': True})
+        return character_setup.you_win(character, 'rupaul', 'rupaul')
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
-        return character.update({'met_rupaul': True})
+        return character_setup.you_win(character, 'rupaul', 'rupaul')
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
-        return character.update({'met_rupaul': True})
+        return character_setup.you_win(character, 'rupaul', 'rupaul')
     return character.update({'Nerve': 0})
 
 
