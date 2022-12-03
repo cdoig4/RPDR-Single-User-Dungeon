@@ -1,4 +1,4 @@
-## RuPaul's (text-based) Drag Race!
+## RuPaul's (Text-Based) Drag Race!
 
 ### Made with love by:
 Kelly Hagg, A01324804, kellyhagg
