@@ -272,8 +272,13 @@ def fight(character):
 
 def final_lip_sync(character):
     """
+    Run final lip sync challenge for the player.
 
-    :param character:
+    :param character: a dictionary representing the player character with the key 'Name' present whose assigned value
+    is a string
+    :precondition: character must be a dictionary
+    :postcondition: determines whether the player successfully completed the challenge or not
+    :return: win function if player was successful else character dictionary with health ('Nerve') value set to 0
     """
     filename = './json_files/rupaul_lip_sync.json'
     with open(filename) as file_object:
