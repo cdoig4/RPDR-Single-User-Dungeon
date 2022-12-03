@@ -128,8 +128,9 @@ def you_win(character, enemy_name, challenge_name):
         print(f"RuPaul's voice echoes through the room. \"{character['Name']}, "
               f"please make your way to the Main Stage. You have been chosen to take part in a Lip Sync "
               f"for Your Legacy!\"\nYou quickly make your way to the stage, the potential lip sync songs spinning"
-              f" through your head")
+              f" through your head\n")
         print("You are now level 2!")
+        boards.set_board(character)
         return power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
                                             random.randint(30, 40), 0], False)
     if challenge_name == 'lipsync':
