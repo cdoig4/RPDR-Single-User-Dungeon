@@ -66,6 +66,7 @@ def make_character(character_name: str) -> dict:
 def filter_no_delta(structure):
     """
 
+
     :param structure:
     :return:
     """
@@ -75,6 +76,17 @@ def filter_no_delta(structure):
 
 def apply_power_up(stat, value):
     """
+    Calculate new value to be assigned to a stat.
+
+    :param stat: must be a tuple containing a string representing the name of a stat and an integer representing
+    the value assigned to that stat
+    :param value: must be an integer
+    :precondition: stat must be a tuple and value must be an integer
+    :postcondition: calculate the new value of the second element in the stat tuple after the addition of value
+    :return: a dictionary with a key which is equal to the first element of the stat tuple with a value of 0 if adding
+    the value parameter to it would have made it negative, else a dictionary with a key which is equal to the first
+    element of the stat tuple with a value that is equal to the second element of the stat tuple with the value
+    parameter added to it
     """
     if stat[1] + value < 0:
         return {stat[0]: 0}
