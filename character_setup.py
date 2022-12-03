@@ -47,20 +47,29 @@ def make_character(character_name: str) -> dict:
     :postcondition: creates character dictionary containing name and stats of desired class
     :return: a dictionary representing the player's character
     """
-    print("What type of queen are you?")
-    answer = challenges.get_challenge_input_from_user(CHARACTER_CLASSES)
+    character = {'met_rupaul': False, "completed_lip_sync": False, "level": 1}
+    queen_types = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alternative Queen']
+    stat_names = ["Charisma", "Uniqueness", "Nerve", "Talent"]
 
+    base_value = 10
+    queen_add_ons = ((4, 5, 0, 0), (5, 4, 0, 0), (7, 2, 0, 0), (2, 7, 0, 0))
+
+    print("What type of queen are you?")
+    answer = challenges.get_challenge_input_from_user(queen_types)
     if answer == 'look_queen':
-        character = {key: value for key, value in LOOK_QUEEN.items()}
+        stat_values = [value + base_value for value in queen_add_ons[0]]
     elif answer == 'comedy_queen':
-        character = {key: value for key, value in COMEDY_QUEEN.items()}
+        stat_values = [value + base_value for value in queen_add_ons[1]]
     elif answer == 'performance_queen':
-        character = {key: value for key, value in PERFORMANCE_QUEEN.items()}
+        stat_values = [value + base_value for value in queen_add_ons[2]]
     else:
-        character = {key: value for key, value in ALTERNATIVE_QUEEN.items()}
+        stat_values = [value + base_value for value in queen_add_ons[3]]
+
+    named_stats = list(zip(stat_names, stat_values))
+    stats = {stat: value for stat, value in named_stats}
 
     character['Name'] = character_name
-    character.update({'coordinates': (0, 4), 'location': 'werk_room'})
+    character.update(stats)
     return character
 
 
@@ -243,14 +252,14 @@ def check_if_dead(character):
 
 def main():
     """Drive the program."""
-    # new_character = make_character(input('What is the name of your Drag Persona?\n'))
+    new_character = make_character(input('What is the name of your Drag Persona?\n'))
     # deliver_introduction(new_character)
     # print(new_character)
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    you_win(character, {'Name': 'test'}, 'fight')
-    print(character)
+    # you_win(character, {'Name': 'test'}, 'fight')
+    print(new_character)
     # print(power_up(character, [0, 0, 0, 8]))
 
 
