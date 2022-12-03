@@ -355,6 +355,12 @@ def final_battle(character):
 
 def generate_challenge_input(possible_answers: list) -> list:
     """
+    Generate potential inputs for player.
+
+    :param possible_answers: a list of strings
+    :precondition: possible_answers must be a list
+    :postcondition: enumerates the list to show each potential input option
+    :return: list of tuples representing all potential inputs
     """
     pairs = []
 
