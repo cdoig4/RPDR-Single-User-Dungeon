@@ -201,10 +201,10 @@ def perform_lip_sync(character) -> bool:
     else:
         character_setup.power_up_or_down(character, [0, 0, -random.randint(5, 10),0], False)
         character['coordinates'] = (6, 7)
-        print(f"RuPaul's voice echoes: 'I'm sorry, {character['Name']}, you didn't win. But...\nI'm"
-              f" willing to give you another try. Practice up and assume the position when you're ready to "
-              f"try again.'\nYou hear your inner saboteur cackling.\nYou have {character['Nerve']} Nerve "
-              f"remaining.")
+        print(f"RuPaul's voice echoes:\n\"I'm sorry, {character['Name']}, you didn't win.\nBut..."
+              f" I'm willing to give you another try. Practice up and assume the position\n"
+              f"when you're ready to try again.\"\nYou hear your inner saboteur cackling.\nYou have"
+              f" {character['Nerve']} Nerve remaining.")
     return character
 
 
