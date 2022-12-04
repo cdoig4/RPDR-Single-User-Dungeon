@@ -373,6 +373,10 @@ def generate_challenge_input(possible_answers: list) -> list:
     :precondition: possible_answers must be a list
     :postcondition: enumerates the list to show each potential input option
     :return: list of tuples representing all potential inputs
+    >>> generate_challenge_input(['Option Number One', 2, -3.0])
+    [('1', 'Option Number One'), ('2', 2), ('3', -3.0)]
+    >>> generate_challenge_input([])
+    []
     """
     pairs = []
 
