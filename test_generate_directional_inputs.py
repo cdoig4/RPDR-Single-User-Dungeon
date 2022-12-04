@@ -8,7 +8,7 @@ from unittest import TestCase
 from controls import generate_directional_inputs
 
 
-class MyGenerateDirectionalInputs(TestCase):
+class TestGenerateDirectionalInputs(TestCase):
     def test_generate_directional_entry_on_left(self):
         expected = [('E', 'Enter'), ('D', 'Right'), ('0', 'Stats')]
         actual = generate_directional_inputs((2, 0), 'judges_panel')
