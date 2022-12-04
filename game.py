@@ -24,6 +24,7 @@ def game():
         controls.move_character(character)
         challenges.run_challenges(character)
     print('The END.')
+    return
 
 
 """to test lvl 1 (about to level up)"""
