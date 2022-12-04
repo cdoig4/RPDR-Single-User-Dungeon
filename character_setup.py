@@ -39,7 +39,7 @@ def make_character(character_name: str) -> dict:
     :return: a dictionary representing the player's character
     """
     character = {'met_rupaul': False, "completed_lip_sync": False, "level": 1,
-                 'achieved_goal': False}
+                 'achieved_goal': False, 'location': 'werk_room', 'coordinates': (0, 4)}
     queen_types = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alternative Queen']
     stat_names = ["Charisma", "Uniqueness", "Nerve", "Talent"]
 
