@@ -136,7 +136,6 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
 
     location_marker = marked_board.find('x')
     marked_board = marked_board[0: location_marker] + '&' + marked_board[location_marker + 1:]
-    marked_board = marked_board.replace('x', ' ')
 
     return marked_board
 
@@ -223,14 +222,26 @@ def main():
     """
     Drive the program.
     """
-    character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
-                 'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
-                 'coordinates': (0, 4), 'location': 'werk_room'}
-    # board = read_board('dressing_room')
-
-    # print(board[:118] + 'R' + board[119:])
-    # print(clear_board(board))
-    display_board(character)
+    character = {'coordinates': (1, 3), 'location': 'dressing_room'}
+    print("\nread_board('dressing_room') gets the Dressing Room board from a text file:\n\n",
+          read_board('dressing_room'))
+    print("Based on the symbols in the file, index_board will attach a descriptor as a value"
+          " to its\ncoordinates in the format (row, column) beginning from top left"
+          " in a dictionary like so:\n\n", index_board('dressing_room'))
+    print("\nset_board({'met_rupaul': True}) will update the key-value pairs for location and\n"
+          "starting coordinates for the specified board in the character dictionary based\n"
+          "on in-game events. This returns the following:\n\n", set_board({'met_rupaul': True}))
+    board = place_character_in_board(read_board('dressing_room'), (1, 3))
+    print("\nplace_character_in_board(read_board('dressing_room'), (1, 3)) places the character\n"
+          "in their current location in the string like so:\n\n", board)
+    print("\nformat_board(board, character) when applied to this board will then place the objects"
+          "\nlost in the character placement process back into the board:\n\n",
+          format_board(board, character))
+    print("clear_board(board) removes the extraneous symbols from the board:\n\n",
+          clear_board(format_board(board, character)))
+    print("display_board(board) ties these functions together, and prints a horizontal line along\n"
+          "with the corresponding description read from location_descriptions.json",
+          display_board(character))
 
 
 if __name__ == '__main__':
