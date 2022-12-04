@@ -174,13 +174,13 @@ def you_win(character, enemy_name, challenge_name):
     :postcondition: prints specified win statements depending on the string passed as challenge_name
     :postcondition: changes achieved_goal value to True if challenge_name is equal to 'rupaul'
     :return: function to alter stats stored within character dictionary if challenge_name is equal
-    to 'fight' or
+    to 'read_battle' or
     'makeover_challenge', function to change the board the player is on if challenge_name is equal
     to 'werk_room',
     else print statement introducing the judges panel location if challenge_name is equal to
     'lip_sync'
     """
-    if challenge_name == 'fight':
+    if challenge_name == 'read_battle':
         print('You win!')
         print(f"{enemy_name} slinks away, clearly feeling the shade of it all.")
         print('You regain composure after all the reads.')
@@ -270,7 +270,7 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    # you_win(character, {'Name': 'test'}, 'fight')
+    # you_win(character, {'Name': 'test'}, 'read_battle')
     print(new_character)
     # print(power_up(character, [0, 0, 0, 8]))
 

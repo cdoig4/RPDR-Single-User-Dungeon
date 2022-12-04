@@ -213,9 +213,9 @@ def main_stage_lip_sync(character) -> bool:
     return character
 
 
-def fight(character):
+def read_battle(character):
     """
-    Run fight event for player.
+    Run read_battle event for player.
 
     :param character: must be a dictionary representing the player character with the keys
     'Charisma', 'Uniqueness', and Nerve present with each of their values being positive integers
@@ -271,7 +271,7 @@ def fight(character):
 
     if character['level'] != 2:
         character['Nerve'] = starting_nerve
-        return character_setup.you_win(character, queens[enemy_queen]['Name'], 'fight')
+        return character_setup.you_win(character, queens[enemy_queen]['Name'], 'read_battle')
     else:
         return character.update({'Nerve': 0})
 
@@ -423,7 +423,7 @@ def run_challenges(character):
     :precondition: character must be a dictionary
     :postcondition: determines if a challenge is run based on the values stored in the character
     parameter
-    :return: fight function if the value assigned to 'location' is 'werk_room', the value assigned
+    :return: read_battle function if the value assigned to 'location' is 'werk_room', the value assigned
     to 'coordinates' is not (0, 4) or (6, 4) and the value assigned to 'level' is not 2,
     main_stage_lip_sync function if the value assigned to 'location' is 'main_stage' and the value
     assigned to 'coordinates' is (6, 8), judge_events function if the value assigned to 'location'
@@ -435,7 +435,7 @@ def run_challenges(character):
     if location == 'werk_room' and coordinates != (0, 4) and coordinates != (6, 4) \
             and character['level'] != 2:
         if random.randint(1, 10) <= 3:
-            return fight(character)
+            return read_battle(character)
     if location == 'main_stage' and coordinates == (6, 8):
         return main_stage_lip_sync(character)
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
@@ -449,7 +449,7 @@ def main():
     # runway_event(main_stage_lip_sync, character)
     # print(generate_challenge_input(lyric_options))
     # print(get_challenge_input_from_user(lyric_options))
-    fight(character)
+    read_battle(character)
 
 
 if __name__ == '__main__':
