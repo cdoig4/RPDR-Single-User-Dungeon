@@ -81,7 +81,7 @@ def read_battle(character: dict) -> dict:
                                      + math.ceil(queens[enemy_queen]['Charisma'] / 5))
                 print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
                 character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
-                return character_setup.check_if_dead(character)
+                character_setup.check_if_dead(character)
             else:
                 print(f"{queens[enemy_queen]['Name']}'s read is laughably bad and has no effect!"
                       f"\nShe's clearly never been to the library in her life.")
