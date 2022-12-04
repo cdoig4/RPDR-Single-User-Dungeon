@@ -28,6 +28,7 @@ against Mother herself.
 | [ ]    | Door            |
 | . >    | Stairs up       |
 | < .    | Stairs down     |
+| X      | Stage location  |
 
 
 **Universal Commands:**
