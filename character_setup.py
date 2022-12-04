@@ -202,7 +202,7 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
               f"fall from the ceiling.\n\nRuPaul says,\"You are now the Queen of the Mother Tucking"
               f" UNIVERSE!\"\n\nMother continues as she places a massive bejeweled crown upon your"
               f" head and a\nmatching scepter in your hand.\nYou sob with happiness.\nYou"
-              f"know that this... is the beginning of the rest of your life.\n")
+              f" know that this... is the beginning of the rest of your life.\n")
         character['achieved_goal'] = True
 
 
