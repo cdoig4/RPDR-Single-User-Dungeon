@@ -179,7 +179,7 @@ def you_win(character, enemy_name, challenge_name):
     if challenge_name == 'werk_room':
         print("\nYou are now level 2!")
         power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
-                                     random.randint(30, 40), 0], False)
+                                     random.randint(30, 40), 15], False)
         print(f"\nRuPaul's voice echoes through the room: \n\n\"{character['Name']}, "
               f"please make your way to the Main Stage. "
               f"\nYou have been chosen to take part in a Lip Sync for Your Legacy!\"\n"
@@ -192,7 +192,7 @@ def you_win(character, enemy_name, challenge_name):
         print("\nYou are now level 3!")
         character['completed_lip_sync'] = True
         power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
-                                     random.randint(30, 40), 0], False)
+                                     random.randint(30, 40), 20], False)
         boards.set_board(character)
         return print(f"\nYou are ushered towards the Judge's Panel.")
     if challenge_name == 'rupaul':
