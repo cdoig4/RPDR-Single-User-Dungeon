@@ -64,6 +64,6 @@ against Mother herself.
 | g.  | Range function              | boards.py: lines 55-56                                                                           |
 | h.  | Itertools (permutations)    | challenges.py: line 38                                                                           |
 | i.  | Enumerate function          | challenges.py: line 388                                                                          |
-| j.  | Filter or map function      | character_setup.py: line 125                                                                     |
+| j.  | Filter or map function      | character_setup.py: line 122<br/>character_setup.py: line 127                                    |
 | k.  | Random module               | challenges.py: lines 40 & 43<br/>challenges.py: line 186<br/>character_setup.py: lines 182 & 195 |
 
