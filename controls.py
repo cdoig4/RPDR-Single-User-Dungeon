@@ -16,6 +16,10 @@ def show_score(character: dict) -> None:
     :precondition: character must be a dictionary
     :postcondition: creates a string with the current stats of the player character inside
     :return: print statement displaying current stats of the player character
+    >>> show_score({'Name': 'Ginger Snaps', 'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10})
+    Stats: [Charisma: 15, Uniqueness: 14, Nerve: 10, Talent: 10]
+    >>> show_score({'Charisma': 0, 'Uniqueness': -5, 'Nerve': 200, 'Talent': -1000})
+    Stats: [Charisma: 0, Uniqueness: -5, Nerve: 200, Talent: -1000]
     """
     charisma = character['Charisma']
     uniqueness = character['Uniqueness']
