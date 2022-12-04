@@ -6,7 +6,7 @@ Kelly Hagg, A01324804, kellyhagg
 Colin Doig, A01334230 ,cdoig4
 
 ### Plot:
-To obtain the title of 'Greatest Queen of All Time', you must
+To obtain the title of 'Queen of the Mother Tucking Universe', you must
 first win the 
 right to lip-sync on the Main Stage by proving your
 mettle against some fellow 
