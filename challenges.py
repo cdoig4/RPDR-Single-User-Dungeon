@@ -59,6 +59,7 @@ def makeover_challenge(character):
     with open(filename) as file_object:
         queens = json.load(file_object)
     queen_names = list(queens.keys())
+    queen_names.remove('RuPaul')
     fellow_queen = random.choice(queen_names)
     correct_answers = 0
 
