@@ -15,8 +15,8 @@ def show_score(character: dict) -> None:
     """
     Display current character stats for player
 
-    :param character: dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
-    'Nerve', and 'Talent' whose values must all be positive integers
+    :param character: must be dictionary representing the player character with the keys 'Charisma',
+    'Uniqueness', 'Nerve', and 'Talent'
     :precondition: character must be a dictionary
     :postcondition: create a string with the current stats of the player character inside
     :return: print statement displaying current stats of the player character
@@ -37,12 +37,13 @@ def generate_directional_inputs(current_coordinates: tuple, board_name: str) -> 
     """
     Generate possible directional inputs for player.
 
-    :param current_coordinates: a tuple containing two positive integers representing the current coordinates
-    of the player character on the game board
-    :param board_name: a string representing the name of the current board
+    :param current_coordinates: must be a tuple containing two positive integers representing
+    the current coordinates of the player character on the game board
+    :param board_name: must be a string representing the name of the current board
     :precondition: current_coordinates must be a tuple and board_name must be a string
-    :postcondition: generate possible inputs for the player based on their current coordinates on the board
-    :return: a list of strings representing the possible inputs for the player
+    :postcondition: generate possible inputs for the player based on their current coordinates
+    and the indices generated in index_board when applied to the opened board text file
+    :return: a list of tuples representing the possible inputs and their english meaning
     """
     board_coordinates = index_board(board_name)
 
@@ -91,13 +92,14 @@ def generate_directional_inputs(current_coordinates: tuple, board_name: str) -> 
 
 def get_directional_input_from_user(game_input: list, character: dict) -> str:
     """
-    Process directional input of the player.
+    Process directional input from the player.
 
-    :param game_input: a list representing valid potential inputs
-    :param character: a dictionary representing the player character
+    :param game_input: must be a list representing valid potential inputs
+    :param character: must be a dictionary representing the player character
     :precondition: game_input must be a list and character must be a dictionary
     :postcondition: accept input from player
     :postcondition: determines whether input is valid
+    :postcondition: print to the user
     :return: self if user input is 'O' or not valid else string representing valid input from user
     """
     acceptable_answers = []
@@ -134,21 +136,17 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     return answer_string.lower()
 
 
-def move_character(character: dict) -> dict or None:
+def move_character(character: dict) -> dict:
     """
     Process character movement.
 
-    :param character: a dictionary representing the player character with the keys 'coordinates', 'location',
-    and 'met_rupaul' present with the value of 'coordinates' being a tuple containing two positive integers, the value
-    of 'location' being a string, and the value of 'met_rupaul' being a Boolean
+    :param character: must be a dictionary representing the player character with the keys
+    'coordinates', 'location', and 'met_rupaul' present with the value of 'coordinates' being a
+    tuple containing two positive integers, the value of 'location' being a string, and the value
+    of 'met_rupaul' being a Boolean
     :precondition: character must be a dictionary
-    :postcondition: processe the movement of the player character depending on several conditions
-    :return: function to set new board if player input is 'enter', 'location' value is 'judges_panel', and 'met_rupaul'
-    value is True, function to get new input from user if player input is 'exit' and 'location' value is not False or
-    None, function to run makeover challenge if player input is equal to 'challenge her' and 'location' value is
-    'werk_room', function to run final battle if player input is equal to 'challenge her' and 'location' value is
-    'dressing_room', else character dictionary with 'coordinates' value updated to reflect new coordinates of the
-    player character on the game board
+    :postcondition: process the movement of the player character depending on several conditions
+    :return: character dictionary representing in-game movement events
     """
     current_coordinates = character['coordinates']
     board_name = character['location']
@@ -171,11 +169,13 @@ def move_character(character: dict) -> dict or None:
     elif move_to_coordinates == 'challenge her' and character['location'] == 'werk_room':
         return challenges.makeover_challenge(character)
     elif move_to_coordinates == 'challenge her' and character['location'] == 'dressing_room':
-        return challenges.final_battle(character)
+        challenges.final_battle(character)
+        return character
     else:
         move_to_coordinates = current_coordinates
 
-    return character.update({'coordinates': move_to_coordinates})
+    character.update({'coordinates': move_to_coordinates})
+    return character
 
 
 def main():
@@ -187,7 +187,8 @@ def main():
                  'coordinates': (6, 3), 'location': 'main_stage'}
     show_score(character)
     print(f'Here is a demonstration of how user input is processed using move_character which uses '
-          f'generate_directional_inputs and get_directional_input_from_user to move the player character.')
+          f'generate_directional_inputs and get_directional_input_from_user to move the player '
+          f'character.')
     move_character(character)
     move_character(character)
 
