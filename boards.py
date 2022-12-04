@@ -1,6 +1,8 @@
 """
 Colin Doig A01334230
 Kelly Hagg A01324804
+
+Generate coordinates and display the board with each movement.
 """
 
 
@@ -65,7 +67,7 @@ def index_board(board_name: str) -> dict:
     return described_coordinates
 
 
-def set_board(character):
+def set_board(character: dict) -> dict:
     """
     Set correct values into player character dictionary to represent where they are in the game.
 
