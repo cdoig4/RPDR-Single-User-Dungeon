@@ -30,9 +30,19 @@ def read_board(board_name: str) -> str:
 
 def index_board(board_name: str) -> dict:
     """
+    Generate a dictionary in the format {coordinates: description} from the board name.
 
-    :param board_name:
-    :return:
+    Generate a dictionary in the format {coordinates (tuple): description} from the given board
+    name, where 'coordinates' is a tuple of 2 positive integers, and description is either a
+    lowercase descriptive string, or a boolean.
+
+    :param board_name: a lowercase string either 'dressing_room', 'judges_panel', 'main_stage',
+    or 'werk_room'
+    :precondition: board_name is a lowercase string either 'dressing_room', 'judges_panel',
+    'main_stage', or 'werk_room'
+    :postcondition: read the corresponding board from a text file and populate the descriptive
+    dictionary based on the symbols represented in the board file and return
+    :return: the descriptive dictionary based on the symbols represented in the board file
     """
     board = read_board(board_name)
 
@@ -63,6 +73,7 @@ def index_board(board_name: str) -> dict:
             location_type += ['queen']
 
     described_coordinates = dict(zip(coordinates, location_type))
+    print(described_coordinates)
 
     return described_coordinates
 
