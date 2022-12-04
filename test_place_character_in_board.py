@@ -84,3 +84,59 @@ class TestPlaceCharacterInBoard(TestCase):
                    '   | x   x   x   x   x | x  $\n' \
                    '    -------------------\n'
         self.assertEqual(expected, place_character_in_board(board, (1, 5)))
+
+    def test_place_character_in_board_corner(self):
+        board = '     #   #   #   #   #   #   #   #   #\n' \
+                   '     x   x   x   x |[E]| x   x   x   x   $\n' \
+                   '    ---------------     ---------------\n' \
+                   '   | !   !   !   !   !   !   !   !   ! | $\n' \
+                   '   |                                   |\n' \
+                   '   | !   !   !   !   !   Q   !   !   ! | $\n' \
+                   '   |                                   |\n' \
+                   '   | !   Q   !   !   !   !   !   !   ! | $\n' \
+                   '   |                                   |\n' \
+                   '   | !   !   !   !   !   !   !   Q   ! | $\n' \
+                   '   |                                   |\n' \
+                   '   | !   !   !   Q   !   !   !   !   ! | $\n' \
+                   '    ---------------     ---------------\n' \
+                   '     x   x   x   x |[e]| x   x   x   x   $\n'
+        expected = '     #   #   #   #   #   #   #   #   #\n' \
+                   '                   |[ ]|                 $\n' \
+                   '    ---------------     ---------------\n' \
+                   '   | &   x   x   x   x   x   x   x   x | $\n' \
+                   '   |                                   |\n' \
+                   '   | x   x   x   x   x   x   x   x   x | $\n' \
+                   '   |                                   |\n' \
+                   '   | x   x   x   x   x   x   x   x   x | $\n' \
+                   '   |                                   |\n' \
+                   '   | x   x   x   x   x   x   x   x   x | $\n' \
+                   '   |                                   |\n' \
+                   '   | x   x   x   x   x   x   x   x   x | $\n' \
+                   '    ---------------     ---------------\n' \
+                   '     x   x   x   x |[x]| x   x   x   x   $\n'
+
+        self.assertEqual(expected, place_character_in_board(board, (1, 0)))
+
+    def test_place_character_in_board_wall(self):
+        board = '    #   #   #   #   #   #   #\n' \
+                '    x   x   x   x   x   x   x  $\n' \
+                '       -----------------------\n' \
+                '    x | !   !   !   !   !  .E> $\n' \
+                '   ---                     ---\n' \
+                '   [e]  !   !   !   !   ! | x  $\n' \
+                '   -----------------------\n' \
+                '            _________\n' \
+                '           [_________]\n' \
+                '             J  J  J\n'
+        expected = '    #   #   #   #   #   #   #\n' \
+                   '                               $\n' \
+                   '       -----------------------\n' \
+                   '      |         &   !   !  .E> $\n' \
+                   '   ---                     ---\n' \
+                   '   [e]  !   !   !   !   ! | x  $\n' \
+                   '   -----------------------\n' \
+                   '            _________\n' \
+                   '           [_________]\n' \
+                   '             J  J  J\n'
+
+        self.assertEqual(expected, place_character_in_board(board, (1, 0)))
