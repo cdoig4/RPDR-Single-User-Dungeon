@@ -77,7 +77,7 @@ def filter_no_delta(structure):
         return structure[0]
 
 
-def apply_power_up(stat, value):
+def apply_power_up(stat: tuple, value: int) -> dict:
     """
     Calculate new value to be assigned to a stat.
 
@@ -107,7 +107,7 @@ def apply_power_up(stat, value):
         print("Stat must have two elements!")
 
 
-def power_up_or_down(character, values, is_queen):
+def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
     """
     Inform player of changes to stats for either themselves or the enemy.
 
@@ -146,17 +146,17 @@ def power_up_or_down(character, values, is_queen):
     return character
 
 
-def you_win(character, enemy_name, challenge_name):
+def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> dict or None:
     """
     Perform win events for player.
 
     :param character: must be a dictionary representing the player character with the keys 'Name'
     and 'completed_lip_sync' present, with the value assigned to 'Name' being a string and the
     value assigned to 'completed_lip_sync' being a Boolean
-    :param enemy_name: must be a non-empty string
+    :param enemy_name: must be a non-empty string representing an NPC name or None if there is no NPC
     :param challenge_name: must be a non-empty string
-    :precondition: character must be a dictionary, and enemy_name and challenge_name must both be
-    string
+    :precondition: character must be a dictionary, enemy_name must be either a string or None, and challenge_name must
+    be a string
     :postcondition: prints specified win statements depending on the string passed as challenge_name
     :postcondition: changes achieved_goal value to True if challenge_name is equal to 'rupaul'
     :return: function to alter stats stored within character dictionary if challenge_name is equal
@@ -206,7 +206,7 @@ def you_win(character, enemy_name, challenge_name):
         character['achieved_goal'] = True
 
 
-def check_for_level_up(character):
+def check_for_level_up(character: dict) -> dict:
     """
     Determine whether the player character has leveled up.
 
@@ -226,7 +226,7 @@ def check_for_level_up(character):
     return character
 
 
-def check_if_dead(character):
+def check_if_dead(character: dict) -> dict:
     """
     Determine whether player character has lost all of their health ('Nerve')
 
