@@ -63,9 +63,9 @@ def makeover_challenge(character):
     correct_answers = 0
 
     print(f"You hear RuPaul's voice:\n\"My queens!\nYou have 10 minutes to put one of your fellow "
-          f"queens into the best quick drag\nyou can manage. Get to it!\nYou run up to "
-          f"{queens[fellow_queen]['Name']}, ready to beat her face for the gods.\n You know that to"
-          f" get the best results you have to put the makeup on in the right order."
+          f"queens into the best quick drag\nyou can manage. Get to it!\"\n\nYou run up to "
+          f"{queens[fellow_queen]['Name']}, ready to beat her face for the gods.\nYou know that "
+          f"in order to get the best results, you have to put the makeup\non in the right order."
           f"\nWhat order do you apply makeup in?")
     first_answer = get_challenge_input_from_user(generate_random_makeover_answers(makeup_question))
     if first_answer == makeup_question:
