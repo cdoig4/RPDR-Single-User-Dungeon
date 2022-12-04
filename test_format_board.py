@@ -31,17 +31,17 @@ class TestFormatBoard(TestCase):
     def test_format_board_character_placed(self):
         board = '     #   #   #   #   #   #\n' \
                    '    -------------------\n' \
-                   '   |                   | x  $\n' \
+                   '   |                   |    $\n' \
                    '   |                    ---\n' \
-                   '   |     R       &   x  [x] $\n' \
+                   '   | &   x   x   x   x  [x] $\n' \
                    '   |                    ---\n' \
                    '   | x   x   x   x   x | x  $\n' \
                    '    -------------------\n'
         expected = '     #   #   #   #   #   #\n' \
                    '    -------------------\n' \
-                   '   |                   | x  $\n' \
+                   '   |                   |    $\n' \
                    '   |                    ---\n' \
-                   '   |     R       &   x  [x] $\n' \
+                   '   | &   R   x   x   x  [x] $\n' \
                    '   |                    ---\n' \
                    '   | x   x   x   x   x | x  $\n' \
                    '    -------------------\n'
