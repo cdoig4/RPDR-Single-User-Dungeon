@@ -5,11 +5,35 @@ Kelly Hagg A01324804
 
 
 from unittest import TestCase
+from unittest.mock import patch
 from controls import get_directional_input_from_user
 
 
-class MyGenerateDirectionalInputs(TestCase):
-    def test_generate_directional_entry_on_left(self):
-        expected = [('E', 'Enter'), ('D', 'Right'), ('0', 'Stats')]
-        actual = generate_directional_inputs((2, 0), 'judges_panel')
-        self.assertEqual(expected, actual)
+class TestGetDirectionalInputFromUser(TestCase):
+    @patch('builtins.input', return_value='W')
+    def test_get_directional_input_from_user_W(self, mock_input):
+        game_input = [('W', 'Up'), ('S', 'Down'), ('A', 'Left'), ('D', 'Right'), ('0', 'Stats')]
+        actual = get_directional_input_from_user(game_input, {})
+        self.assertEqual('up', actual)
+
+    @patch('builtins.input', return_value='A')
+    def test_get_directional_input_from_user_A(self, mock_input):
+        game_input = [('W', 'Up'), ('S', 'Down'), ('A', 'Left'), ('D', 'Right'), ('0', 'Stats')]
+        actual = get_directional_input_from_user(game_input, {})
+        self.assertEqual('left', actual)
+
+    @patch('builtins.input', return_value='S')
+    def test_get_directional_input_from_user_S(self, mock_input):
+        game_input = [('W', 'Up'), ('S', 'Down'), ('A', 'Left'), ('D', 'Right'), ('0', 'Stats')]
+        actual = get_directional_input_from_user(game_input, {})
+        self.assertEqual('down', actual)
+
+    @patch('builtins.input', return_value='D')
+    def test_get_directional_input_from_user_D(self, mock_input):
+        game_input = [('W', 'Up'), ('S', 'Down'), ('A', 'Left'), ('D', 'Right'), ('0', 'Stats')]
+        actual = get_directional_input_from_user(game_input, {})
+        self.assertEqual('right', actual)
+
+    """
+    Cannot test further yet (recursive function calls).
+    """
