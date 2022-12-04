@@ -38,7 +38,8 @@ def make_character(character_name: str) -> dict:
     :postcondition: creates character dictionary containing name and stats of desired class
     :return: a dictionary representing the player's character
     """
-    character = {'met_rupaul': False, "completed_lip_sync": False, "level": 1}
+    character = {'met_rupaul': False, "completed_lip_sync": False, "level": 1,
+                 'achieved_goal': False}
     queen_types = ['Look Queen', 'Comedy Queen', 'Performance Queen', 'Alternative Queen']
     stat_names = ["Charisma", "Uniqueness", "Nerve", "Talent"]
 
@@ -216,7 +217,7 @@ def you_win(character, enemy_name, challenge_name):
               f" UNIVERSE!\"\n\nMother continues as she places a massive bejeweled crown upon your"
               f" head and a\nmatching scepter in your hand.\nYou sob with happiness.\nYou"
               f"know that this... is the beginning of the rest of your life.\n")
-        game.achieved_goal = True
+        character['achieved_goal'] = True
 
 
 def check_for_level_up(character):
