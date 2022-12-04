@@ -95,6 +95,10 @@ def set_board(character: dict) -> dict:
     representing the main stage
     :return: dictionary with 'location' and 'coordinates' values updated to reflect correct player
     position
+    >>> set_board({'met_rupaul': True,'completed_lip_sync': True, 'level': 3})
+    {'met_rupaul': True, 'completed_lip_sync': True, 'level': 3, 'location': 'dressing_room', 'coordinates': (1, 5)}
+    >>> set_board({'met_rupaul': False,'completed_lip_sync': False, 'level': 2})
+    {'met_rupaul': False, 'completed_lip_sync': False, 'level': 2, 'location': 'main_stage', 'coordinates': (0, 5)}
     """
     if character['met_rupaul']:
         character.update({'location': 'dressing_room', 'coordinates': (1, 5)})
