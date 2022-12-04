@@ -57,13 +57,13 @@ against Mother herself.
 |-----|-----------------------------|--------------------------------------------------------------------------------------------------|
 | a.  | Tuple                       | boards.py: line 48                                                                               |
 | b.  | List                        |                                                                                                  |
-| c.  | Dict or list comprehension  | character_setup.py: line 54<br/>controls.py: line 41                                             |
-| d.  | Selection with if-statement | controls.py: lines 109-125<br/>boards.py: lines 55-56  <br/>controls.py: lines 155-172           |
-| e.  | Repetition with for-loop    | character_setup.py: lines 130-143<br/>controls.py: lines 103-105                                 |
-| f.  | Membership Operator         | challenges.py: line 150                                                                          |
+| c.  | Dict or list comprehension  | character_setup.py: line 53<br/>controls.py: line 49                                             |
+| d.  | Selection with if-statement | controls.py: lines 113-129<br/>boards.py: lines 60-61  <br/>controls.py: lines 159-176           |
+| e.  | Repetition with for-loop    | character_setup.py: lines 131-144<br/>controls.py: lines 107-109                                 |
+| f.  | Membership Operator         | challenges.py: line 158                                                                          |
 | g.  | Range function              | boards.py: lines 55-56                                                                           |
-| h.  | Itertools (permutations)    | challenges.py: line 32                                                                           |
-| i.  | Enumerate function          | challenges.py: line 372                                                                          |
-| j.  | Filter or map function      | character_setup.py: line 113                                                                     |
-| k.  | Random module               | challenges.py: lines 36 & 39<br/>challenges.py: line 181<br/>character_setup.py: lines 181 & 194 |
+| h.  | Itertools (permutations)    | challenges.py: line 38                                                                           |
+| i.  | Enumerate function          | challenges.py: line 388                                                                          |
+| j.  | Filter or map function      | character_setup.py: line 125                                                                     |
+| k.  | Random module               | challenges.py: lines 40 & 43<br/>challenges.py: line 186<br/>character_setup.py: lines 182 & 195 |
 
