@@ -23,8 +23,7 @@ def game():
         boards.display_board(character)
         controls.move_character(character)
         challenges.run_challenges(character)
-    print('The END.')
-    return
+    return print('The END.')
 
 
 """to test lvl 1 (about to level up)"""
