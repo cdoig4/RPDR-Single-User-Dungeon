@@ -15,7 +15,7 @@ def read_board(board_name: str) -> str:
 
     :param board_name: must be a string representing the name of the desired game board
     :precondition: board_name must be a string
-    :postcondition: opens and reads text file of the desired board title
+    :postcondition: open and reads text file of the desired board title
     :return: string representing the correct board that has been read from the JSON file
     """
     try:
@@ -191,8 +191,8 @@ def display_board(character: dict) -> None:
     value of 'coordinates' must be a tuple containing two positive integers that represent the
     coordinates of the player
     :precondition: character must be a dictionary
-    :postcondition: passes correct board into the format_board function
-    :postcondition: creates string representing correctly formatted board
+    :postcondition: pass correct board into the format_board function
+    :postcondition: create string representing correctly formatted board
     :return: print statement containing the correctly formatted board string to be displayed to the
     player
     """

@@ -52,7 +52,7 @@ def makeover_challenge(character: dict) -> dict:
     present whose assigned value must be a string
     :precondition: character must be a dictionary
     :postcondition: runs makeup challenge for player
-    :postcondition: determines whether player succeeds or fails challenge
+    :postcondition: determine whether player succeeds or fails challenge
     :return: win function if player successfully complete challenge else prints failure message
     """
     makeup_question = ('Foundation', 'Eye shadow', 'Contouring')
@@ -174,7 +174,7 @@ def main_stage_lip_sync(character: dict) -> dict:
     positive integer
     :precondition: character must be a dictionary
     :postcondition: runs the lip sync event for the player
-    :postcondition: determines whether the player provided enough correct answers to pass the event
+    :postcondition: determine whether the player provided enough correct answers to pass the event
     :postcondition: sets value assigned to 'completed_lip_sync' key in player character dictionary
     to True
     :return: winning function
@@ -227,8 +227,8 @@ def read_battle(character: dict):
     'Charisma', 'Uniqueness', and Nerve present with each of their values being positive integers
     :precondition: character must be a dictionary
     :postcondition: randomly pulls a queen dictionary from a JSON file and sets them as the enemy
-    :postcondition: runs combat for the player
-    :postcondition: sets player health ('Nerve') back to full on success
+    :postcondition: run combat for the player
+    :postcondition: set player health ('Nerve') back to full on success
     :return: win function on player success else character dictionary with health ('Nerve') set to 0
     """
     filename = './json_files/queens.json'
@@ -291,7 +291,7 @@ def final_lip_sync(character: dict) -> dict:
     :param character: a dictionary representing the player character with the key 'Name' present
     whose assigned value is a string
     :precondition: character must be a dictionary
-    :postcondition: determines whether the player successfully completed the challenge or not
+    :postcondition: determine whether the player successfully completed the challenge or not
     :return: win function if player was successful else character dictionary with health ('Nerve')
     value set to 0
     """
@@ -331,7 +331,7 @@ def final_battle(character: dict) -> None:
     assigned to 'Charisma' and 'Nerve' are both positive integers
     :precondition: character must be a dictionary
     :postcondition: runs the final battle for the player
-    :postcondition: determines whether the player is successful in the final battle or not
+    :postcondition: determine whether the player is successful in the final battle or not
     :postcondition: runs final_lip_sync function if player character's health ('Nerve') does not
     reach or go below 0
     """
@@ -376,7 +376,7 @@ def generate_challenge_input(possible_answers: list) -> list:
 
     :param possible_answers: a list of strings
     :precondition: possible_answers must be a list
-    :postcondition: enumerates the list to show each potential input option
+    :postcondition: enumerate the list to show each potential input option
     :return: list of tuples representing all potential inputs
     >>> generate_challenge_input(['Option Number One', 2, -3.0])
     [('1', 'Option Number One'), ('2', 2), ('3', -3.0)]
@@ -397,8 +397,8 @@ def get_challenge_input_from_user(possible_answers: list) -> str:
 
     :param possible_answers: a list of strings
     :precondition: possible_answers must be a list
-    :postcondition: prints potential input options for player
-    :postcondition: receives answer input from player
+    :postcondition: print potential input options for player
+    :postcondition: receive answer input from player
     :return: a string representing the answer chosen by the player
     """
 
@@ -435,7 +435,7 @@ def run_challenges(character: dict):
     value assigned to 'coordinates' is a tuple containing two positive integers, and the value
     assigned to 'level' is a positive integer
     :precondition: character must be a dictionary
-    :postcondition: determines if a challenge is run based on the values stored in the character
+    :postcondition: determine if a challenge is run based on the values stored in the character
     parameter
     :return: read_battle function if the value assigned to 'location' is 'werk_room', the value assigned
     to 'coordinates' is not (0, 4) or (6, 4) and the value assigned to 'level' is not 2,

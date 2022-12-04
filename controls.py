@@ -18,7 +18,7 @@ def show_score(character: dict) -> None:
     :param character: must be dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
     'Nerve', and 'Talent' whose values must all be positive integers
     :precondition: character must be a dictionary
-    :postcondition: creates a string with the current stats of the player character inside
+    :postcondition: create a string with the current stats of the player character inside
     :return: print statement displaying current stats of the player character
     >>> show_score({'Name': 'Ginger Snaps', 'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10})
     Stats: [Charisma: 15, Uniqueness: 14, Nerve: 10, Talent: 10]
@@ -41,7 +41,7 @@ def generate_directional_inputs(current_coordinates: tuple, board_name: str) -> 
     of the player character on the game board
     :param board_name: must be a string representing the name of the current board
     :precondition: current_coordinates must be a tuple and board_name must be a string
-    :postcondition: generates possible inputs for the player based on their current coordinates on the board
+    :postcondition: generate possible inputs for the player based on their current coordinates on the board
     :return: a list of strings representing the possible inputs for the player
     """
     board_coordinates = index_board(board_name)
@@ -96,7 +96,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     :param game_input: must be a list representing valid potential inputs
     :param character: must be a dictionary representing the player character
     :precondition: game_input must be a list and character must be a dictionary
-    :postcondition: accepts input from player
+    :postcondition: accept input from player
     :postcondition: determines whether input is valid
     :return: self if user input is 'O' or not valid else string representing valid input from user
     """
@@ -142,7 +142,7 @@ def move_character(character: dict) -> dict or None:
     and 'met_rupaul' present with the value of 'coordinates' being a tuple containing two positive integers, the value
     of 'location' being a string, and the value of 'met_rupaul' being a Boolean
     :precondition: character must be a dictionary
-    :postcondition: processes the movement of the player character depending on several conditions
+    :postcondition: processe the movement of the player character depending on several conditions
     :return: function to set new board if player input is 'enter', 'location' value is 'judges_panel', and 'met_rupaul'
     value is True, function to get new input from user if player input is 'exit' and 'location' value is not False or
     None, function to run makeover challenge if player input is equal to 'challenge her' and 'location' value is

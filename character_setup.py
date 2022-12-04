@@ -20,7 +20,7 @@ def deliver_introduction(character_dictionary: dict) -> None:
     :param character_dictionary: must be a dictionary representing the player's character with the
     key 'Name' present
     :precondition: character must be a dictionary
-    :postcondition: prints the game introduction
+    :postcondition: print the game introduction
     """
     filename = './json_files/introduction.json'
     with open(filename) as file_object:
@@ -36,7 +36,7 @@ def make_character(character_name: str) -> dict:
     :param character_name: must be a string containing only alphabetic characters or spaces
     :precondition: character_name must be a string
     :postcondition: asks the user for input to determine class stats
-    :postcondition: creates character dictionary containing name and stats of desired class
+    :postcondition: create character dictionary containing name and stats of desired class
     :return: a dictionary representing the player's character
     """
     character = {'met_rupaul': False, "completed_lip_sync": False, "level": 1,
@@ -161,9 +161,9 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
     no NPC
     :param challenge_name: must be a non-empty string
     :precondition: character must be a dictionary, enemy_name must be either a string or None,
-    and challenge_name mut be a string
-    :postcondition: prints specified win statements depending on the string passed as challenge_name
-    :postcondition: changes achieved_goal value to True if challenge_name is equal to 'rupaul'
+    and challenge_name must be a string
+    :postcondition: print specified win statements depending on the string passed as challenge_name
+    :postcondition: change achieved_goal value to True if challenge_name is equal to 'rupaul'
     :return: function to alter stats stored within character dictionary if challenge_name is equal
     to 'read_battle' or
     'makeover_challenge', function to change the board the player is on if challenge_name is equal
@@ -219,9 +219,9 @@ def check_for_level_up(character: dict) -> dict:
     'location', 'Talent', and 'level' present, with the value assigned to 'location' being a string
     and the values assigned to 'Talent' and 'level' being positive integers
     :precondition: character must be a dictionary
-    :postcondition: determines whether the player character has leveled up based on the values
+    :postcondition: determine whether the player character has leveled up based on the values
     currently assigned to the 'location' and 'Talent' keys
-    :postcondition: passes character dictionary to function which levels up the character if the
+    :postcondition: pass character dictionary to function which levels up the character if the
     conditions are met
     :return: dictionary representing the player character
     """
@@ -238,8 +238,8 @@ def check_if_dead(character: dict) -> dict:
     :param character: must be a dictionary with the keys 'Nerve' and 'Name' present, with the value
     assigned to 'Nerve' being an integer and the value assigned to 'Name' being a string
     :precondition: character must be a dictionary
-    :postcondition: determines whether the value assigned to 'Nerve' is 0 or less
-    :postcondition: prints loss statement, clears character dictionary, and restarts game if 'Nerve'
+    :postcondition: determine whether the value assigned to 'Nerve' is 0 or less
+    :postcondition: print loss statement, clears character dictionary, and restarts game if 'Nerve'
     is 0 or less
     :return: dictionary that is either empty or that represents the current player character
     """
