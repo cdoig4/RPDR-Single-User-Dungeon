@@ -9,12 +9,6 @@ from character_setup import apply_power_up
 
 
 class TestApplyPowerUp(TestCase):
-    def test_empty_tuple(self):
-        self.assertEqual(None, apply_power_up((), 0))
-
-    def test_tuple_single_element(self):
-        self.assertEqual(None, apply_power_up(('test_string',), 0))
-
     def test_tuple_first_element_empty_string_second_element_plus_value_less_than_zero(self):
         self.assertEqual({'': 0}, apply_power_up(('', 110), -145))
 
