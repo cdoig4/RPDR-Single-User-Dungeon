@@ -55,7 +55,7 @@ against Mother herself.
 ### Required elements key:
 |     | Element                     | Line No.                                                                                         |
 |-----|-----------------------------|--------------------------------------------------------------------------------------------------|
-| a.  | Tuple                       |                                                                                                  |
+| a.  | Tuple                       | boards.py: line 48                                                                               |
 | b.  | List                        |                                                                                                  |
 | c.  | Dict or list comprehension  | character_setup.py: line 54<br/>controls.py: line 41                                             |
 | d.  | Selection with if-statement | controls.py: lines 109-125<br/>controls.py: lines 155-172                                        |
