@@ -174,9 +174,10 @@ def format_board(board: str, character: dict) -> str:
 
     :param board: a string representing the name of the current board
     :param character: a dictionary representing the player character with the key 'location'
-    present whose value must be a string
+    present whose value must be the string 'werk_room', 'dressing_room', or 'main_stage'
     :precondition: board must be a string and character must be a dictionary
-    :postcondition: formats correct board based on the current location of the player character
+    :postcondition: format board by adding in required symbols based on the current location
+    of the player
     :return: string representing the board of the current location of the user
     """
     location = character['location']
@@ -200,10 +201,10 @@ def display_board(character: dict) -> None:
     value of 'coordinates' must be a tuple containing two positive integers that represent the
     coordinates of the player
     :precondition: character must be a dictionary
+    :postcondition: open the board from a JSON file
     :postcondition: pass correct board into the format_board function
-    :postcondition: create string representing correctly formatted board
-    :return: print statement containing the correctly formatted board string to be displayed to the
-    player
+    :postcondition: print the formatted board statement containing along with the correctly
+    formatted board
     """
     board_name = character.get('location')
     current_coordinates = character.get('coordinates')
