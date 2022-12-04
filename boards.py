@@ -9,11 +9,11 @@ import json
 
 def read_board(board_name: str) -> str:
     """
-    Read JSON file representing game board.
+    Read text file representing game board.
 
     :param board_name: must be a string representing the name of the desired game board
     :precondition: board_name must be a string
-    :postcondition: opens and reads JSON file of the desired board title
+    :postcondition: opens and reads text file of the desired board title
     :return: string representing the correct board that has been read from the JSON file
     """
     try:
@@ -34,8 +34,8 @@ def index_board(board_name: str) -> dict:
     """
     board = read_board(board_name)
 
-    rows = [row for row in board if row == '$']
-    columns = [column for column in board if column == '#']
+    rows = [row for row in board if row == '$'] #change for count
+    columns = [column for column in board if column == '#'] #change for count
 
     coordinates = []
     location_type = []
@@ -104,7 +104,7 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     :return: string representing the correctly marked board with the correct current location of
     the user shown
     """
-    columns = [column for column in board if column == '#']
+    columns = [column for column in board if column == '#'] # change for count
 
     row = current_coordinates[0]
     column = current_coordinates[1]
