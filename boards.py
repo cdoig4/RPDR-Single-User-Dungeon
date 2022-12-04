@@ -85,9 +85,11 @@ def set_board(character: dict) -> dict:
     'met_rupaul', 'location', 'coordinates', and 'level' present, the value of 'met_rupaul' must be
     a Boolean, the value of 'location' must be a string, the value of 'coordinates' must be a tuple
     containing two positive integers, and the value of 'level' must be a positive integer
-    :precondition: character must be a dictionary
+    :precondition: character must be a dictionary containing pairs bearing the keys 'met_rupaul',
+    'completed_lip_sync' and 'level'
     :postcondition: if player has met_rupaul their location is updated with values representing the
-    dressing room :postcondition: if player has completed_lip_sync their location is updated with
+    dressing room
+    :postcondition: if player has completed_lip_sync their location is updated with
     values representing the judges panel
     :postcondition: if the player character's level is 2 their location is updated with values
     representing the main stage
