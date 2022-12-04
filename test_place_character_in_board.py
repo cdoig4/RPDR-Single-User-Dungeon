@@ -10,6 +10,6 @@ from boards import place_character_in_board
 
 class TestPlaceCharacterInBoard(TestCase):
     def test_place_character_in_board(self, _):
-        expected = []
+        expected = [0]
         actual = []
         self.assertEqual(expected, actual)

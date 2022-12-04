@@ -10,6 +10,6 @@ from boards import index_board
 
 class TestIndexBoard(TestCase):
     def test_index_board(self, _):
-        expected = []
+        expected = [0]
         actual = []
         self.assertEqual(expected, actual)
