@@ -28,7 +28,8 @@ def generate_random_makeover_answers(correct_answer):
     :param correct_answer: a list representing the correct answer to the makeover question
     :precondition: correct_answer must be a list
     :postcondition: generate a tuple of lists representing possible answers to makeover question
-    :return: a list containing four tuples of three elements each, one of which is the correct answer
+    :return: a list containing four tuples of three elements each, one of which is the correct
+    answer
     """
     all_permutations = list(itertools.permutations(correct_answer))
     all_permutations.remove(tuple(correct_answer))
@@ -352,6 +353,7 @@ def final_battle(character):
             damage_to_player = random.randint(1, 7) + math.ceil(queen_bitch_rupaul['Charisma'] / 10)
             print(f"{queen_bitch_rupaul['Name']} says,\n\"{random.choice(RUPAUL_READS)}.\"")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
+            character_setup.check_if_dead(character)
         else:
             print(f"{queen_bitch_rupaul['Name']} throws out a read that goes over your head.")
 
