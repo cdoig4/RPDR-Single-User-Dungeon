@@ -138,6 +138,27 @@ def power_up_or_down(character, values, is_queen):
     return character
 
 
+def you_lose(character, challenge_name):
+    """
+    Perform lose events for player.
+
+    :param character: must be a dictionary representing the player character with the keys 'Name'
+    and 'completed_lip_sync' present, with the value assigned to 'Name' being a string and the
+    value assigned to 'completed_lip_sync' being a Boolean
+    :param challenge_name: must be a non-empty string
+    :precondition: character must be a dictionary, and enemy_name and challenge_name must both be
+    string
+    :postcondition: prints specified lose statements depending on the string passed as
+    challenge_name
+    :postcondition:
+    :return:
+    """
+    if challenge_name == 'lip_sync':
+        pass
+    if challenge_name == 'rupaul':
+        pass
+
+
 def you_win(character, enemy_name, challenge_name):
     """
     Perform win events for player.
