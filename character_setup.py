@@ -248,14 +248,15 @@ def check_if_dead(character: dict) -> dict:
 def main():
     """Drive the program."""
     new_character = make_character(input('What is the name of your Drag Persona?\n'))
-    # deliver_introduction(new_character)
-    # print(new_character)
+    print(f"Your new character {new_character['Name']} has been created.")
+    deliver_introduction(new_character)
+    print(new_character)
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    # you_win(character, {'Name': 'test'}, 'read_battle')
-    print(new_character)
-    # print(power_up(character, [0, 0, 0, 8]))
+    you_win(character, {'Name': 'test'}, 'read_battle')
+    print(character)
+    print(power_up_or_down(character, [0, 0, 0, 8], True))
 
 
 if __name__ == '__main__':
