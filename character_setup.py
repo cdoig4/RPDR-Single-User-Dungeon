@@ -113,7 +113,7 @@ def apply_power_up(stat: tuple, value: int) -> dict:
 
 def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
     """
-    Inform player of changes to stats for either themselves or the enemy.
+    Update and print changes to stats for either the player or the enemy.
 
     :param character: a dictionary representing a game character, either player or non-player
     :param values: a list containing four integers
@@ -121,7 +121,8 @@ def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
     or not
     :postcondition: adjusts values stored inside character dictionary either up or down depending
     on whether the integers in values are positive or negative
-    :return: dictionary representing a game character
+    :return: dictionary representing the character or queen with their stats changed to reflect
+    game events
     """
     stat_names = ['Charisma', 'Uniqueness', 'Nerve', 'Talent']
     stats = [(stat, value) for stat, value in character.items() if stat in stat_names]
@@ -149,7 +150,7 @@ def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
     return character
 
 
-def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> dict or None:
+def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> dict:
     """
     Perform win events for player.
 
@@ -163,12 +164,8 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
     and challenge_name must be a string
     :postcondition: print specified win statements depending on the string passed as challenge_name
     :postcondition: change achieved_goal value to True if challenge_name is equal to 'rupaul'
-    :return: function to alter stats stored within character dictionary if challenge_name is equal
-    to 'read_battle' or
-    'makeover_challenge', function to change the board the player is on if challenge_name is equal
-    to 'werk_room',
-    else print statement introducing the judges panel location if challenge_name is equal to
-    'lip_sync'
+    :return: dictionary representing the character or queen with their stats changed to reflect
+    game events
     """
     if challenge_name == 'read_battle':
         print('You win!')
@@ -199,7 +196,8 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
         power_up_or_down(character, [random.randint(30, 40), random.randint(30, 40),
                                      random.randint(30, 40), 20], False)
         boards.set_board(character)
-        return print(f"\nYou are ushered towards the Judge's Panel.")
+        print(f"\nYou are ushered towards the Judge's Panel.")
+        return character
     if challenge_name == 'rupaul':
         print(f"\nRuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}, "
               f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
@@ -208,6 +206,7 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
               f" head and a\nmatching scepter in your hand.\nYou sob with happiness.\nYou"
               f" know that this... is the beginning of the rest of your life.\n")
         character['achieved_goal'] = True
+        return character
 
 
 def check_for_level_up(character: dict) -> dict:
@@ -240,7 +239,7 @@ def check_if_dead(character: dict) -> dict:
     :postcondition: determine whether the value assigned to 'Nerve' is 0 or less
     :postcondition: print loss statement, clears character dictionary, and restarts game if 'Nerve'
     is 0 or less
-    :return: dictionary that is either empty or that represents the current player character
+    :return: dictionary representing the character
     """
     if character['Nerve'] <= 0:
         print(f"\nYou hear RuPaul's voice:\n\n\"{character['Name']},\nThank you for bringing your "
