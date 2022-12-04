@@ -1,6 +1,8 @@
 """
 Colin Doig A01334230
 Kelly Hagg A01324804
+
+Main game file.
 """
 
 
