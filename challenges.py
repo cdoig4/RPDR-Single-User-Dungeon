@@ -318,7 +318,7 @@ def final_lip_sync(character):
     return character_setup.check_if_dead(character)
 
 
-def final_battle(character):
+def final_battle(character: dict) -> None:
     """
     Run final battle event for player.
 
@@ -387,7 +387,7 @@ def generate_challenge_input(possible_answers: list) -> list:
     return pairs
 
 
-def get_challenge_input_from_user(possible_answers: list):
+def get_challenge_input_from_user(possible_answers: list) -> str:
     """
     Receive answer input from player.
 
@@ -410,7 +410,9 @@ def get_challenge_input_from_user(possible_answers: list):
 
     answer = input()
 
-    if answer not in acceptable_answers:
+    if answer == 'quit':
+        raise SystemExit("You quit the game.")
+    elif answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
         return get_challenge_input_from_user(possible_answers)
 
