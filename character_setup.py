@@ -90,6 +90,12 @@ def apply_power_up(stat, value):
     value of 0 if adding the value parameter to it would have made it negative, else a dictionary
     with a key which is equal to the first element of the stat tuple with a value that is equal to
     the second element of the stat tuple with the value parameter added to it
+    >>> apply_power_up(('Charisma', 15), 34)
+    {'Charisma': 49}
+    >>> apply_power_up(('Nerve', 4), -4)
+    {'Nerve': 0}
+    >>> apply_power_up(('Uniqueness', 12), -20)
+    {'Uniqueness': 0}
     """
     try:
         stat[1] + value
