@@ -291,7 +291,7 @@ def final_lip_sync(character):
     with open(filename) as file_object:
         event_selection = json.load(file_object)
 
-    print(f"RuPaul shouts \"The library is officially closed! Now {character['Name']}\""
+    print(f"\nRuPaul shouts \"The library is officially closed! Now {character['Name']}\""
           f"...\n\nThe time has come...\nFor you to Lip Sync....\nFor. \nThe."
           f"\nCROWN.\n\nThe lights dim and the familiar beat of a RuPaul song begins.\n"
           f"Which do you lip sync?")
@@ -303,14 +303,15 @@ def final_lip_sync(character):
           f"end strong.\nWhich do you lip sync?")
     correct_final_lyrics = perform_lyrics(event_selection, event_selection['Final Lyrics'])
     print(f"\nThe song ends. You stand in your pose, breathing heavily as RuPaul watches you.\n"
-          f"Her face a mask.\n")
+          f"Her face a mask...")
     if correct_first_lyrics and (correct_second_lyrics or correct_final_lyrics):
         return character_setup.you_win(character, 'rupaul', 'rupaul')
     elif correct_second_lyrics and (correct_first_lyrics or correct_final_lyrics):
         return character_setup.you_win(character, 'rupaul', 'rupaul')
     elif correct_final_lyrics and (correct_first_lyrics or correct_second_lyrics):
         return character_setup.you_win(character, 'rupaul', 'rupaul')
-    return character.update({'Nerve': 0})
+    character['Nerve'] = 0
+    return character_setup.check_if_dead(character)
 
 
 def final_battle(character):
@@ -338,7 +339,7 @@ def final_battle(character):
             if random.randint(1, 20) > 2:
                 print(f"You read {queen_bitch_rupaul['Name']} for the gods... "
                       f"her eye twitches slightly.")
-                rupaul_damage = -(random.randint(1, 8) + math.ceil(character['Charisma'] / 4))
+                rupaul_damage = -(random.randint(1, 8) + math.ceil(character['Charisma'] / 6))
                 character_setup.power_up_or_down(queen_bitch_rupaul, [0, rupaul_damage], True)
             else:
                 print(f"Your read falls flat and {queen_bitch_rupaul['Name']} chuckles.")
@@ -350,7 +351,7 @@ def final_battle(character):
                   f'You are staying right here till we\'re done"')
 
         if random.randint(1, 20) > 4:
-            damage_to_player = random.randint(1, 7) + math.ceil(queen_bitch_rupaul['Charisma'] / 10)
+            damage_to_player = -(random.randint(1, 7) + math.ceil(queen_bitch_rupaul['Charisma'] / 10))
             print(f"{queen_bitch_rupaul['Name']} says,\n\"{random.choice(RUPAUL_READS)}.\"")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
             character_setup.check_if_dead(character)
