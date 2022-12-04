@@ -66,12 +66,20 @@ def make_character(character_name: str) -> dict:
     return character
 
 
-def filter_no_delta(structure):
+def filter_by_first_index(structure):
     """
+    Accept any index-able object and return the element at index 0 if element at index 1 is not 0.
+    :param structure: any index-able object
+    :precondition: structure is any index-able object
+    :postcondition: structure is not mutated
+    :postcondition: return the second element of the object if it is not 0
+    :return: the second element of the object if it is not 0
+    >>> filter_by_first_index([5, None, 'peanuts'])
+    5
+    >>> filter_by_first_index(('cheese', 0))
 
-
-    :param structure:
-    :return:
+    >>> filter_by_first_index('Candy')
+    'C'
     """
     if structure[1] != 0:
         return structure[0]
@@ -98,7 +106,6 @@ def apply_power_up(stat: tuple, value: int) -> dict:
     >>> apply_power_up(('Uniqueness', 12), -20)
     {'Uniqueness': 0}
     """
-    stat[1] + value
     if stat[1] + value < 0:
         return {stat[0]: 0}
     return {stat[0]: stat[1] + value}
@@ -124,7 +131,7 @@ def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
     for pair in new_pairs:
         character.update(pair)
 
-    filtered_pairs = list(filter(filter_no_delta, list(zip(new_pairs, values))))
+    filtered_pairs = list(filter(filter_by_first_index, list(zip(new_pairs, values))))
     for pair in filtered_pairs:
         key = list(pair[0].keys())
 
@@ -150,10 +157,11 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
     :param character: must be a dictionary representing the player character with the keys 'Name'
     and 'completed_lip_sync' present, with the value assigned to 'Name' being a string and the
     value assigned to 'completed_lip_sync' being a Boolean
-    :param enemy_name: must be a non-empty string representing an NPC name or None if there is no NPC
+    :param enemy_name: must be a non-empty string representing an NPC name or None if there is
+    no NPC
     :param challenge_name: must be a non-empty string
-    :precondition: character must be a dictionary, enemy_name must be either a string or None, and challenge_name must
-    be a string
+    :precondition: character must be a dictionary, enemy_name must be either a string or None,
+    and challenge_name mut be a string
     :postcondition: prints specified win statements depending on the string passed as challenge_name
     :postcondition: changes achieved_goal value to True if challenge_name is equal to 'rupaul'
     :return: function to alter stats stored within character dictionary if challenge_name is equal
