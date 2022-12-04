@@ -47,10 +47,19 @@ class TestReadBoard(TestCase):
                    '       -----------------------------------\n'
         self.assertEqual(expected, read_board('main_stage'))
 
-    # def test_read_board_judges_panel(self):
-    #     expected = ''
-    #     self.assertEqual(expected, read_board('judges_panel'))
-    #
+    def test_read_board_judges_panel(self):
+        expected = '    #   #   #   #   #   #   #\n' \
+                   '    x   x   x   x   x   x   x  $\n' \
+                   '       -----------------------\n' \
+                   '    x | !   !   !   !   !  .E> $\n' \
+                   '   ---                     ---\n' \
+                   '   [e]  !   !   !   !   ! | x  $\n' \
+                   '   -----------------------\n' \
+                   '            _________\n' \
+                   '           [_________]\n' \
+                   '             J  J  J\n'
+        self.assertEqual(expected, read_board('judges_panel'))
+
     # def test_read_board_dressing_room(self):
     #     expected = ''
     #     self.assertEqual(expected, read_board('dressing_room'))
