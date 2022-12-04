@@ -158,7 +158,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def perform_lip_sync(character) -> bool:
+def main_stage_lip_sync(character) -> bool:
     """
     Run lip sync event for player.
 
@@ -425,7 +425,7 @@ def run_challenges(character):
     parameter
     :return: fight function if the value assigned to 'location' is 'werk_room', the value assigned
     to 'coordinates' is not (0, 4) or (6, 4) and the value assigned to 'level' is not 2,
-    perform_lip_sync function if the value assigned to 'location' is 'main_stage' and the value
+    main_stage_lip_sync function if the value assigned to 'location' is 'main_stage' and the value
     assigned to 'coordinates' is (6, 8), judge_events function if the value assigned to 'location'
     is 'judges_panel' and the value assigned to 'coordinates' is not (1, 6) or (2, 0)
     """
@@ -437,7 +437,7 @@ def run_challenges(character):
         if random.randint(1, 10) <= 3:
             return fight(character)
     if location == 'main_stage' and coordinates == (6, 8):
-        return perform_lip_sync(character)
+        return main_stage_lip_sync(character)
     if location == 'judges_panel' and coordinates != (1, 6) and coordinates != (2, 0):
         return judge_events(character)
 
@@ -446,7 +446,7 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    # runway_event(perform_lip_sync, character)
+    # runway_event(main_stage_lip_sync, character)
     # print(generate_challenge_input(lyric_options))
     # print(get_challenge_input_from_user(lyric_options))
     fight(character)
