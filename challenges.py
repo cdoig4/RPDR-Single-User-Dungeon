@@ -25,13 +25,13 @@ POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND d
                    'The last time you got fucked was by genetics')
 
 
-def generate_random_makeover_answers(correct_answer):
+def generate_random_makeover_answers(correct_answer: tuple) -> list:
     """
     Generate randomized possible answers to makeover questions.
 
-    :param correct_answer: a list representing the correct answer to the makeover question
-    :precondition: correct_answer must be a list
-    :postcondition: generate a tuple of lists representing possible answers to makeover question
+    :param correct_answer: a tuple representing the correct answer to the makeover question
+    :precondition: correct_answer must be a tuple
+    :postcondition: generate a list of tuples representing possible answers to makeover question
     :return: a list containing four tuples of three elements each, one of which is the correct
     answer
     """
@@ -44,7 +44,7 @@ def generate_random_makeover_answers(correct_answer):
     return sliced
 
 
-def makeover_challenge(character):
+def makeover_challenge(character: dict) -> dict:
     """
     Run makeover challenge for player character.
 
@@ -109,7 +109,7 @@ def makeover_challenge(character):
         return character_setup.power_up_or_down(character, [-2, 0, 0, 0], False)
 
 
-def judge_events(character):
+def judge_events(character: dict):
     """
     Provide possible random events for each character movement.
 
@@ -164,7 +164,7 @@ def perform_lyrics(lip_sync_dictionary: dict, lyric_list: list) -> bool:
         return False
 
 
-def main_stage_lip_sync(character) -> bool:
+def main_stage_lip_sync(character: dict) -> dict:
     """
     Run lip sync event for player.
 
@@ -219,7 +219,7 @@ def main_stage_lip_sync(character) -> bool:
     return character
 
 
-def read_battle(character):
+def read_battle(character: dict):
     """
     Run read_battle event for player.
 
@@ -284,7 +284,7 @@ def read_battle(character):
         return character.update({'Nerve': 0})
 
 
-def final_lip_sync(character):
+def final_lip_sync(character: dict) -> dict:
     """
     Run final lip sync challenge for the player.
 
@@ -426,7 +426,7 @@ def get_challenge_input_from_user(possible_answers: list) -> str:
     return answer_string
 
 
-def run_challenges(character):
+def run_challenges(character: dict):
     """
     Run challenges for player.
 
