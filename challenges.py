@@ -359,7 +359,8 @@ def final_battle(character: dict) -> None:
                   f'You are staying right here till we\'re done"')
 
         if random.randint(1, 20) > 4:
-            damage_to_player = -(random.randint(1, 7) + math.ceil(queen_bitch_rupaul['Charisma'] / 10))
+            damage_to_player = -(random.randint(1, 7)
+                                 + math.ceil(queen_bitch_rupaul['Charisma'] / 10))
             print(f"{queen_bitch_rupaul['Name']} says,\n\"{random.choice(RUPAUL_READS)}.\"")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
             character_setup.check_if_dead(character)
@@ -437,8 +438,8 @@ def run_challenges(character: dict):
     :precondition: character must be a dictionary
     :postcondition: determine if a challenge is run based on the values stored in the character
     parameter
-    :return: read_battle function if the value assigned to 'location' is 'werk_room', the value assigned
-    to 'coordinates' is not (0, 4) or (6, 4) and the value assigned to 'level' is not 2,
+    :return: read_battle function if the value assigned to 'location' is 'werk_room', the value
+    assigned to 'coordinates' is not (0, 4) or (6, 4) and the value assigned to 'level' is not 2,
     main_stage_lip_sync function if the value assigned to 'location' is 'main_stage' and the value
     assigned to 'coordinates' is (6, 8), judge_events function if the value assigned to 'location'
     is 'judges_panel' and the value assigned to 'coordinates' is not (1, 6) or (2, 0)
@@ -460,7 +461,8 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    print('The following to functions utilize most of the functions within this module and how they work in tandem.')
+    print('The following to functions utilize most of the functions within this module and how '
+          'they work in tandem.')
     run_challenges(character)
     read_battle(character)
 
