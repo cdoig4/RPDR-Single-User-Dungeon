@@ -98,13 +98,10 @@ def apply_power_up(stat: tuple, value: int) -> dict:
     >>> apply_power_up(('Uniqueness', 12), -20)
     {'Uniqueness': 0}
     """
-    try:
-        stat[1] + value
-        if stat[1] + value < 0:
-            return {stat[0]: 0}
-        return {stat[0]: stat[1] + value}
-    except IndexError:
-        print("Stat must have two elements!")
+    stat[1] + value
+    if stat[1] + value < 0:
+        return {stat[0]: 0}
+    return {stat[0]: stat[1] + value}
 
 
 def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
