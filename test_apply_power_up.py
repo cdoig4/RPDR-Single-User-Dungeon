@@ -1,3 +1,8 @@
+"""
+Colin Doig A01334230
+Kelly Hagg A01324804
+"""
+
 from unittest import TestCase
 from character_setup import apply_power_up
 
