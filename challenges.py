@@ -103,6 +103,7 @@ def makeover_challenge(character):
               f"\nYou feel your confidence wane slightly.")
         return character_setup.power_up_or_down(character, [-2, 0, 0, 0], False)
 
+
 def judge_events(character):
     """
     Provide possible random events for each character movement.
@@ -254,6 +255,7 @@ def read_battle(character):
         elif player_choice == 'Flee':
             if random.randint(1, 100) > 33:
                 print("You successfully sashay away from the queen.")
+                return character_setup.power_up_or_down(character, [0, 0, 0, 0], False)
             else:
                 print(f"You try to get away but {queens[enemy_queen]['Name']} steps in front of "
                       f"you once again.")
