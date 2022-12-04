@@ -56,7 +56,7 @@ against Mother herself.
 |     | Element                     | Line No.                                                                                         |
 |-----|-----------------------------|--------------------------------------------------------------------------------------------------|
 | a.  | Tuple                       | boards.py: line 48                                                                               |
-| b.  | List                        |                                                                                                  |
+| b.  | List                        | character_setup.py: line 120<br/>challenges.py: line 65<br/>boards.py: lines 52 & 57             |
 | c.  | Dict or list comprehension  | character_setup.py: line 53<br/>controls.py: line 49                                             |
 | d.  | Selection with if-statement | controls.py: lines 113-129<br/>boards.py: lines 60-61  <br/>controls.py: lines 159-176           |
 | e.  | Repetition with for-loop    | character_setup.py: lines 131-144<br/>controls.py: lines 107-109                                 |
