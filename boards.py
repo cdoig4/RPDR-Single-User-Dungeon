@@ -46,14 +46,14 @@ def index_board(board_name: str) -> dict:
     """
     board = read_board(board_name)
 
-    rows = [row for row in board if row == '$'] #change for count
-    columns = [column for column in board if column == '#'] #change for count
+    rows = board.count('$')
+    columns = board.count('#')
 
     coordinates = []
     location_type = []
 
-    for row in range(len(rows)):
-        for column in range(len(columns)):
+    for row in range(rows):
+        for column in range(columns):
             coordinates += [(row, column)]
 
     for character in board:
@@ -73,7 +73,6 @@ def index_board(board_name: str) -> dict:
             location_type += ['queen']
 
     described_coordinates = dict(zip(coordinates, location_type))
-    print(described_coordinates)
 
     return described_coordinates
 
@@ -117,12 +116,12 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     :return: string representing the correctly marked board with the correct current location of
     the user shown
     """
-    columns = [column for column in board if column == '#'] # change for count
+    columns = board.count('#')
 
     row = current_coordinates[0]
     column = current_coordinates[1]
 
-    location = row * len(columns) + column
+    location = row * columns + column
 
     marked_board = board.replace('!', 'x')
     marked_board = marked_board.replace('E', 'x')
