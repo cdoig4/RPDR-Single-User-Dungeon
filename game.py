@@ -26,64 +26,6 @@ def game():
     return print('The END.')
 
 
-"""to test lvl 1 (about to level up)"""
-# def game():
-#
-#     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 40, 'met_rupaul': False,
-#                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
-#                  'coordinates': (0, 4), 'location': 'werk_room', 'achieved_goal': False}
-#
-#     while not character['achieved_goal']:
-#         boards.display_board(character)
-#         controls.move_character(character)
-#         challenges.run_challenges(character)
-#         character_setup.check_for_level_up(character)
-#     print('The END.')
-
-
-"""to test lvl 2"""
-# def game():
-#
-#     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 40, 'met_rupaul': False,
-#                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
-#                  'coordinates': (0, 5), 'location': 'main_stage', 'achieved_goal': False}
-#
-#     while not character['achieved_goal']:
-#         boards.display_board(character)
-#         controls.move_character(character)
-#         challenges.run_challenges(character)
-#         character_setup.check_for_level_up(character)
-#     print('The END.')
-
-
-"""to test lvl 3 (judges panel)"""
-# def game():
-#     character = {'Charisma': 80, 'Uniqueness': 80, 'Nerve': 70, 'Talent': 70, 'met_rupaul': False,
-#                  'completed_lip_sync': True, 'level': 2, 'Name': 'Ginger Snaps',
-#                  'coordinates': (1, 5), 'location': 'judges_panel', 'achieved_goal': False}
-#
-#     while not character['achieved_goal']:
-#         boards.display_board(character)
-#         controls.move_character(character)
-#         challenges.run_challenges(character)
-#         character_setup.check_for_level_up(character)
-#     print('The END.')
-
-
-"""to test lvl 3 (dressing room)"""
-# def game():
-#     character = {'Charisma': 80, 'Uniqueness': 80, 'Nerve': 70, 'Talent': 70, 'met_rupaul': True,
-#                  'completed_lip_sync': True, 'level': 2, 'Name': 'Ginger Snaps',
-#                  'coordinates': (1, 5), 'location': 'dressing_room', 'achieved_goal': False}
-#
-#     while not character['achieved_goal']:
-#         boards.display_board(character)
-#         controls.move_character(character)
-#         challenges.run_challenges(character)
-#         character_setup.check_for_level_up(character)
-#     print('The END.')
-
-
 def main():
     """
     Drive the program.
