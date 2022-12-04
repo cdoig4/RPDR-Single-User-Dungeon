@@ -26,3 +26,31 @@ class TestReadBoard(TestCase):
                    '    ---------------     ---------------\n' \
                    '     x   x   x   x |[e]| x   x   x   x   $\n'
         self.assertEqual(expected, read_board('werk_room'))
+
+    def test_read_board_main_stage(self):
+        expected = '    #   #   #   #   #   #   #   #   #   #\n' \
+                   '    x   x   x   x   x |[E]| x   x   x   x   $\n' \
+                   '                   ---     ---\n' \
+                   '    x   x   x   x | !   !   ! | x   x   x   $\n' \
+                   '                  |           |\n' \
+                   '    x   x   x   x | !   !   ! | x   x   x   $\n' \
+                   '                  |           |\n' \
+                   '    x   x   x   x | !   !   ! | x   x   x   $\n' \
+                   '                  |           |\n' \
+                   '    x   x   x   x | !   !   ! | x   x   x   $\n' \
+                   '       -----------             -----------\n' \
+                   '    x | !   !   !   !   !   !   !   !   ! | $\n' \
+                   '   ---                                    |\n' \
+                   '   <e.  !   Q   !   !   !   !   !   X   ! | $\n' \
+                   '   ---                                    |\n' \
+                   '    x | !   !   !   !   !   !   !   !   ! | $\n' \
+                   '       -----------------------------------\n'
+        self.assertEqual(expected, read_board('main_stage'))
+
+    # def test_read_board_judges_panel(self):
+    #     expected = ''
+    #     self.assertEqual(expected, read_board('judges_panel'))
+    #
+    # def test_read_board_dressing_room(self):
+    #     expected = ''
+    #     self.assertEqual(expected, read_board('dressing_room'))
