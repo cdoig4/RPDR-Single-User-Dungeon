@@ -13,18 +13,6 @@ import character_setup
 import itertools
 
 
-RUPAUL_READS = ("I never thought I'd meet a queen whose heels weigh more than her brain",
-                "I've always wondered what the female Gremlin would look like in 25 years."
-                "\nNow I know.",
-                "those other queens have been saying you have terrible makeup skills,"
-                "\nno fashion sense, and you're dumb as a rock. But they're wrong...\n"
-                "You don't have terrible makeup skills.")
-
-POTENTIAL_READS = ('Legendary you think you are. Legendary? Looks like leg AND dairy.',
-                   'Beauty fades, dumb is forever',
-                   'The last time you got fucked was by genetics')
-
-
 def read_battle(character: dict) -> dict:
     """
     Run read_battle event for player.
@@ -41,6 +29,10 @@ def read_battle(character: dict) -> dict:
     :postcondition: run functions check_if_dead, power_up_or_down and you_win based on events
     :return: character dictionary updated to reflect in-game events
     """
+    potential_reads = ('Legendary you think you are. Legendary? Looks like leg AND dairy.',
+                       'Beauty fades, dumb is forever',
+                       'The last time you got fucked was by genetics')
+
     filename = './json_files/queens.json'
     with open(filename) as file_object:
         queens = json.load(file_object)
@@ -79,7 +71,7 @@ def read_battle(character: dict) -> dict:
             if random.randint(1, 20) > 6:
                 damage_to_player = -(random.randint(1, 3)
                                      + math.ceil(queens[enemy_queen]['Charisma'] / 5))
-                print(f"{queens[enemy_queen]['Name']} says {random.choice(POTENTIAL_READS)}.")
+                print(f"{queens[enemy_queen]['Name']} says {random.choice(potential_reads)}.")
                 character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
                 character_setup.check_if_dead(character)
             else:
@@ -350,6 +342,13 @@ def final_battle(character: dict) -> None:
     :postcondition: run final_lip_sync function if player character's health ('Nerve') does not
     reach or go below 0 before RuPaul's drops below 35
     """
+    rupaul_reads = ("I never thought I'd meet a queen whose heels weigh more than her brain",
+                    "I've always wondered what the female Gremlin would look like in 25 years."
+                    "\nNow I know.",
+                    "those other queens have been saying you have terrible makeup skills,"
+                    "\nno fashion sense, and you're dumb as a rock. But they're wrong...\n"
+                    "You don't have terrible makeup skills.")
+
     filename = './json_files/queens.json'
     with open(filename) as file_object:
         queens = json.load(file_object)
@@ -376,7 +375,7 @@ def final_battle(character: dict) -> None:
         if random.randint(1, 20) > 4:
             damage_to_player = -(random.randint(1, 7)
                                  + math.ceil(queen_bitch_rupaul['Charisma'] / 10))
-            print(f"{queen_bitch_rupaul['Name']} says,\n\"{random.choice(RUPAUL_READS)}.\"")
+            print(f"{queen_bitch_rupaul['Name']} says,\n\"{random.choice(rupaul_reads)}.\"")
             character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
             character_setup.check_if_dead(character)
         else:
