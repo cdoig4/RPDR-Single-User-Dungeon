@@ -48,7 +48,7 @@ def makeover_challenge(character: dict) -> dict:
     """
     Run makeover challenge for player character.
 
-    :param character: must be a dictionary representing the player character with the key 'Name'
+    :param character: a dictionary representing the player character with the key 'Name'
     present whose assigned value must be a string
     :precondition: character must be a dictionary
     :postcondition: runs makeup challenge for player
@@ -223,7 +223,7 @@ def read_battle(character: dict):
     """
     Run read_battle event for player.
 
-    :param character: must be a dictionary representing the player character with the keys
+    :param character: a dictionary representing the player character with the keys
     'Charisma', 'Uniqueness', and Nerve present with each of their values being positive integers
     :precondition: character must be a dictionary
     :postcondition: randomly pulls a queen dictionary from a JSON file and sets them as the enemy
@@ -326,7 +326,7 @@ def final_battle(character: dict) -> None:
     """
     Run final battle event for player.
 
-    :param character: must be a dictionary representing the player character with the keys 'Name',
+    :param character: a dictionary representing the player character with the keys 'Name',
     'Charisma', and 'Nerve' present, where the value assigned to 'Name' is a string, and the values
     assigned to 'Charisma' and 'Nerve' are both positive integers
     :precondition: character must be a dictionary

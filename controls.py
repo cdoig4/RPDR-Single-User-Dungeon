@@ -15,7 +15,7 @@ def show_score(character: dict) -> None:
     """
     Display current character stats for player
 
-    :param character: must be dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
+    :param character: dictionary representing the player character with the keys 'Charisma', 'Uniqueness',
     'Nerve', and 'Talent' whose values must all be positive integers
     :precondition: character must be a dictionary
     :postcondition: create a string with the current stats of the player character inside
@@ -37,9 +37,9 @@ def generate_directional_inputs(current_coordinates: tuple, board_name: str) -> 
     """
     Generate possible directional inputs for player.
 
-    :param current_coordinates: must be a tuple containing two positive integers representing the current coordinates
+    :param current_coordinates: a tuple containing two positive integers representing the current coordinates
     of the player character on the game board
-    :param board_name: must be a string representing the name of the current board
+    :param board_name: a string representing the name of the current board
     :precondition: current_coordinates must be a tuple and board_name must be a string
     :postcondition: generate possible inputs for the player based on their current coordinates on the board
     :return: a list of strings representing the possible inputs for the player
@@ -93,8 +93,8 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     """
     Process directional input of the player.
 
-    :param game_input: must be a list representing valid potential inputs
-    :param character: must be a dictionary representing the player character
+    :param game_input: a list representing valid potential inputs
+    :param character: a dictionary representing the player character
     :precondition: game_input must be a list and character must be a dictionary
     :postcondition: accept input from player
     :postcondition: determines whether input is valid
@@ -138,7 +138,7 @@ def move_character(character: dict) -> dict or None:
     """
     Process character movement.
 
-    :param character: must be a dictionary representing the player character with the keys 'coordinates', 'location',
+    :param character: a dictionary representing the player character with the keys 'coordinates', 'location',
     and 'met_rupaul' present with the value of 'coordinates' being a tuple containing two positive integers, the value
     of 'location' being a string, and the value of 'met_rupaul' being a Boolean
     :precondition: character must be a dictionary

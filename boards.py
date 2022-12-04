@@ -13,7 +13,7 @@ def read_board(board_name: str) -> str:
     """
     Read text file representing game board.
 
-    :param board_name: must be a string representing the name of the desired game board
+    :param board_name: a string representing the name of the desired game board
     :precondition: board_name must be a string
     :postcondition: open and reads text file of the desired board title
     :return: string representing the correct board that has been read from the JSON file
@@ -81,7 +81,7 @@ def set_board(character: dict) -> dict:
     """
     Set correct values into player character dictionary to represent where they are in the game.
 
-    :param character: must be a dictionary representing the player character with the keys
+    :param character: a dictionary representing the player character with the keys
     'met_rupaul', 'location', 'coordinates', and 'level' present, the value of 'met_rupaul' must be
     a Boolean, the value of 'location' must be a string, the value of 'coordinates' must be a tuple
     containing two positive integers, and the value of 'level' must be a positive integer
@@ -107,7 +107,7 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     """
     Create representation of player character in correct location on the game board.
 
-    :param board: must be a string representing the board of the current location of the user
+    :param board: a string representing the board of the current location of the user
     :param current_coordinates: must be a tuple representing the current location of the user on
     the board using two positive integers
     :precondition: board must be a string and current_coordinates must be a tuple
@@ -144,7 +144,7 @@ def clear_board(board: str) -> str:
     """
     Clear game board.
 
-    :param board: must be a string representing board of the current location of the player
+    :param board: a string representing board of the current location of the player
     character
     :precondition: board must be a string
     :return: board string that has been cleared of all symbols
@@ -163,8 +163,8 @@ def format_board(board: str, character: dict) -> str:
     """
     Format game board for player.
 
-    :param board: must be a string representing the name of the current board
-    :param character: must be a dictionary representing the player character with the key 'location'
+    :param board: a string representing the name of the current board
+    :param character: a dictionary representing the player character with the key 'location'
     present whose value must be a string
     :precondition: board must be a string and character must be a dictionary
     :postcondition: formats correct board based on the current location of the player character
@@ -186,7 +186,7 @@ def display_board(character: dict) -> None:
     """
     Display game board of current location for the player.
 
-    :param character: must be a dictionary representing the player character with the keys
+    :param character: a dictionary representing the player character with the keys
     'location' and 'coordinates' present and the value of 'location' must be a string while the
     value of 'coordinates' must be a tuple containing two positive integers that represent the
     coordinates of the player
