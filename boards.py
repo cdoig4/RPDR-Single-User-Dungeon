@@ -117,8 +117,8 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
     :param current_coordinates: must be a tuple representing the current location of the user on
     the board using two positive integers
     :precondition: board must be a string and current_coordinates must be a tuple
-    :postcondition: calculates the current location of the user on the game board
-    :postcondition: places player symbol ('&') in the correct location on the game board
+    :postcondition: calculate the current location of the user on the game board
+    :postcondition: place player symbol '&' in the correct location on the game board
     :return: string representing the correctly marked board with the correct current location of
     the user shown
     """
@@ -148,14 +148,17 @@ def place_character_in_board(board: str, current_coordinates: tuple) -> str:
 
 def clear_board(board: str) -> str:
     """
-    Clear game board.
+    Clear game board of all undesired reference markers #, $, x, !, E, e and replace with a space.
 
-    :param board: a string representing board of the current location of the player
-    character
+    :param board: a string
     :precondition: board must be a string
-    :return: board string that has been cleared of all symbols
+    :postcondition: replace each #, $, x, !, E, or e with a space
+    :return: string with each #, $, x, !, E, or e replaced with a space
+    >>> clear_board('#, $, x, !, E, e')
+    ' ,  ,  ,  ,  ,  '
+    >>> clear_board('Kelly is tired')
+    'K lly is tir d'
     """
-
     cleared_board = board.replace('#', ' ')
     cleared_board = cleared_board.replace('$', ' ')
     cleared_board = cleared_board.replace('x', ' ')
