@@ -93,8 +93,8 @@ def makeover_challenge(character):
     else:
         print(f"You finish dressing {queens[fellow_queen]['Name']} but her wig is sliding back and"
               f" she has major cliffhangers because the shoes are way too small.")
-    print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of queen."
-          f" She clears her throat.")
+    print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of\n"
+          f"queens. She clears her throat in preparation to deliver the results...")
     if correct_answers > 1:
         return character_setup.you_win(character, queens[fellow_queen]['Name'],
                                        'makeover_challenge')
