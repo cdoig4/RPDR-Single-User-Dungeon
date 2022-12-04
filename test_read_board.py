@@ -60,6 +60,13 @@ class TestReadBoard(TestCase):
                    '             J  J  J\n'
         self.assertEqual(expected, read_board('judges_panel'))
 
-    # def test_read_board_dressing_room(self):
-    #     expected = ''
-    #     self.assertEqual(expected, read_board('dressing_room'))
+    def test_read_board_dressing_room(self):
+        expected = '     #   #   #   #   #   #\n' \
+                   '    -------------------\n' \
+                   '   | !   !   !   !   ! | x  $\n' \
+                   '   |                    ---\n' \
+                   '   | !   R   !   !   !  [E] $\n' \
+                   '   |                    ---\n' \
+                   '   | !   !   !   !   ! | x  $\n' \
+                   '    -------------------\n'
+        self.assertEqual(expected, read_board('dressing_room'))
