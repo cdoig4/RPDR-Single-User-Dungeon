@@ -154,8 +154,7 @@ def format_board(board: str, character: dict) -> str:
 
     :param board: must be a string representing the name of the current board
     :param character: must be a dictionary representing the player character with the key 'location'
-    present
-    whose value must be a string
+    present whose value must be a string
     :precondition: board must be a string and character must be a dictionary
     :postcondition: formats correct board based on the current location of the player character
     :return: string representing the board of the current location of the user
