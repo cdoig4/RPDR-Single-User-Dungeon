@@ -96,8 +96,8 @@ def makeover_challenge(character):
     print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of\n"
           f"queens. She clears her throat in preparation to deliver the results...")
     if correct_answers > 1:
-        return character_setup.you_win(character, queens[fellow_queen]['Name'],
-                                       'makeover_challenge')
+        character_setup.you_win(character, queens[fellow_queen]['Name'], 'makeover_challenge')
+        return character_setup.check_for_level_up(character)
     else:
         print(f"...and gives the win to another team, who you have to admit look fucking fierce."
               f"\nYou feel your confidence wane slightly.")
@@ -234,7 +234,7 @@ def read_battle(character):
     enemy_queen = random.choice(queen_names)
 
     print(f"{queens[enemy_queen]['Name']} approaches you, placing the dreaded Reading Glasses on "
-          f"her face as the library opens.")
+          f"her face as\nthe library opens.")
 
     starting_nerve = character['Nerve']
     while queens[enemy_queen]['Nerve'] > 0:
@@ -266,12 +266,13 @@ def read_battle(character):
                 character_setup.power_up_or_down(character, [0, 0, damage_to_player, 0], False)
                 character_setup.check_if_dead(character)
             else:
-                print(f"{queens[enemy_queen]['Name']}'s read is laughably bad. She's clearly never "
-                      f"been to the library in her life.")
+                print(f"{queens[enemy_queen]['Name']}'s read is laughably bad and has no effect!"
+                      f"\nShe's clearly never been to the library in her life.")
 
     if character['level'] != 2:
         character['Nerve'] = starting_nerve
-        return character_setup.you_win(character, queens[enemy_queen]['Name'], 'read_battle')
+        character_setup.you_win(character, queens[enemy_queen]['Name'], 'read_battle')
+        return character_setup.check_for_level_up(character)
     else:
         return character.update({'Nerve': 0})
 
