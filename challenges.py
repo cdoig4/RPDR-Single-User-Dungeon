@@ -460,9 +460,8 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    # runway_event(main_stage_lip_sync, character)
-    # print(generate_challenge_input(lyric_options))
-    # print(get_challenge_input_from_user(lyric_options))
+    print('The following to functions utilize most of the functions within this module and how they work in tandem.')
+    run_challenges(character)
     read_battle(character)
 
 

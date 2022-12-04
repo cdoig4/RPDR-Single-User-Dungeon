@@ -98,13 +98,10 @@ def apply_power_up(stat: tuple, value: int) -> dict:
     >>> apply_power_up(('Uniqueness', 12), -20)
     {'Uniqueness': 0}
     """
-    try:
-        stat[1] + value
-        if stat[1] + value < 0:
-            return {stat[0]: 0}
-        return {stat[0]: stat[1] + value}
-    except IndexError:
-        print("Stat must have two elements!")
+    stat[1] + value
+    if stat[1] + value < 0:
+        return {stat[0]: 0}
+    return {stat[0]: stat[1] + value}
 
 
 def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
@@ -251,14 +248,15 @@ def check_if_dead(character: dict) -> dict:
 def main():
     """Drive the program."""
     new_character = make_character(input('What is the name of your Drag Persona?\n'))
-    # deliver_introduction(new_character)
-    # print(new_character)
+    print(f"Your new character {new_character['Name']} has been created.")
+    deliver_introduction(new_character)
+    print(new_character)
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 2, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 8), 'location': 'main_stage'}
-    # you_win(character, {'Name': 'test'}, 'read_battle')
-    print(new_character)
-    # print(power_up(character, [0, 0, 0, 8]))
+    you_win(character, {'Name': 'test'}, 'read_battle')
+    print(character)
+    print(power_up_or_down(character, [0, 0, 0, 8], True))
 
 
 if __name__ == '__main__':
