@@ -58,10 +58,10 @@ against Mother herself.
 | a.  | Tuple                       | boards.py: line 48                                                                               |
 | b.  | List                        |                                                                                                  |
 | c.  | Dict or list comprehension  | character_setup.py: line 54<br/>controls.py: line 41                                             |
-| d.  | Selection with if-statement | controls.py: lines 109-125<br/>controls.py: lines 155-172                                        |
+| d.  | Selection with if-statement | controls.py: lines 109-125<br/>boards.py: lines 55-56  <br/>controls.py: lines 155-172           |
 | e.  | Repetition with for-loop    | character_setup.py: lines 130-143<br/>controls.py: lines 103-105                                 |
 | f.  | Membership Operator         | challenges.py: line 150                                                                          |
-| g.  | Range function              | boards.py: line 121                                                                              |
+| g.  | Range function              | boards.py: lines 55-56                                                                           |
 | h.  | Itertools (permutations)    | challenges.py: line 32                                                                           |
 | i.  | Enumerate function          | challenges.py: line 372                                                                          |
 | j.  | Filter or map function      | character_setup.py: line 113                                                                     |
