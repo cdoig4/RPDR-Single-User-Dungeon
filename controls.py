@@ -185,10 +185,9 @@ def main():
     character = {'Charisma': 15, 'Uniqueness': 14, 'Nerve': 10, 'Talent': 10, 'met_rupaul': False,
                  'completed_lip_sync': False, 'level': 1, 'Name': 'Ginger Snaps',
                  'coordinates': (6, 3), 'location': 'main_stage'}
-    # print(read_board('dressing_room'))
-    # print(generate_directional_tools((0, 5), 'main_stage'))
-    # print(get_input_from_user(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4'])))
-    # print(generate_challenge_input(['answer 1', 'answer 2', 'answer 3', 'answer 4']))
+    show_score(character)
+    print(f'Here is a demonstration of how user input is processed using move_character which uses '
+          f'generate_directional_inputs and get_directional_input_from_user to move the player character.')
     move_character(character)
     move_character(character)
 
