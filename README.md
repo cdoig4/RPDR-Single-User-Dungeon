@@ -53,17 +53,17 @@ against Mother herself.
 
 
 ### Required elements key:
-|     | Element                     | Line No.                                                                                         |
-|-----|-----------------------------|--------------------------------------------------------------------------------------------------|
-| a.  | Tuple                       | boards.py: line 48                                                                               |
-| b.  | List                        | character_setup.py: line 120<br/>challenges.py: line 65<br/>boards.py: lines 52 & 57             |
-| c.  | Dict or list comprehension  | character_setup.py: line 53<br/>controls.py: line 49                                             |
-| d.  | Selection with if-statement | controls.py: lines 113-129<br/>boards.py: lines 60-61  <br/>controls.py: lines 159-176           |
-| e.  | Repetition with for-loop    | character_setup.py: lines 131-144<br/>controls.py: lines 107-109                                 |
-| f.  | Membership Operator         | challenges.py: line 158                                                                          |
-| g.  | Range function              | boards.py: lines 55-56                                                                           |
-| h.  | Itertools (permutations)    | challenges.py: line 38                                                                           |
-| i.  | Enumerate function          | challenges.py: line 388                                                                          |
-| j.  | Filter or map function      | character_setup.py: line 122<br/>character_setup.py: line 127                                    |
-| k.  | Random module               | challenges.py: lines 40 & 43<br/>challenges.py: line 186<br/>character_setup.py: lines 182 & 195 |
+|     | Element                     | Line No.                                                                                      |
+|-----|-----------------------------|-----------------------------------------------------------------------------------------------|
+| a.  | Tuple                       | boards.py: line 57<br/>challenges.py: line 405<br/>challenges.py: line 128                    |
+| b.  | List                        | boards.py: lines 57<br/>challenges.py: lines 139-140<br/>challenges.py: line 112              |
+| c.  | Dict or list comprehension  | character_setup.py: line 111<br/>character_setup.py: line 128<br/>character_setup.py: line 62 |
+| d.  | Selection with if-statement | controls.py: lines 115-131<br/>boards.py: lines 103-109 <br/>controls.py: lines 157-175       |
+| e.  | Repetition with for-loop    | boards.py: line 55-57 <br/>character_setup.py: lines 135-148<br/>controls.py: lines 109-111   |
+| f.  | Membership Operator         | controls.py: line 120 <br/>challenges.py: line 437 <br/>challenges.oy line 404                |
+| g.  | Range function              | boards.py: lines 55-56 <br/>boards.py line: 139                                               |
+| h.  | Itertools (permutations)    | challenges.py: line 109                                                                       |
+| i.  | Enumerate function          | challenges.py: line 404                                                                       |
+| j.  | Filter or map function      | character_setup.py: line 129<br/>character_setup.py: line 134                                 |
+| k.  | Random module               | challenges.py: line 111 <br/> character_setup.py: line 174 <br/>challenges.py: line 50        |
 
