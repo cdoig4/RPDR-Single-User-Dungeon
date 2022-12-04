@@ -105,10 +105,19 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     if answer == '0':
         show_score(character)
         return get_directional_input_from_user(game_input, character)
-    if answer == 'quit':
+    elif answer == 'quit':
         raise SystemExit("You quit the game.")
-    if answer not in acceptable_answers:
+    elif answer not in acceptable_answers:
         print('That is not an acceptable answer! Please try again:')
+        return get_directional_input_from_user(game_input, character)
+    elif answer == 'X':
+        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
+        return get_directional_input_from_user(game_input, character)
+    elif answer == 'E' and character['location'] != 'judges_panel':
+        print('Not until you level up girl.')
+        return get_directional_input_from_user(game_input, character)
+    elif answer == 'Q' and character['location'] == 'main_stage':
+        print('What the hell are you doing girl? Get your ass to the other side of the stage!')
         return get_directional_input_from_user(game_input, character)
 
     answer_index = acceptable_answers.index(answer)
@@ -143,11 +152,6 @@ def move_character(character):
         if character['location'] == 'judges_panel':
             character['met_rupaul'] = True
             return boards.set_board(character)
-        print('Not until you level up girl.')
-        move_to_coordinates = current_coordinates
-    elif move_to_coordinates == 'exit' and character['location']:
-        print('Where the hell do you think you\'re going girl? Get your ass back in here!')
-        return get_directional_input_from_user(game_input, character)
     elif move_to_coordinates == 'up':
         move_to_coordinates = (current_coordinates[0] - 1, current_coordinates[1])
     elif move_to_coordinates == 'down':
