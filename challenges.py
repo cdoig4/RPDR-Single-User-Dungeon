@@ -59,6 +59,7 @@ def makeover_challenge(character):
     with open(filename) as file_object:
         queens = json.load(file_object)
     queen_names = list(queens.keys())
+    queen_names.remove('RuPaul')
     fellow_queen = random.choice(queen_names)
     correct_answers = 0
 
@@ -205,7 +206,7 @@ def main_stage_lip_sync(character) -> bool:
         character["completed_lip_sync"] = True
         return character_setup.you_win(character, None, 'lip_sync')
     else:
-        character_setup.power_up_or_down(character, [0, 0, -random.randint(5, 10),0], False)
+        character_setup.power_up_or_down(character, [0, 0, -random.randint(5, 10), 0], False)
         character['coordinates'] = (6, 7)
         print(f"RuPaul's voice echoes:\n\"I'm sorry, {character['Name']}, you didn't win.\nBut..."
               f" I'm willing to give you another try. Practice up and assume the position\n"
@@ -348,7 +349,7 @@ def final_battle(character):
                 print(f"Your read falls flat and {queen_bitch_rupaul['Name']} chuckles.")
         elif player_choice == 'Act Unimpressed':
             print("You are emotionally preparing yourself for RuPaul to read you for filth.")
-            character_setup.power_up_or_down(character, [0, 6, 0, 0])
+            character_setup.power_up_or_down(character, [0, 6, 0, 0], True)
         else:
             print(f'{queen_bitch_rupaul["Name"]} says: "That\'s cute. '
                   f'You are staying right here till we\'re done"')
