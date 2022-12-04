@@ -6,6 +6,17 @@ Kelly Hagg A01324804
 
 import json
 
+"""Read Data"""
+
+read_data = {'RUPAUL_READS': ["I never thought I'd meet a queen whose heels weigh more than her brain",
+                "I've always wondered what the female Gremlin would look like in 25 years.\nNow I know.",
+                "those other queens have been saying you have terrible makeup skills,\nno fashion sense, and you're dumb as a rock. But they're wrong...\nYou don't have terrible makeup skills."], 'POTENTIAL_READS': ['Legendary you think you are. Legendary? Looks like leg AND dairy.',
+                   'Beauty fades, dumb is forever',
+                   'The last time you got fucked was by genetics']}
+
+filename = 'read_data.json'
+with open(filename, 'w') as file_object:
+    json.dump(read_data, file_object)
 
 
 """RuPaul Lip Sync"""
