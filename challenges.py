@@ -81,10 +81,10 @@ def makeover_challenge(character):
         correct_answers += 1
         print(f"{queens[fellow_queen]['Name']}'s lips are looking luscious and divine! Way to go!")
     else:
-        print(f"{queens[fellow_queen]['Name']}'s lips are looking a little crusty and dusty, but "
+        print(f"{queens[fellow_queen]['Name']}'s lips are looking a little crusty and dusty,\nbut "
               f"you don't have time to fix them right now.")
     print(f"You hear a call for one minute left and you rush to get {queens[fellow_queen]['Name']}"
-          f" into an outfit!\nWhat order do you dress her in?")
+          f"\ninto an outfit! What order do you dress her in?")
     final_answer = get_challenge_input_from_user(generate_random_makeover_answers(outfit_question))
     if final_answer == outfit_question:
         correct_answers += 1
@@ -92,7 +92,7 @@ def makeover_challenge(character):
               f"stunning on her!")
     else:
         print(f"You finish dressing {queens[fellow_queen]['Name']} but her wig is sliding back and"
-              f" she has major cliffhangers because the shoes are way too small.")
+              f" she has major\ncliffhangers because the shoes are way too small.")
     print(f"RuPaul walks in wearing a Klein Epstein & Parker suit and examines each pair of\n"
           f"queens. She clears her throat in preparation to deliver the results...")
     if correct_answers > 1:
@@ -101,7 +101,7 @@ def makeover_challenge(character):
     else:
         print(f"...and gives the win to another team, who you have to admit look fucking fierce."
               f"\nYou feel your confidence wane slightly.")
-
+        return character_setup.power_up_or_down(character, [-2, 0, 0, 0], False)
 
 def judge_events(character):
     """
