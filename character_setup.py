@@ -33,7 +33,7 @@ def make_character(character_name: str) -> dict:
     """
     Create character of desired name and class.
 
-    :param character_name: must be a string containing only alphabetic characters or spaces
+    :param character_name: a string containing only alphabetic characters or spaces
     :precondition: character_name must be a string
     :postcondition: asks the user for input to determine class stats
     :postcondition: create character dictionary containing name and stats of desired class
@@ -89,9 +89,9 @@ def apply_power_up(stat: tuple, value: int) -> dict:
     """
     Calculate new value to be assigned to a stat.
 
-    :param stat: must be a tuple containing a string representing the name of a stat and an integer
+    :param stat: a tuple containing a string representing the name of a stat and an integer
     representing the value assigned to that stat
-    :param value: must be an integer
+    :param value: an integer
     :precondition: stat must be a tuple and value must be an integer
     :postcondition: calculate the new value of the second element in the stat tuple after the
     addition of value
@@ -115,8 +115,7 @@ def power_up_or_down(character: dict, values: list, is_queen: bool) -> dict:
     """
     Inform player of changes to stats for either themselves or the enemy.
 
-    :param character: must be a dictionary representing a game character, either player or
-    non-player
+    :param character: a dictionary representing a game character, either player or non-player
     :param values: a list containing four integers
     :param is_queen: a Boolean representing whether the dictionary represents the player character
     or not
@@ -154,12 +153,12 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
     """
     Perform win events for player.
 
-    :param character: must be a dictionary representing the player character with the keys 'Name'
+    :param character: a dictionary representing the player character with the keys 'Name'
     and 'completed_lip_sync' present, with the value assigned to 'Name' being a string and the
     value assigned to 'completed_lip_sync' being a Boolean
-    :param enemy_name: must be a non-empty string representing an NPC name or None if there is
+    :param enemy_name: a non-empty string representing an NPC name or None if there is
     no NPC
-    :param challenge_name: must be a non-empty string
+    :param challenge_name: a non-empty string
     :precondition: character must be a dictionary, enemy_name must be either a string or None,
     and challenge_name must be a string
     :postcondition: print specified win statements depending on the string passed as challenge_name
@@ -215,7 +214,7 @@ def check_for_level_up(character: dict) -> dict:
     """
     Determine whether the player character has leveled up.
 
-    :param character: must be a dictionary representing the player character with the keys
+    :param character: a dictionary representing the player character with the keys
     'location', 'Talent', and 'level' present, with the value assigned to 'location' being a string
     and the values assigned to 'Talent' and 'level' being positive integers
     :precondition: character must be a dictionary
@@ -235,7 +234,7 @@ def check_if_dead(character: dict) -> dict:
     """
     Determine whether player character has lost all of their health ('Nerve')
 
-    :param character: must be a dictionary with the keys 'Nerve' and 'Name' present, with the value
+    :param character: a dictionary with the keys 'Nerve' and 'Name' present, with the value
     assigned to 'Nerve' being an integer and the value assigned to 'Name' being a string
     :precondition: character must be a dictionary
     :postcondition: determine whether the value assigned to 'Nerve' is 0 or less
