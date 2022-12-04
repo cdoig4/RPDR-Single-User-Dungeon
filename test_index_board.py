@@ -5,7 +5,6 @@ Kelly Hagg A01324804
 
 
 from unittest import TestCase
-from unittest.mock import patch
 from boards import index_board
 
 
