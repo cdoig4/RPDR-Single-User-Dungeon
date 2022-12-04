@@ -33,7 +33,7 @@ def show_score(character: dict) -> None:
                  f'Nerve: {nerve}, Talent: {talent}]')
 
 
-def generate_directional_inputs(current_coordinates, board_name):
+def generate_directional_inputs(current_coordinates: tuple, board_name: str) -> list:
     """
     Generate possible directional inputs for player.
 
@@ -134,7 +134,7 @@ def get_directional_input_from_user(game_input: list, character: dict) -> str:
     return answer_string.lower()
 
 
-def move_character(character):
+def move_character(character: dict) -> dict or None:
     """
     Process character movement.
 
