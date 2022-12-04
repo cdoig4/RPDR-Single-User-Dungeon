@@ -199,11 +199,11 @@ def you_win(character: dict, enemy_name: str or None, challenge_name: str) -> di
         print(f"\nYou are ushered towards the Judge's Panel.")
         return character
     if challenge_name == 'rupaul':
-        print(f"\nRuPaul's face breaks into a smile. \"ConDRAGulations {character['Name']}, "
+        print(f"\nRuPaul's face breaks into a smile\n\"ConDRAGulations {character['Name']}, "
               f"you're the winner baby!\"\nTriumphant music starts up as confetti begins to "
               f"fall from the ceiling.\n\nRuPaul says,\"You are now the Queen of the Mother Tucking"
               f" UNIVERSE!\"\n\nMother continues as she places a massive bejeweled crown upon your"
-              f" head and a\nmatching scepter in your hand.\nYou sob with happiness.\nYou"
+              f" head and a\nmatching scepter in your hand. You sob with happiness.\n\nYou"
               f" know that this... is the beginning of the rest of your life.\n")
         character['achieved_goal'] = True
         return character
