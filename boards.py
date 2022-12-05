@@ -156,8 +156,8 @@ def clear_board(board: str) -> str:
     :return: string with each #, $, x, !, E, or e replaced with a space
     >>> clear_board('#, $, x, !, E, e')
     ' ,  ,  ,  ,  ,  '
-    >>> clear_board('Kelly is tired')
-    'K lly is tir d'
+    >>> clear_board('Pumpkins')
+    'Pumpkins'
     """
     cleared_board = board.replace('#', ' ')
     cleared_board = cleared_board.replace('$', ' ')
