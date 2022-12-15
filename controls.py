@@ -1,7 +1,4 @@
 """
-Colin Doig A01334230
-Kelly Hagg A01324804
-
 Generate and operate the controls for the player.
 """
 

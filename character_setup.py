@@ -1,7 +1,4 @@
 """
-Colin Doig A01334230
-Kelly Hagg A01324804
-
 Create the player character and give them the introduction
 """
 

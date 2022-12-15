@@ -1,9 +1,3 @@
-"""
-Colin Doig A01334230
-Kelly Hagg A01324804
-"""
-
-
 from unittest import TestCase
 from unittest.mock import patch
 from controls import get_directional_input_from_user

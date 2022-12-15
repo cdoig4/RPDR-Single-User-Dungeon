@@ -1,7 +1,4 @@
 """
-Colin Doig 10334230
-Kelly Hagg A01324804
-
 Challenges for the user to help them increase their level!
 """
 
